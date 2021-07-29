@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Input;
+using Grpc.Net.Client;
 using RurouniJones.Jupiter.Core.Models;
+using RurouniJones.Jupiter.Dcs;
 
 namespace RurouniJones.Jupiter.Core.ViewModels.Commands
 {
@@ -18,7 +20,29 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
             var location = ((ValueTuple<Location, string>) parameter).Item1;
             var color = ((ValueTuple<Location, string>) parameter).Item2;
 
-            Debug.WriteLine($"LaunchFlareCommand.Execute called at L/L: {location.Latitude}/{location.Longitude} with color {color}");
+            Debug.WriteLine($"LaunchFlareCommand.Execute called at L/L: {location.Latitude}/{location.Longitude}" +
+                            $"with color {color}");
+            try
+            {
+                using var channel = GrpcChannel.ForAddress($"http://127.0.0.1:50051");
+                var client = new Triggers.TriggersClient(channel);
+                client.SignalFlare(new SignalFlareRequest
+                    {
+                        Position = new Position
+                        {
+                            Lat = location.Latitude,
+                            Lon = location.Longitude,
+                            Alt = 0
+                        },
+                        Color = (SignalFlareRequest.Types.FlareColor) Enum.Parse(
+                            typeof(SignalFlareRequest.Types.FlareColor), color)
+                    }
+                );
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
         }
 
         public event EventHandler? CanExecuteChanged;

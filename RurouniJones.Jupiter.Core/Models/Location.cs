@@ -5,35 +5,19 @@ namespace RurouniJones.Jupiter.Core.Models
 {
     public class Location : IEquatable<Location>
     {
-        private double _latitude;
-        private double _longitude;
-
-        public Location()
-        {
-        }
-
         public Location(double latitude, double longitude)
         {
-            Latitude = latitude;
+            Latitude = Math.Min(Math.Max(latitude, -90.0), 90.0);;
             Longitude = longitude;
         }
 
-        public double Latitude
-        {
-            get => _latitude;
-            set => _latitude = Math.Min(Math.Max(value, -90.0), 90.0);
-        }
-
-        public double Longitude
-        {
-            get => _longitude;
-            set => _longitude = value;
-        }
+        public double Latitude { get; }
+        public double Longitude  { get; }
 
         public bool Equals(Location location)
         {
-            return location != null && Math.Abs(location._latitude - _latitude) < 1E-09 &&
-                   Math.Abs(location._longitude - _longitude) < 1E-09;
+            return location != null && Math.Abs(location.Latitude - Latitude) < 1E-09 &&
+                   Math.Abs(location.Longitude - Longitude) < 1E-09;
         }
 
         public override bool Equals(object obj)
@@ -43,12 +27,12 @@ namespace RurouniJones.Jupiter.Core.Models
 
         public override int GetHashCode()
         {
-            return _latitude.GetHashCode() ^ _longitude.GetHashCode();
+            return Latitude.GetHashCode() ^ Longitude.GetHashCode();
         }
 
         public override string ToString()
         {
-            return string.Format(CultureInfo.InvariantCulture, "{0:F5},{1:F5}", _latitude, _longitude);
+            return string.Format(CultureInfo.InvariantCulture, "{0:F5},{1:F5}", Latitude, Longitude);
         }
     }
 }

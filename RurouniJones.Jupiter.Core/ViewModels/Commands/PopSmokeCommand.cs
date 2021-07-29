@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
 using System.Windows.Input;
+using Grpc.Net.Client;
 using RurouniJones.Jupiter.Core.Models;
+using RurouniJones.Jupiter.Dcs;
 
 namespace RurouniJones.Jupiter.Core.ViewModels.Commands
 {
@@ -18,7 +21,29 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
             var location = ((ValueTuple<Location, string>) parameter).Item1;
             var color = ((ValueTuple<Location, string>) parameter).Item2;
 
-            Debug.WriteLine($"PopSmokeCommand.Execute called at L/L: {location.Latitude}/{location.Longitude} with color {color}");
+            Debug.WriteLine($"PopSmokeCommand.Execute called at L/L: {location.Latitude}/{location.Longitude}" +
+                            $" with color {color}");
+            try
+            {
+                using var channel = GrpcChannel.ForAddress($"http://127.0.0.1:50051");
+                var client = new Triggers.TriggersClient(channel);
+                client.Smoke(new SmokeRequest
+                    {
+                        Position = new Position
+                        {
+                            Lat = location.Latitude,
+                            Lon = location.Longitude,
+                            Alt = 0
+                        },
+                        Color = (SmokeRequest.Types.SmokeColor) Enum.Parse(
+                            typeof(SmokeRequest.Types.SmokeColor), color)
+                    }
+                );
+            }
+            catch (Exception e)
+            {
+                Debug.WriteLine(e.ToString());
+            }
         }
 
         public event EventHandler? CanExecuteChanged;
