@@ -21,4 +21,8 @@
     <PackageReference Include="XAML.MapControl" Version="6.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\RurouniJones.Jupiter.Core\RurouniJones.Jupiter.Core.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -7,7 +7,6 @@ namespace RurouniJones.Jupiter.UI.Views
         public MainWindow()
         {
             InitializeComponent();
-            WindowStartupLocation = WindowStartupLocation.CenterScreen;
         }
     }
 }

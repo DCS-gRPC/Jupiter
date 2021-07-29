@@ -5,7 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Input;
 using MapControl;
 using MapControl.Caching;
-using RurouniJones.Jupiter.UI.ViewModels;
+using RurouniJones.Jupiter.Core.ViewModels;
 
 namespace RurouniJones.Jupiter.UI.Views
 {
@@ -29,6 +29,13 @@ namespace RurouniJones.Jupiter.UI.Views
         {
             InitializeComponent();
 
+            MainMap.MapLayer =  new MapTileLayer
+            {
+                TileSource = new TileSource {UriFormat = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"},
+                SourceName = "OpenStreetMap",
+                Description = "© [OpenStreetMap contributors](http://www.openstreetmap.org/copyright)"
+            };
+
             if (TileImageLoader.Cache is ImageFileCache cache)
             {
                 Loaded += async (s, e) =>
@@ -49,7 +56,8 @@ namespace RurouniJones.Jupiter.UI.Views
         /// <param name="e">The Mouse Event Argument</param>
         private void MainMap_OnMouseMove(object sender, MouseEventArgs e)
         {
-            ((MapViewModel) DataContext).MouseLocation = ((MapControl.Map) sender).ViewToLocation(e.GetPosition(MainMap)); 
+            var location = ((MapControl.Map) sender).ViewToLocation(e.GetPosition(MainMap)); 
+            ((MapViewModel) DataContext).MouseLocation = new Core.Models.Location(location.Latitude, location.Longitude);
         }
     }
 }

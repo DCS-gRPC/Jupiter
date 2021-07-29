@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Windows.Input;
-using MapControl;
+using RurouniJones.Jupiter.Core.Models;
 
-namespace RurouniJones.Jupiter.UI.ViewModels.Commands
+namespace RurouniJones.Jupiter.Core.ViewModels.Commands
 {
-    public class LaunchFlareCommand : ICommand
+    public class PopSmokeCommand : ICommand
     {
         public bool CanExecute(object? parameter)
         {
@@ -18,7 +18,7 @@ namespace RurouniJones.Jupiter.UI.ViewModels.Commands
             var location = ((ValueTuple<Location, string>) parameter).Item1;
             var color = ((ValueTuple<Location, string>) parameter).Item2;
 
-            Debug.WriteLine($"LaunchFlareCommand.Execute called at L/L: {location.Latitude}/{location.Longitude} with color {color}");
+            Debug.WriteLine($"PopSmokeCommand.Execute called at L/L: {location.Latitude}/{location.Longitude} with color {color}");
         }
 
         public event EventHandler? CanExecuteChanged;
