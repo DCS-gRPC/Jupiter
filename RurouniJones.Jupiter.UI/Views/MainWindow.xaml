@@ -5,12 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RurouniJones.Jupiter.UI.Views"
         xmlns:viewModels="clr-namespace:RurouniJones.Jupiter.Core.ViewModels;assembly=RurouniJones.Jupiter.Core"
+        xmlns:converters="clr-namespace:RurouniJones.Jupiter.UI.Converters"
         mc:Ignorable="d"
-        Title="Jupiter for DCS" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Jupiter for DCS" Height="1000" Width="1800" WindowStartupLocation="CenterScreen" WindowState="Maximized">
     <Window.DataContext>
         <viewModels:MainViewModel/>
     </Window.DataContext>
-    <DockPanel>
-        <local:Map/>
-    </DockPanel>
+    <Window.Resources>
+        <converters:LastGridViewColumnConverter x:Key="lastGridViewColumnConverter"/>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <local:Map Grid.Row="0"/>
+        <StackPanel Grid.Row="1" x:Name="GameEventPanel">
+            <ListView ItemsSource="{Binding GameEventCollection}" VerticalContentAlignment="Top" Height="{Binding ActualHeight, ElementName=GameEventPanel, Mode=OneWay}"
+                      ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Time" Width="60" DisplayMemberBinding="{Binding Timestamp}"/>
+                        <GridViewColumn Header="Type" Width="100" DisplayMemberBinding="{Binding EventType}"/>
+                        <GridViewColumn Header="Unit" Width="100" DisplayMemberBinding="{Binding UnitId}"/>
+                        <GridViewColumn Header="Details" DisplayMemberBinding="{Binding Details}">
+                            <GridViewColumn.Width>
+                                <MultiBinding Converter="{StaticResource lastGridViewColumnConverter}">
+                                    <Binding Path="ActualWidth"  RelativeSource="{RelativeSource AncestorType=ListView}"/>
+                                    <Binding RelativeSource="{RelativeSource Mode=FindAncestor, AncestorType=ListView}"/>
+                                </MultiBinding>
+                            </GridViewColumn.Width>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Grid>
 </Window>
