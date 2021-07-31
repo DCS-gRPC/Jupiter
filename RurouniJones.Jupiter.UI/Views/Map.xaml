@@ -11,6 +11,27 @@
     <UserControl.Resources>
         <mapControl:WebMercatorProjection x:Key="WebMercatorProjection"/>
         <converters:LocationAndColorConverter x:Key="LocationAndColorConverter" />
+        <converters:LocationConverter x:Key="LocationConverter"/>
+        <Style x:Key="UnitStyle" TargetType="mapControl:MapItem">
+            <Setter Property="AutoCollapse" Value="True"/>
+            <Setter Property="Location" Value="{Binding Location, Mode=OneWay, Converter={StaticResource LocationConverter}}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="mapControl:MapItem">
+                        <Canvas>
+                            <Image Source="{Binding Image, Mode=OneTime}"/>
+                            <Grid Canvas.Left="25">
+                                <TextBlock Text="" Margin="0">
+                                    <Run Text="{Binding Pilot, Mode=OneTime}"/>
+                                    <LineBreak/>
+                                    <Run Text="{Binding Name, Mode=OneTime}"/>
+                                </TextBlock>
+                            </Grid>
+                        </Canvas>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
     <UserControl.DataContext>
         <viewModels:MapViewModel/>
@@ -18,6 +39,9 @@
     <Grid>
         <mapControl:Map x:Name="MainMap" ZoomLevel="7" MaxZoomLevel="21" MouseWheelZoomDelta="1"
                         MouseMove="MainMap_OnMouseMove">
+            <mapControl:MapItemsControl ItemsSource="{Binding Units}"
+                                        ItemContainerStyle="{StaticResource UnitStyle}"
+                                        SelectionMode="Extended"/>
             <mapControl:Map.ContextMenu>
                 <!-- There must be a better way to define these Menu items using a template or something -->
                 <ContextMenu>
