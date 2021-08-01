@@ -33,12 +33,10 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <UserControl.DataContext>
-        <viewModels:MapViewModel/>
-    </UserControl.DataContext>
     <Grid>
         <mapControl:Map x:Name="MainMap" ZoomLevel="7" MaxZoomLevel="21" MouseWheelZoomDelta="1"
-                        MouseMove="MainMap_OnMouseMove">
+                        MouseMove="MainMap_OnMouseMove"
+                        Center="{Binding MapLocation, Converter={StaticResource LocationConverter}}">
             <mapControl:MapItemsControl ItemsSource="{Binding Units}"
                                         ItemContainerStyle="{StaticResource UnitStyle}"
                                         SelectionMode="Extended"/>

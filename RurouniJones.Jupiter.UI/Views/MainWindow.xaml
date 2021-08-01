@@ -15,12 +15,44 @@
         <converters:LastGridViewColumnConverter x:Key="lastGridViewColumnConverter"/>
     </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <local:Map Grid.Row="0"/>
-        <StackPanel Grid.Row="1" x:Name="GameEventPanel">
+        <TabControl Grid.Row="0" Grid.RowSpan="2" Grid.Column="0">
+            <TabItem Header="Units">
+                <ListView x:Name="UnitList" ItemsSource="{Binding DataContext.Units, ElementName=Map}" VerticalContentAlignment="Top"
+                          ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                            <EventSetter Event="PreviewMouseLeftButtonUp" Handler="ListViewItem_PreviewMouseLeftButtonUp" />
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:Name="SingleLineDataTemplate">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding Image}" Grid.Column="0" VerticalAlignment="Center" Stretch="None"/>
+                                <TextBlock Text="{Binding Name}" Grid.Column="1" VerticalAlignment="Center"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </TabItem>
+            <TabItem Header="B" />
+            <TabItem Header="C" />
+        </TabControl>
+        <local:Map x:Name="Map" Grid.Row="0" Grid.Column="1"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" x:Name="GameEventPanel">
             <ListView x:Name="EventListView" ItemsSource="{Binding GameEventCollection}" VerticalContentAlignment="Top" Height="{Binding ActualHeight, ElementName=GameEventPanel, Mode=OneWay}"
                       ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
                 <ListView.ItemContainerStyle>

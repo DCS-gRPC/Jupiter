@@ -57,7 +57,7 @@ namespace RurouniJones.Jupiter.UI.Views
         private void MainMap_OnMouseMove(object sender, MouseEventArgs e)
         {
             var location = ((MapControl.Map) sender).ViewToLocation(e.GetPosition(MainMap)); 
-            ((MapViewModel) DataContext).MouseLocation = new Core.Models.Location(location.Latitude, location.Longitude);
+            ((MainViewModel) DataContext).MouseLocation = new Core.Models.Location(location.Latitude, location.Longitude);
         }
     }
 }
