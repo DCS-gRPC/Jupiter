@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Collections.Specialized;
+using System.Windows;
 
 namespace RurouniJones.Jupiter.UI.Views
 {
@@ -7,6 +8,15 @@ namespace RurouniJones.Jupiter.UI.Views
         public MainWindow()
         {
             InitializeComponent();
+
+            ((INotifyCollectionChanged)EventListView.ItemsSource).CollectionChanged +=
+                (s, e) =>
+                {
+                    if (e.Action == NotifyCollectionChangedAction.Add)
+                    {
+                        EventListView.ScrollIntoView(EventListView.Items[^1]);
+                    }
+                };
         }
     }
 }

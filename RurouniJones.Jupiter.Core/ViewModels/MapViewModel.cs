@@ -61,16 +61,18 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                             }
                             else
                             {
-                                var newUnit = unitUpdate.Unit;
-                                Units.Add(new Unit()
+                                var sourceUnit = unitUpdate.Unit;
+                                var newUnit = new Unit
                                 {
-                                    Coalition = (int) newUnit.Coalition,
-                                    Id = newUnit.Id,
-                                    Location = new Location(newUnit.Position.Lat, newUnit.Position.Lon),
-                                    Name = newUnit.Name,
-                                    Pilot = newUnit.Callsign,
-                                    Type = newUnit.Type
-                                });
+                                    Coalition = (int) sourceUnit.Coalition,
+                                    Id = sourceUnit.Id,
+                                    Location = new Location(sourceUnit.Position.Lat, sourceUnit.Position.Lon),
+                                    Name = sourceUnit.Name,
+                                    Pilot = sourceUnit.Callsign,
+                                    Type = sourceUnit.Type
+                                };
+                                Units.Add(newUnit);
+                                Debug.WriteLine(newUnit);
                             }
                             break;
                         case UnitUpdate.UpdateOneofCase.Gone:

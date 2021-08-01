@@ -1,0 +1,707 @@
+﻿---
+-
+  name: Foxhound
+  code: MiG-31
+  dcs_codes:
+    - MiG-31
+  attributes:
+    - fixed wing
+    - fighter
+    - long range
+-
+  name: Fulcrum
+  code: MiG-29
+  dcs_codes:
+    - MiG-29A
+    - MiG-29G
+    - MiG-29K
+    - MiG-29S
+  attributes:
+    - fixed wing
+    - fighter
+    - medium range
+-
+  name: Flanker
+  code: Su-27
+  dcs_codes:
+    - Su-27
+    - Su-30
+    - Su-33
+    - J-11A
+  attributes:
+    - fixed wing
+    - fighter
+    - medium range
+-
+  name: Frogfoot
+  code: Su-25
+  dcs_codes:
+    - Su-25
+    - Su-25T
+    - Su-25TM
+  attributes:
+    - fixed wing
+    - attack
+    - short range
+-
+  name: Hip
+  code: Mi-8
+  dcs_codes:
+    - Mi-8MTV2
+    - Mi-8MT
+  attributes:
+    - rotary
+    - attack
+    - transport
+-
+  name: Tiger-2
+  code: F-5
+  dcs_codes:
+    - F-5E-3
+  attributes:
+    - fixed wing
+    - fighter
+    - attack
+    - short range
+-
+  name: Tomcat
+  code: F-14
+  dcs_codes:
+    - F-14A
+    - F-14A-135-GR
+    - F-14B
+  attributes:
+    - fixed wing
+    - fighter
+    - long range
+-
+  name: Falcon
+  code: F-16
+  dcs_codes:
+    - F-16A
+    - F-16A-2
+    - F-16C
+    - F-16C-2
+    - F-16CM bl.50
+    - F-16C_50
+  attributes:
+    - fixed wing
+    - fighter
+    - attack
+    - medium range
+-
+  name: Hornet
+  code: F-18
+  dcs_codes:
+    - FA-18A
+    - FA-18C
+    - F/A-18C Lot 20
+    - FA-18C_hornet
+  attributes:
+    - fixed wing
+    - fighter
+    - attack
+    - medium range
+-
+  name: Tornado
+  code: Tornado
+  dcs_codes:
+    - Tornado_GR4
+    - Tornado_IDS
+  attributes:
+    - fixed wing
+    - fighter
+    - attack
+    - medium range
+- 
+  name: Bear
+  code: Tu-142
+  dcs_codes:
+    - Tu-142
+    - Tu-95MS
+  attributes:
+    - fixed wing
+    - bomber
+- 
+  name: Blackjack
+  code: Tu-160
+  dcs_codes:
+    - Tu-160
+  attributes:
+    - fixed wing
+    - bomber
+- 
+  name: Backfire
+  code: Tu-22
+  dcs_codes:
+    - Tu-22M3
+  attributes:
+    - fixed wing
+    - bomber
+-
+  name: Fencer
+  code: Su-24
+  dcs_codes:
+    - Su-24M
+    - Su-24MR
+  attributes:
+    - fixed wing
+    - attack
+-
+  name: Candid
+  code: IL-76
+  dcs_codes:
+    - IL-76
+    - IL-76M
+  attributes:
+    - fixed wing
+    - transport
+-
+  name: Flogger
+  code: MiG-23
+  dcs_codes:
+    - MiG-23MLD
+    - MiG-27K
+  attributes:
+    - fixed wing
+    - fighter
+    - attack
+    - medium range
+-
+  name: Mainstay
+  code: A-50
+  dcs_codes:
+    - A-50
+  attributes:
+    - fixed wing
+    - awacs
+-
+  name: Clank
+  code: An-30
+  dcs_codes:
+    - An-30M
+  attributes:
+    - fixed wing
+    - transport
+-
+  name: Curl
+  code: An-26
+  dcs_codes:
+    - An-26B
+  attributes:
+    - fixed wing
+    - transport
+-
+  name: Huey
+  code: UH-1
+  dcs_codes:
+    - UH-1H
+  attributes:
+    - rotary
+    - attack
+    - transport
+-
+  name: Harrier
+  code: AV-8
+  dcs_codes:
+    - AV-8B N/A
+    - AV8BNA
+  attributes:
+    - fixed wing
+    - attack
+    - short range
+    - V/STOL
+-
+  name: Warthog
+  code: A-10
+  dcs_codes:
+    - A-10A
+    - A-10C
+    - A-10C II
+    - A-10C_2
+  attributes:
+    - fixed wing
+    - attack
+    - short range
+-
+  name: Eagle
+  code: F-15
+  dcs_codes:
+    - F-15C
+  attributes:
+    - fixed wing
+    - fighter
+    - medium range  
+-
+  name: Viggen
+  code: AJS-37
+  dcs_codes:
+    - AJS37
+  attributes:
+    - fixed wing
+    - attack
+    - short range
+-
+  name: Skyhawk
+  code: A-4
+  dcs_codes:
+    - A-4E
+  attributes:
+    - fixed wing
+    - attack
+    - short range
+-
+  name: Lancer
+  code: B-1B # The B-1A was never operational, it was a prototype. so we will consider the B-1B the canonical name
+  dcs_codes:
+    - B-1B
+  attributes:
+    - fixed wing
+    - bomber
+-
+  name: Stratofortress
+  code: B-52
+  dcs_codes:
+    - B-52H
+  attributes:
+    - fixed wing
+    - bomber
+-
+  name: Kurfürst
+  code: Bf-109
+  dcs_codes:
+    - Bf 109 K-4
+  attributes:
+    - fixed wing
+    - fighter
+    - short range
+-
+  name: Aviojet
+  code: C-101
+  dcs_codes:
+    - C-101CC
+    - C-101EB
+  attributes:
+    - fixed wing
+    - fighter
+    - short range
+-
+  name: Hercules
+  code: C-130
+  dcs_codes:
+    - C-130
+    - Hercules
+  attributes:
+    - fixed wing
+    - transport
+-
+  name: Globemaster
+  code: C-17
+  dcs_codes:
+    - C-17A
+  attributes:
+    - fixed wing
+    - transport
+-
+  name: Christen Eagle
+  code: Christen Eagle II
+  dcs_codes:
+    - Christen Eagle II
+  attributes:
+    - fixed wing
+-
+  name: Hawkeye
+  code: E-2
+  dcs_codes:
+    - E-2D
+    - E-2C
+  attributes:
+    - fixed wing
+    - awacs
+-
+  name: Sentry
+  code: E-3
+  dcs_codes:
+    - E-3A
+  attributes:
+    - fixed wing
+    - awacs
+-
+  name: Nighthawk
+  code: F-117
+  dcs_codes:
+    - F-117A
+  attributes:
+    - fixed wing
+    - bomber
+-
+  name: Phantom
+  code: F-4
+  dcs_codes:
+    - F-4E
+  attributes:
+    - fixed wing
+    - fighter
+    - medium range
+-
+  name: Sabre
+  code: F-86
+  dcs_codes:
+    - F-86F
+  attributes:
+    - fixed wing
+    - fighter
+    - short range
+-
+  name: Shrike
+  code: Fw-190
+  dcs_codes:
+    - Fw 190 A-8
+    - Fw 190 D-9
+  attributes:
+    - fixed wing
+    - fighter
+    - short range
+-
+  name: Hawk
+  code: Hawk
+  dcs_codes:
+    - Hawk
+  attributes:
+    - fixed wing
+    - fighter
+    - short range
+-
+  name: Polikarpov
+  code: I-16
+  dcs_codes:
+    - I-16
+  attributes:
+    - fixed wing
+    - fighter
+    - short range
+-
+  name: Thunder
+  code: JF-17
+  dcs_codes:
+    - JF-17
+  attributes:
+    - fixed wing
+    - fighter
+    - medium range
+-
+  name: Stratotanker
+  code: KC-135
+  dcs_codes:
+    - KC-135
+    - KC-135MPRS
+    - KC135
+    - KC135MPRS
+  attributes:
+    - fixed wing
+    - tanker
+-
+  name: KC-130
+  code: KC-130
+  dcs_codes:
+    - KC-130
+  attributes:
+    - fixed wing
+    - tanker
+-
+  name: Albatross
+  code: L-39
+  dcs_codes:
+    - L-39C
+    - L-39ZA
+  attributes:
+    - fixed wing
+    - fighter
+    - short range
+-
+  name: Mirage
+  code: M-2000
+  dcs_codes:
+    - M-2000C
+    - Mirage 2000-5
+  attributes:
+    - fixed wing
+    - fighter
+    - medium range
+-
+  name: MB-339
+  code: MB-339
+  dcs_codes:
+    - MB-330PAN
+  attributes:
+    - fixed wing
+    - fighter
+    - short range
+-
+  name: Reaper
+  code: MQ-9
+  dcs_codes:
+    - MQ-9
+  attributes:
+    - fixed wing
+    - fighter
+    - short range
+-
+  name: Predator
+  code: MQ-1
+  dcs_codes:
+    - MQ-1A
+  attributes:
+    - fixed wing
+    - drone
+    - short range
+-
+  name: Fagot
+  code: MiG-15
+  dcs_codes:
+    - Mig-15bis
+  attributes:
+    - fixed wing
+    - fighter
+    - short range
+-
+  name: Farmer
+  code: MiG-19
+  dcs_codes:
+    - MiG-19P
+  attributes:
+    - fixed wing
+    - fighter
+    - short range
+-
+  name: Fishbed
+  code: MiG-21
+  dcs_codes:
+    - MiG-21Bis
+  attributes:
+    - fixed wing
+    - fighter
+    - short range
+-
+  name: Thunderbolt
+  code: P-47
+  dcs_codes:
+    - P-47D-30
+    - P-47D-30 (Early)
+    - P-47D-40
+  attributes:
+    - fixed wing
+    - fighter
+    - short range
+-
+  name: Mustang
+  code: P-51
+  dcs_codes:
+    - P-51D-25-NA
+    - P-51D-30-NA
+    - TF-51D
+  attributes:
+    - fixed wing
+    - fighter
+    - short range
+-
+  name: Viking
+  code: S-3
+  dcs_codes:
+    - S-3B
+    - S-3B Tanker
+  attributes:
+    - fixed wing
+    - tanker
+-
+  name: Spitfire
+  code: Spitfire
+  dcs_codes:
+    - Spitfire LF Mk. IX
+    - Spitfire LF Mk. IX CW
+  attributes:
+    - fixed wing
+    - fighter
+    - short range
+-
+  name: Yak 52
+  code: Yak-52
+  dcs_codes:
+    - Yak-52
+  attributes:
+    - fixed wing
+    - fighter
+    - short range
+-
+  name: SuperCobra
+  code: AH-1
+  dcs_codes:
+    - AH-1W
+  attributes:
+    - rotary
+    - attack
+-
+  name: Apache
+  code: AH-64
+  dcs_codes:
+    - AH-64A
+    - AH-64D
+  attributes:
+    - rotary
+    - attack
+-
+  name: Chinook
+  code: CH-47
+  dcs_codes:
+    - AH-47D
+  attributes:
+    - rotary
+    - transport
+-
+  name: Super Stallion
+  code: CH-53
+  dcs_codes:
+    - CH-53E
+  attributes:
+    - rotary
+    - transport
+-
+  name: Black Shark
+  code: Ka-50
+  dcs_codes:
+    - Ka-50
+  attributes:
+    - rotary
+    - attack
+-
+  name: Kiowa
+  code: OH-58
+  dcs_codes:
+    - OH-58D
+  attributes:
+    - rotary
+    - attack
+-
+  name: Gazelle
+  code: SA342
+  dcs_codes:
+    - SA342L
+    - SA342M
+    - SA342Minigun
+    - SA342Mistral
+  attributes:
+    - rotary
+    - attack
+-
+  name: Seahawk
+  code: SH-60
+  dcs_codes:
+    - SH-60B
+  attributes:
+    - rotary
+    - transport
+-
+  name: Black Hawk
+  code: UH-60
+  dcs_codes:
+    - UH-60A
+  attributes:
+    - rotary
+    - transport
+-
+  name: Helix
+  code: Ka-27
+  dcs_codes:
+    - Ka-27
+  attributes:
+    - rotary
+    - transport
+-
+  name: Hind
+  code: Mi-24
+  dcs_codes:
+    - Mi-24V
+  attributes:
+    - rotary
+    - attack
+    - transport
+-
+  name: Halo
+  code: Mi-26
+  dcs_codes:
+    - Mi-26
+  attributes:
+    - helicopter
+    - transport
+-
+  name: Havok
+  code: Mi-28
+  dcs_codes:
+    - Mi-28N
+  attributes:
+    - rotary
+    - attack
+-
+  name: A-20
+  code: A-20
+  dcs_codes:
+    - A-20G
+  attributes:
+    - fixed wing
+    - attack
+    - bomber
+-
+  name: Mainring
+  code: KJ-2000
+  dcs_codes:
+    - KJ-2000
+  attributes:
+    - fixed wing
+    - transport
+    - awacs
+-
+  name: Foxbat
+  code: Mig-25
+  dcs_codes:
+    - MiG-25PD
+    - MiG-25RBT
+  attributes:
+    - fixed wing
+    - attack
+    - medium range
+-
+  name: Fitter
+  code: Su-17
+  dcs_codes:
+    - Su-17M4
+  attributes:
+    - fixed wing
+    - attack
+    - medium range
+-
+  name: Fullback
+  code: Su-34
+  dcs_codes:
+    - Su-34
+  attributes:
+    - fixed wing
+    - attack
+    - medium range
+    - bomber
+-
+  name: Pterodactyl
+  code: WingLoong-I
+  dcs_codes:
+    - WingLoong-I
+  attributes:
+    - fixed wing
+    - attack
+    - short range
+-
+  name: Codling
+  code: Yak-40
+  dcs_codes:
+    - Yak-40
+  attributes:
+    - fixed wing
+    - transport

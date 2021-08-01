@@ -1,0 +1,17 @@
+﻿---
+-
+  name: M-113
+  code: M-113
+  dcs_codes:
+    - M-113
+  attributes:
+    - mechanised
+    - infantry carrier
+-
+  name: BTR-80
+  code: BTR-80
+  dcs_codes:
+    - BTR-80
+  attributes:
+    - motorised
+    - infantry carrier

@@ -7,7 +7,7 @@
         xmlns:viewModels="clr-namespace:RurouniJones.Jupiter.Core.ViewModels;assembly=RurouniJones.Jupiter.Core"
         xmlns:converters="clr-namespace:RurouniJones.Jupiter.UI.Converters"
         mc:Ignorable="d"
-        Title="Jupiter for DCS" Height="1000" Width="1800" WindowStartupLocation="CenterScreen" WindowState="Maximized">
+        Title="Jupiter for DCS" Height="700" Width="1000" WindowStartupLocation="CenterScreen" >
     <Window.DataContext>
         <viewModels:MainViewModel/>
     </Window.DataContext>
@@ -21,7 +21,7 @@
         </Grid.RowDefinitions>
         <local:Map Grid.Row="0"/>
         <StackPanel Grid.Row="1" x:Name="GameEventPanel">
-            <ListView ItemsSource="{Binding GameEventCollection}" VerticalContentAlignment="Top" Height="{Binding ActualHeight, ElementName=GameEventPanel, Mode=OneWay}"
+            <ListView x:Name="EventListView" ItemsSource="{Binding GameEventCollection}" VerticalContentAlignment="Top" Height="{Binding ActualHeight, ElementName=GameEventPanel, Mode=OneWay}"
                       ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
                 <ListView.ItemContainerStyle>
                     <Style TargetType="ListViewItem">

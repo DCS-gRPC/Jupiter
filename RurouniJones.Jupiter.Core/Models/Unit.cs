@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
 using System.Text;
+using RurouniJones.Jupiter.Encyclopedia.Repositories;
 
 namespace RurouniJones.Jupiter.Core.Models
 {
@@ -81,6 +81,10 @@ namespace RurouniJones.Jupiter.Core.Models
             }
         }
         
+        private readonly string _basePath = AppDomain.CurrentDomain.BaseDirectory;
+
+        // This needs to be moved out of Core and into UI. The core model should only have the
+        // attributes. It is the UI project's job to turn that into an image path.
         public string Image {
             get
             {
@@ -98,52 +102,84 @@ namespace RurouniJones.Jupiter.Core.Models
                         break;
                 }
 
-                var attributes = new List<string> {"fixed wing", "fighter"};
+                var vehicle = GetVehicleIcon(Type, sb);
+                if(vehicle != null)
+                    return Path.Combine(_basePath, $"Assets\\MapIcons\\{vehicle}.png");
 
-                if (attributes.Contains("fixed wing"))
-                    sb.Append("FixedWing");
-                else if (attributes.Contains("rotary"))
-                    sb.Append("Rotary");
+                var aircraft = GetAircraftIcon(Type, sb);
+                if(aircraft != null)
+                    return Path.Combine(_basePath, $"Assets\\MapIcons\\{aircraft}.png");
 
-                if (attributes.Contains("fighter"))
-                    sb.Append("Fighter");
-                else if (attributes.Contains("attack"))
-                    sb.Append("Attacker");
-                else if (attributes.Contains("tanker"))
-                    sb.Append("Tanker");
-                else if (attributes.Contains("awacs"))
-                    sb.Append("AEW");
-                sb.Append(".png");
+                var watercraft = GetWatercraftIcon(Type, sb);
+                if(watercraft != null)
+                    return Path.Combine(_basePath, $"Assets\\MapIcons\\{watercraft}.png");
 
-                var basePath = AppDomain.CurrentDomain.BaseDirectory;
-                var imagePath = Path.Combine(basePath, $"Assets\\MapIcons\\{sb}");
-                return File.Exists(imagePath) ? imagePath : GetGenericSymbol();
+                return Path.Combine(_basePath, "Assets\\MapIcons\\Unknown.png");
             }
         }
 
-        private string GetGenericSymbol()
+        private static string GetWatercraftIcon(string type, StringBuilder sb)
         {
-            var sb = new StringBuilder();
-            switch (Coalition)
-            {
-                case 0:
-                    sb.Append("Neutral");
-                    break;
-                case 1:
-                    sb.Append("Red");
-                    break;
-                case 2:
-                    sb.Append("Blue");
-                    break;
-            }
-            sb.Append(Type.Split("+")[0]);
+            var attributes = WatercraftRepository.GetAttributesByDcsCode(type);
 
-            sb.Append(".png");
+            if (attributes.Count == 0) return null;
 
-            var basePath = AppDomain.CurrentDomain.BaseDirectory;
-            var imagePath = Path.Combine(basePath, $"Assets\\MapIcons\\{sb}");
+            if (attributes.Contains("aircraft carrier"))
+                sb.Append("AircraftCarrier");
+            else if (attributes.Contains("cruiser"))
+                sb.Append("Cruiser");
 
-            return File.Exists(imagePath) ? imagePath : Path.Combine(basePath, "Assets\\MapIcons\\Unknown.png");
+            return sb.ToString();
+        }
+
+        private static string GetVehicleIcon(string type, StringBuilder sb)
+        {
+            var attributes = VehicleRepository.GetAttributesByDcsCode(type);
+
+            if (attributes.Count == 0) return null;
+
+            if (attributes.Contains("mechanised"))
+                sb.Append("Mechanised");
+            else if (attributes.Contains("motorised"))
+                sb.Append("Motorised");
+            else if (attributes.Contains("wheeled"))
+                sb.Append("Wheeled");
+
+            if (attributes.Contains("infantry carrier"))
+                sb.Append("InfantryCarrier");
+            else if (attributes.Contains("aaa"))
+                sb.Append("AAA");
+
+            return sb.ToString();
+        }
+
+
+        private static string GetAircraftIcon(string type, StringBuilder sb)
+        {
+            var attributes = AircraftRepository.GetAttributesByDcsCode(type);
+
+            if (attributes.Count == 0) return null;
+
+            if (attributes.Contains("fixed wing"))
+                sb.Append("FixedWing");
+            else if (attributes.Contains("rotary"))
+                sb.Append("Rotary");
+
+            if (attributes.Contains("fighter"))
+                sb.Append("Fighter");
+            else if (attributes.Contains("attack"))
+                sb.Append("Attacker");
+            else if (attributes.Contains("tanker"))
+                sb.Append("Tanker");
+            else if (attributes.Contains("awacs"))
+                sb.Append("AEW");
+
+            return sb.ToString();
+        }
+
+        public override string ToString()
+        {
+            return $"{nameof(Location)}: {Location}, {nameof(Name)}: {Name}, {nameof(Id)}: {Id}, {nameof(Coalition)}: {Coalition}, {nameof(Pilot)}: {Pilot}, {nameof(Type)}: {Type}, {nameof(Image)}: {Image}";
         }
     }
 }

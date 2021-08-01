@@ -17,6 +17,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\RurouniJones.Jupiter.Dcs\RurouniJones.Jupiter.Dcs.csproj" />
+    <ProjectReference Include="..\RurouniJones.Jupiter.Encyclopedia\RurouniJones.Jupiter.Encyclopedia.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,0 +1,16 @@
+﻿---
+-
+  name: Nimitz Class
+  dcs_codes:
+    - CVN_71
+    - CVN_72
+    - CVN_73
+    - CVN_74
+  attributes:
+    - aircraft carrier
+-
+  name: Ticonderoga Class
+  dcs_codes:
+    - TICONDEROG
+  attributes:
+    - cruiser
