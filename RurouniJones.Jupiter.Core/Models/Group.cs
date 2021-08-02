@@ -1,37 +1,28 @@
 ﻿using System.Collections.ObjectModel;
-using System.ComponentModel;
 
 namespace RurouniJones.Jupiter.Core.Models
 {
-    public class Group : INotifyPropertyChanged
+    public class Group : ModelBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void RaisePropertyChanged(string propertyName)
+        private uint _id;
+        public uint Id
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            get => _id;
+            set => SetProperty(ref _id, value);
         }
 
-        private Location _name;
-        public Location Name
+        private string _name;
+        public string Name
         {
             get => _name;
-            set
-            {
-                _name = value;
-                RaisePropertyChanged(nameof(Location));
-            }
+            set => SetProperty(ref _name, value);
         }
 
         private ObservableCollection<Unit> _units;
         public ObservableCollection<Unit> Units
         {
             get => _units;
-            set
-            {
-                _units = value;
-                RaisePropertyChanged(nameof(Location));
-            }
+            set => SetProperty(ref _units, value);
         }
     }
 }

@@ -3,11 +3,14 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Timers;
 using Grpc.Core;
 using Grpc.Net.Client;
 using RurouniJones.Jupiter.Core.Models;
 using RurouniJones.Jupiter.Core.ViewModels.Commands;
 using RurouniJones.Jupiter.Dcs;
+using Coalition = RurouniJones.Jupiter.Core.Models.Coalition;
+using Group = RurouniJones.Jupiter.Core.Models.Group;
 using Unit = RurouniJones.Jupiter.Core.Models.Unit;
 
 namespace RurouniJones.Jupiter.Core.ViewModels
@@ -16,6 +19,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels
     {
         public ObservableCollection<EventSummary> GameEventCollection { get; }
         public ObservableCollection<Unit> Units { get; }
+        public ObservableCollection<Coalition> Coalitions { get; }
 
         public PopSmokeCommand PopSmoke { get; }
         public LaunchFlareCommand LaunchFlare { get; }
@@ -36,6 +40,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels
 
         public MainViewModel()
         {
+            Coalitions = Coalition.DefaultCoalitions();
             GameEventCollection = new ObservableCollection<EventSummary>();
             PopSmoke = new PopSmokeCommand();
             LaunchFlare = new LaunchFlareCommand();
@@ -43,6 +48,12 @@ namespace RurouniJones.Jupiter.Core.ViewModels
 #pragma warning disable 4014
             StreamUnits();  // TODO Switch to this triggering When we have some sort of "connect" function 
             StreamEvents(); // maybe using https://stackoverflow.com/questions/11060192/command-to-call-method-from-viewmodel
+            // Create a timer with a two second interval.
+            var aTimer = new System.Timers.Timer(10000);
+            // Hook up the Elapsed event for the timer. 
+            aTimer.Elapsed += UpdateGroups;
+            aTimer.AutoReset = true;
+            aTimer.Enabled = true;
 #pragma warning restore 4014
             MapLocation = new Location(0,0);
         }
@@ -84,12 +95,37 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                                     Pilot = sourceUnit.Callsign,
                                     Type = sourceUnit.Type
                                 };
+
+                                var col = Coalitions.First(c => c.Id == (uint) sourceUnit.Coalition);
+                                var grp = col.Groups.FirstOrDefault(g => g.Id == sourceUnit.GroupId);
+                                if (grp == null) {
+                                    grp = new Group {Id = sourceUnit.GroupId, Name = "New Group", Units = new ObservableCollection<Unit>()};
+                                    col.Groups.Add(grp);
+                                }
+                                grp.Units.Add(newUnit);
                                 Units.Add(newUnit);
                                 Debug.WriteLine(newUnit);
                             }
                             break;
                         case UnitUpdate.UpdateOneofCase.Gone:
                             var unitDelete = unitUpdate.Gone;
+                            var deleted = false;
+                            foreach (var coalition in Coalitions)
+                            {
+                                for (var i = coalition.Groups.Count - 1; i --> 0;)
+                                {
+                                    var group = coalition.Groups[i];
+                                    var unit = group.Units.FirstOrDefault(u => u.Id == unitDelete.Id);
+                                    if (unit == null) continue;
+                                    group.Units.Remove(unit);
+                                    if (group.Units.Count == 0)
+                                    {
+                                        coalition.Groups.Remove(@group);
+                                    }
+                                    deleted = true;
+                                }
+                                if (deleted) break;
+                            }
                             Units.Remove(Units.First(u => u.Id == unitDelete.Id));
                             break;
                         default:
@@ -199,6 +235,35 @@ namespace RurouniJones.Jupiter.Core.ViewModels
             catch (Exception e)
             {
                 Debug.WriteLine(e.ToString());
+            }
+        }
+
+        private void UpdateGroups(object source, ElapsedEventArgs e)
+        {
+            try
+            {
+                using var channel = GrpcChannel.ForAddress($"http://127.0.0.1:50051");
+                var client = new Dcs.Coalitions.CoalitionsClient(channel);
+                var response = client.GetGroups(new GetGroupsRequest());
+
+                foreach (var responseGroup in response.Groups)
+                {
+                    var updated = false;
+                    foreach (var coalition in Coalitions)
+                    {
+                        foreach (var group in coalition.Groups)
+                        {
+                            if (group.Id != responseGroup.Id) continue;
+                            group.Name = responseGroup.Name;
+                            updated = true;
+                        }
+                        if (updated) break;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.ToString());
             }
         }
     }

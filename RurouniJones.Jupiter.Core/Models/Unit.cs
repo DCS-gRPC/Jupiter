@@ -1,84 +1,52 @@
 ﻿using System;
-using System.ComponentModel;
 using System.IO;
 using System.Text;
 using RurouniJones.Jupiter.Encyclopedia.Repositories;
 
 namespace RurouniJones.Jupiter.Core.Models
 {
-    public class Unit : INotifyPropertyChanged
+    public class Unit : ModelBase
     {
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        protected void RaisePropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
         private Location _location;
         public Location Location
         {
             get => _location;
-            set
-            {
-                _location = value;
-                RaisePropertyChanged(nameof(Location));
-            }
+            set => SetProperty(ref _location, value);
         }
 
         private string _name;
         public string Name
         {
             get => _name;
-            set
-            {
-                _name = value;
-                RaisePropertyChanged(nameof(Name));
-            }
+            set => SetProperty(ref _name, value);
         }
 
         private uint _id;
         public uint Id
         {
             get => _id;
-            set
-            {
-                _id = value;
-                RaisePropertyChanged(nameof(Id));
-            }
+            set => SetProperty(ref _id, value);
         }
 
         private int _coalition;
         public int Coalition
         {
             get => _coalition;
-            set
-            {
-                _coalition = value;
-                RaisePropertyChanged(nameof(Coalition));
-            }
+            set => SetProperty(ref _coalition, value);
         }
 
         private string _pilot;
         public string Pilot
         {
             get => _pilot;
-            set
-            {
-                _pilot = value;
-                RaisePropertyChanged(nameof(Pilot));
-            }
+            set => SetProperty(ref _pilot, value);
         }
 
         private string _type;
         public string Type
         {
             get => _type;
-            set
-            {
-                _type = value;
-                RaisePropertyChanged(nameof(Type));
-            }
+            set => SetProperty(ref _type, value);
         }
         
         private readonly string _basePath = AppDomain.CurrentDomain.BaseDirectory;

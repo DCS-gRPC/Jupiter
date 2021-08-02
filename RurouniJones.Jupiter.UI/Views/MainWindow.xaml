@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RurouniJones.Jupiter.UI.Views"
+        xmlns:models="clr-namespace:RurouniJones.Jupiter.Core.Models;assembly=RurouniJones.Jupiter.Core"
         xmlns:viewModels="clr-namespace:RurouniJones.Jupiter.Core.ViewModels;assembly=RurouniJones.Jupiter.Core"
         xmlns:converters="clr-namespace:RurouniJones.Jupiter.UI.Converters"
         mc:Ignorable="d"
@@ -25,18 +26,16 @@
         </Grid.RowDefinitions>
         <TabControl Grid.Row="0" Grid.RowSpan="2" Grid.Column="0">
             <TabItem Header="Units">
-                <ListView x:Name="UnitList" ItemsSource="{Binding DataContext.Units, ElementName=Map}" VerticalContentAlignment="Top"
-                          ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible">
-                    <ListView.ItemContainerStyle>
-                        <Style TargetType="ListViewItem">
-                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
-                            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
-                            <EventSetter Event="PreviewMouseLeftButtonUp" Handler="ListViewItem_PreviewMouseLeftButtonUp" />
-                        </Style>
-                    </ListView.ItemContainerStyle>
-                    <ListView.ItemTemplate>
-                        <DataTemplate x:Name="SingleLineDataTemplate">
-                            <Grid>
+                <TreeView ItemsSource="{Binding Coalitions}" TreeViewItem.Selected="TreeViewItem_OnSelected">
+                    <TreeView.Resources>
+                        <HierarchicalDataTemplate DataType="{x:Type models:Coalition}" ItemsSource="{Binding Groups}">
+                            <TextBlock Text="{Binding Name}" />
+                        </HierarchicalDataTemplate>
+                        <HierarchicalDataTemplate DataType="{x:Type models:Group}" ItemsSource="{Binding Units}">
+                            <TextBlock Text="{Binding Name}" />
+                        </HierarchicalDataTemplate>
+                        <DataTemplate DataType="{x:Type models:Unit}">
+                            <Grid Margin="0 5 0 0">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40"/>
                                     <ColumnDefinition Width="*"/>
@@ -45,10 +44,10 @@
                                 <TextBlock Text="{Binding Name}" Grid.Column="1" VerticalAlignment="Center"/>
                             </Grid>
                         </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    </TreeView.Resources>
+                </TreeView>
             </TabItem>
-            <TabItem Header="B" />
+
             <TabItem Header="C" />
         </TabControl>
         <local:Map x:Name="Map" Grid.Row="0" Grid.Column="1"/>

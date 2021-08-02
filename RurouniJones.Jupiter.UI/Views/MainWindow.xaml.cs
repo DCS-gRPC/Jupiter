@@ -1,4 +1,5 @@
 ﻿using System.Collections.Specialized;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using RurouniJones.Jupiter.Core.Models;
@@ -22,21 +23,14 @@ namespace RurouniJones.Jupiter.UI.Views
                 };
         }
 
-        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void TreeViewItem_OnSelected(object sender, RoutedEventArgs e)
         {
-            UnitList.SelectedItems.Clear();
-
-            if (!(sender is ListViewItem item)) return;
-            item.IsSelected = true;
-            UnitList.SelectedItem = item;
-        }
-
-        private void ListViewItem_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
-        {
-            if (sender is ListViewItem item && item.IsSelected)
+            ((MainViewModel) DataContext).MapLocation = e.OriginalSource switch
             {
-                ((MainViewModel) DataContext).MapLocation = ((Unit) item.DataContext).Location;
-            }
+                TreeViewItem item when item.DataContext is Unit unit => unit.Location,
+                TreeViewItem item when item.DataContext is Group group => group.Units.First().Location,
+                _ => ((MainViewModel) DataContext).MapLocation
+            };
         }
     }
 }
