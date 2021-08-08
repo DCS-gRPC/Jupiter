@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using RurouniJones.Jupiter.Core.ViewModels.Commands;
 using RurouniJones.Jupiter.Encyclopedia.Repositories;
 
 namespace RurouniJones.Jupiter.Core.Models
@@ -48,9 +49,21 @@ namespace RurouniJones.Jupiter.Core.Models
             get => _type;
             set => SetProperty(ref _type, value);
         }
+
+        public EnableRadarEmissionCommand EnableRadarEmissionCommand { get; }
+        public DisableRadarEmissionCommand DisableRadarEmissionCommand { get; }
+        public PopSmokeCommand PopSmokeCommand { get; }
+        public LaunchFlareCommand LaunchFlareCommand { get; }
+
+        public Unit()
+        {
+            EnableRadarEmissionCommand = new EnableRadarEmissionCommand();
+            DisableRadarEmissionCommand = new DisableRadarEmissionCommand();
+            PopSmokeCommand = new PopSmokeCommand();
+            LaunchFlareCommand = new LaunchFlareCommand();
+        }
         
         private readonly string _basePath = AppDomain.CurrentDomain.BaseDirectory;
-
         // This needs to be moved out of Core and into UI. The core model should only have the
         // attributes. It is the UI project's job to turn that into an image path.
         public string Image {

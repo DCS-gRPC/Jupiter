@@ -32,7 +32,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
                         {
                             Lat = location.Latitude,
                             Lon = location.Longitude,
-                            Alt = 0
+                            Alt = location.Altitude
                         },
                         Color = (SignalFlareRequest.Types.FlareColor) Enum.Parse(
                             typeof(SignalFlareRequest.Types.FlareColor), color)

@@ -35,7 +35,7 @@
                             <TextBlock Text="{Binding Name}" />
                         </HierarchicalDataTemplate>
                         <DataTemplate DataType="{x:Type models:Unit}">
-                            <Grid Margin="0 5 0 0">
+                            <Grid Margin="0 5 0 0" ContextMenu="{DynamicResource UnitContextMenu}">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="40"/>
                                     <ColumnDefinition Width="*"/>
@@ -51,6 +51,10 @@
             <TabItem Header="C" />
         </TabControl>
         <local:Map x:Name="Map" Grid.Row="0" Grid.Column="1"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top">
+            <TextBlock Text="{Binding MouseLocation.Latitude}" Width="200" Height="30" />
+            <TextBlock Text="{Binding MouseLocation.Longitude}" Width="200" Height="30" />
+        </StackPanel>
         <StackPanel Grid.Row="1" Grid.Column="1" x:Name="GameEventPanel">
             <ListView x:Name="EventListView" ItemsSource="{Binding GameEventCollection}" VerticalContentAlignment="Top" Height="{Binding ActualHeight, ElementName=GameEventPanel, Mode=OneWay}"
                       ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Visible">

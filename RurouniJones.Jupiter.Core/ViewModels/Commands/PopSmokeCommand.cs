@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
 using System.Windows.Input;
 using Grpc.Net.Client;
 using RurouniJones.Jupiter.Core.Models;
@@ -33,7 +32,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
                         {
                             Lat = location.Latitude,
                             Lon = location.Longitude,
-                            Alt = 0
+                            Alt = location.Altitude
                         },
                         Color = (SmokeRequest.Types.SmokeColor) Enum.Parse(
                             typeof(SmokeRequest.Types.SmokeColor), color)

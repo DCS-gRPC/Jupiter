@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:converters="clr-namespace:RurouniJones.Jupiter.UI.Converters"
         xmlns:mapControl="clr-namespace:MapControl;assembly=MapControl.WPF"
-        xmlns:viewModels="clr-namespace:RurouniJones.Jupiter.Core.ViewModels;assembly=RurouniJones.Jupiter.Core"
         x:Class="RurouniJones.Jupiter.UI.Views.Map"
         mc:Ignorable="d">
     <UserControl.Resources>
@@ -18,7 +17,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="mapControl:MapItem">
-                        <Canvas>
+                        <Canvas ContextMenu="{DynamicResource UnitContextMenu}">
                             <Image Source="{Binding Image, Mode=OneTime}"/>
                             <Grid Canvas.Left="25">
                                 <TextBlock Text="" Margin="0">
@@ -41,10 +40,9 @@
                                         ItemContainerStyle="{StaticResource UnitStyle}"
                                         SelectionMode="Extended"/>
             <mapControl:Map.ContextMenu>
-                <!-- There must be a better way to define these Menu items using a template or something -->
                 <ContextMenu>
                     <MenuItem Header="Flare" >
-                        <MenuItem Header="Green" Command="{Binding LaunchFlare}">
+                        <MenuItem Header="Green" Command="{Binding LaunchFlareCommand}">
                             <MenuItem.CommandParameter>
                                 <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
                                     <Binding Path="MouseLocation"/>
@@ -52,7 +50,7 @@
                                 </MultiBinding>
                             </MenuItem.CommandParameter>
                         </MenuItem>
-                        <MenuItem Header="Red" Command="{Binding LaunchFlare}">
+                        <MenuItem Header="Red" Command="{Binding LaunchFlareCommand}">
                             <MenuItem.CommandParameter>
                                 <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
                                     <Binding Path="MouseLocation"/>
@@ -60,7 +58,7 @@
                                 </MultiBinding>
                             </MenuItem.CommandParameter>
                         </MenuItem>
-                        <MenuItem Header="White" Command="{Binding LaunchFlare}">
+                        <MenuItem Header="White" Command="{Binding LaunchFlareCommand}">
                             <MenuItem.CommandParameter>
                                 <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
                                     <Binding Path="MouseLocation"/>
@@ -68,7 +66,7 @@
                                 </MultiBinding>
                             </MenuItem.CommandParameter>
                         </MenuItem>
-                        <MenuItem Header="Orange" Command="{Binding LaunchFlare}">
+                        <MenuItem Header="Orange" Command="{Binding LaunchFlareCommand}">
                             <MenuItem.CommandParameter>
                                 <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
                                     <Binding Path="MouseLocation"/>
@@ -78,7 +76,7 @@
                         </MenuItem>
                     </MenuItem>
                     <MenuItem Header="Smoke">
-                        <MenuItem Header="Green" Command="{Binding PopSmoke}">
+                        <MenuItem Header="Green" Command="{Binding PopSmokeCommand}">
                             <MenuItem.CommandParameter>
                                 <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
                                     <Binding Path="MouseLocation"/>
@@ -86,7 +84,7 @@
                                 </MultiBinding>
                             </MenuItem.CommandParameter>
                         </MenuItem>
-                        <MenuItem Header="Red" Command="{Binding PopSmoke}">
+                        <MenuItem Header="Red" Command="{Binding PopSmokeCommand}">
                             <MenuItem.CommandParameter>
                                 <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
                                     <Binding Path="MouseLocation"/>
@@ -94,7 +92,7 @@
                                 </MultiBinding>
                             </MenuItem.CommandParameter>
                         </MenuItem>
-                        <MenuItem Header="White" Command="{Binding PopSmoke}">
+                        <MenuItem Header="White" Command="{Binding PopSmokeCommand}">
                             <MenuItem.CommandParameter>
                                 <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
                                     <Binding Path="MouseLocation"/>
@@ -102,7 +100,7 @@
                                 </MultiBinding>
                             </MenuItem.CommandParameter>
                         </MenuItem>
-                        <MenuItem Header="Orange" Command="{Binding PopSmoke}">
+                        <MenuItem Header="Orange" Command="{Binding PopSmokeCommand}">
                             <MenuItem.CommandParameter>
                                 <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
                                     <Binding Path="MouseLocation"/>
@@ -110,7 +108,7 @@
                                 </MultiBinding>
                             </MenuItem.CommandParameter>
                         </MenuItem>
-                        <MenuItem Header="Blue" Command="{Binding PopSmoke}">
+                        <MenuItem Header="Blue" Command="{Binding PopSmokeCommand}">
                             <MenuItem.CommandParameter>
                                 <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
                                     <Binding Path="MouseLocation"/>

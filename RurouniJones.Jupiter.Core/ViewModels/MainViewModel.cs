@@ -21,8 +21,8 @@ namespace RurouniJones.Jupiter.Core.ViewModels
         public ObservableCollection<Unit> Units { get; }
         public ObservableCollection<Coalition> Coalitions { get; }
 
-        public PopSmokeCommand PopSmoke { get; }
-        public LaunchFlareCommand LaunchFlare { get; }
+        public PopSmokeCommand PopSmokeCommand { get; }
+        public LaunchFlareCommand LaunchFlareCommand { get; }
 
         private Location _mapLocation;
         public Location MapLocation
@@ -42,8 +42,8 @@ namespace RurouniJones.Jupiter.Core.ViewModels
         {
             Coalitions = Coalition.DefaultCoalitions();
             GameEventCollection = new ObservableCollection<EventSummary>();
-            PopSmoke = new PopSmokeCommand();
-            LaunchFlare = new LaunchFlareCommand();
+            PopSmokeCommand = new PopSmokeCommand();
+            LaunchFlareCommand = new LaunchFlareCommand();
             Units = new ObservableCollection<Unit>();
 #pragma warning disable 4014
             StreamUnits();  // TODO Switch to this triggering When we have some sort of "connect" function 
@@ -90,7 +90,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                                 {
                                     Coalition = (int) sourceUnit.Coalition,
                                     Id = sourceUnit.Id,
-                                    Location = new Location(sourceUnit.Position.Lat, sourceUnit.Position.Lon),
+                                    Location = new Location(sourceUnit.Position.Lat, sourceUnit.Position.Lon, sourceUnit.Position.Alt),
                                     Name = sourceUnit.Name,
                                     Pilot = sourceUnit.Callsign,
                                     Type = sourceUnit.Type

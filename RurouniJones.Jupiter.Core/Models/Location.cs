@@ -5,14 +5,23 @@ namespace RurouniJones.Jupiter.Core.Models
 {
     public class Location : IEquatable<Location>
     {
+        public double Latitude { get; }
+        public double Longitude  { get; }
+        public double Altitude  { get; }
+
         public Location(double latitude, double longitude)
         {
             Latitude = Math.Min(Math.Max(latitude, -90.0), 90.0);;
             Longitude = longitude;
+            Altitude = 0;
         }
 
-        public double Latitude { get; }
-        public double Longitude  { get; }
+        public Location(double latitude, double longitude, double altitude)
+        {
+            Latitude = Math.Min(Math.Max(latitude, -90.0), 90.0);;
+            Longitude = longitude;
+            Altitude = altitude;
+        }
 
         public bool Equals(Location location)
         {

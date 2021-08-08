@@ -2,8 +2,100 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:RurouniJones.Jupiter.UI"
+             xmlns:converters="clr-namespace:RurouniJones.Jupiter.UI.Converters"
              StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-         
+        <converters:LocationAndColorConverter x:Key="LocationAndColorConverter" />
+        <ContextMenu x:Key="UnitContextMenu" x:Shared="true">
+          <MenuItem Header="Smoke">
+            <MenuItem Header="Green" Command="{Binding PopSmokeCommand}">
+              <MenuItem.CommandParameter>
+                <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
+                  <Binding Path="Location"/>
+                  <Binding Path="Header" RelativeSource="{RelativeSource Self}"/>
+                </MultiBinding>
+              </MenuItem.CommandParameter>
+            </MenuItem>
+              <MenuItem Header="Red" Command="{Binding PopSmokeCommand}">
+                  <MenuItem.CommandParameter>
+                      <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
+                          <Binding Path="Location"/>
+                          <Binding Path="Header" RelativeSource="{RelativeSource Self}"/>
+                      </MultiBinding>
+                  </MenuItem.CommandParameter>
+              </MenuItem>
+              <MenuItem Header="White" Command="{Binding PopSmokeCommand}">
+                  <MenuItem.CommandParameter>
+                      <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
+                          <Binding Path="Location"/>
+                          <Binding Path="Header" RelativeSource="{RelativeSource Self}"/>
+                      </MultiBinding>
+                  </MenuItem.CommandParameter>
+              </MenuItem>
+              <MenuItem Header="Orange" Command="{Binding PopSmokeCommand}">
+                  <MenuItem.CommandParameter>
+                      <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
+                          <Binding Path="Location"/>
+                          <Binding Path="Header" RelativeSource="{RelativeSource Self}"/>
+                      </MultiBinding>
+                  </MenuItem.CommandParameter>
+              </MenuItem>
+              <MenuItem Header="Blue" Command="{Binding PopSmokeCommand}">
+                  <MenuItem.CommandParameter>
+                      <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
+                          <Binding Path="Location"/>
+                          <Binding Path="Header" RelativeSource="{RelativeSource Self}"/>
+                      </MultiBinding>
+                  </MenuItem.CommandParameter>
+              </MenuItem>
+              <MenuItem Header="Green" Command="{Binding PopSmokeCommand}">
+                  <MenuItem.CommandParameter>
+                      <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
+                          <Binding Path="Location"/>
+                          <Binding Path="Header" RelativeSource="{RelativeSource Self}"/>
+                      </MultiBinding>
+                  </MenuItem.CommandParameter>
+              </MenuItem>
+        </MenuItem>
+        <MenuItem Header="Flare" >
+            <MenuItem Header="Green" Command="{Binding LaunchFlareCommand}">
+                <MenuItem.CommandParameter>
+                    <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
+                        <Binding Path="Location"/>
+                        <Binding Path="Header" RelativeSource="{RelativeSource Self}"/>
+                    </MultiBinding>
+                </MenuItem.CommandParameter>
+            </MenuItem>
+            <MenuItem Header="Red" Command="{Binding LaunchFlareCommand}">
+                <MenuItem.CommandParameter>
+                    <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
+                        <Binding Path="Location"/>
+                        <Binding Path="Header" RelativeSource="{RelativeSource Self}"/>
+                    </MultiBinding>
+                </MenuItem.CommandParameter>
+            </MenuItem>
+            <MenuItem Header="White" Command="{Binding LaunchFlareCommand}">
+                <MenuItem.CommandParameter>
+                    <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
+                        <Binding Path="Location"/>
+                        <Binding Path="Header" RelativeSource="{RelativeSource Self}"/>
+                    </MultiBinding>
+                </MenuItem.CommandParameter>
+            </MenuItem>
+            <MenuItem Header="Orange" Command="{Binding LaunchFlareCommand}">
+                <MenuItem.CommandParameter>
+                    <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
+                        <Binding Path="Location"/>
+                        <Binding Path="Header" RelativeSource="{RelativeSource Self}"/>
+                    </MultiBinding>
+                </MenuItem.CommandParameter>
+            </MenuItem>
+        </MenuItem>
+        <Separator/>
+        <MenuItem Header="Radar">
+            <MenuItem Header="Enable" Command="{Binding EnableRadarEmissionCommand}" CommandParameter="{Binding Name}"/>
+            <MenuItem Header="Disable" Command="{Binding DisableRadarEmissionCommand}" CommandParameter="{Binding Name}"/>
+        </MenuItem>
+        </ContextMenu>
     </Application.Resources>
 </Application>
