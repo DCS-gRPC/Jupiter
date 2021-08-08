@@ -24,7 +24,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
                             $"with color {color}");
             try
             {
-                using var channel = GrpcChannel.ForAddress($"http://127.0.0.1:50051");
+                using var channel = GrpcChannel.ForAddress($"http://{Global.HostName}:{Global.Port}");
                 var client = new Triggers.TriggersClient(channel);
                 client.SignalFlare(new SignalFlareRequest
                     {

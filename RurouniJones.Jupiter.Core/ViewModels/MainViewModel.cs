@@ -62,7 +62,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels
         {
             try
             {
-                using var channel = GrpcChannel.ForAddress($"http://127.0.0.1:50051");
+                using var channel = GrpcChannel.ForAddress($"http://{Global.HostName}:{Global.Port}");
                 var client = new Mission.MissionClient(channel);
                 var units = client.StreamUnits(new StreamUnitsRequest()
                 {
@@ -143,7 +143,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels
         {
             try
             {
-                using var channel = GrpcChannel.ForAddress($"http://127.0.0.1:50051");
+                using var channel = GrpcChannel.ForAddress($"http://{Global.HostName}:{Global.Port}");
                 var client = new Mission.MissionClient(channel);
                 var events = client.StreamEvents(new StreamEventsRequest());
 
@@ -242,7 +242,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels
         {
             try
             {
-                using var channel = GrpcChannel.ForAddress($"http://127.0.0.1:50051");
+                using var channel = GrpcChannel.ForAddress($"http://{Global.HostName}:{Global.Port}");
                 var client = new Dcs.Coalitions.CoalitionsClient(channel);
                 var response = client.GetGroups(new GetGroupsRequest());
 
