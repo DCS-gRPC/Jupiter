@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 using MapControl;
 using MapControl.Caching;
+using RurouniJones.Jupiter.Core.Models;
 using RurouniJones.Jupiter.Core.ViewModels;
 
 namespace RurouniJones.Jupiter.UI.Views
@@ -58,6 +60,14 @@ namespace RurouniJones.Jupiter.UI.Views
         {
             var location = ((MapControl.Map) sender).ViewToLocation(e.GetPosition(MainMap)); 
             ((MainViewModel) DataContext).MouseLocation = new Core.Models.Location(location.Latitude, location.Longitude);
+        }
+
+        private void MapUnit_OnMouseLeftButton(object sender, MouseButtonEventArgs e)
+        {
+            var viewModel = (MainViewModel)DataContext;
+            var canvas = (Canvas) sender;
+            var unit = (Unit) canvas.DataContext;
+            viewModel.SelectedUnit = unit;
         }
     }
 }

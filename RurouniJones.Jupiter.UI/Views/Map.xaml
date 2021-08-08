@@ -17,7 +17,7 @@
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="mapControl:MapItem">
-                        <Canvas ContextMenu="{DynamicResource UnitContextMenu}">
+                        <Canvas ContextMenu="{DynamicResource UnitContextMenu}" DataContext="{Binding}" MouseLeftButtonDown="MapUnit_OnMouseLeftButton">
                             <Image Source="{Binding Image, Mode=OneTime}"/>
                             <Grid Canvas.Left="25">
                                 <TextBlock Text="" Margin="0">

@@ -47,10 +47,39 @@
                     </TreeView.Resources>
                 </TreeView>
             </TabItem>
-
             <TabItem Header="C" />
         </TabControl>
-        <local:Map x:Name="Map" Grid.Row="0" Grid.Column="1"/>
+        <DockPanel Grid.Row="0" Grid.Column="1">
+            <StackPanel x:Name="UnitInformation" DockPanel.Dock="Right" Width="Auto" Margin="5 5 5 5">
+                <TextBlock Text="Unit Information" HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Name" Width="40"/>
+                    <TextBlock Text="{Binding SelectedUnit.Name}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Pilot" Width="40"/>
+                    <TextBlock Text="{Binding SelectedUnit.Pilot}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Type" Width="40"/>
+                    <TextBlock Text="{Binding SelectedUnit.Type}"/>
+                </StackPanel>
+                <TextBlock Text="Location" HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Lat" Width="40"/>
+                    <TextBlock Text="{Binding SelectedUnit.Location.Latitude}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Lon" Width="40"/>
+                    <TextBlock Text="{Binding SelectedUnit.Location.Longitude}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Alt" Width="40"/>
+                    <TextBlock Text="{Binding SelectedUnit.Location.Altitude}"/>
+                </StackPanel>
+            </StackPanel>
+            <local:Map x:Name="Map"/>
+        </DockPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="1" VerticalAlignment="Top">
             <TextBlock Text="{Binding MouseLocation.Latitude}" Width="200" Height="30" />
             <TextBlock Text="{Binding MouseLocation.Longitude}" Width="200" Height="30" />

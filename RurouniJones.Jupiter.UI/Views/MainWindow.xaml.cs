@@ -25,12 +25,22 @@ namespace RurouniJones.Jupiter.UI.Views
 
         private void TreeViewItem_OnSelected(object sender, RoutedEventArgs e)
         {
-            ((MainViewModel) DataContext).MapLocation = e.OriginalSource switch
+            var viewModel = (MainViewModel)DataContext;
+            var treeViewItem = (TreeViewItem) e.OriginalSource;
+
+
+            switch (treeViewItem.DataContext)
             {
-                TreeViewItem item when item.DataContext is Unit unit => unit.Location,
-                TreeViewItem item when item.DataContext is Group group => group.Units.First().Location,
-                _ => ((MainViewModel) DataContext).MapLocation
-            };
+                case Unit unit:
+                {
+                    viewModel.SelectedUnit = unit;
+                    viewModel.MapLocation = unit.Location;
+                    break;
+                }
+                case Group group:
+                    viewModel.MapLocation = @group.Units.First().Location;
+                    break;
+            }
         }
     }
 }

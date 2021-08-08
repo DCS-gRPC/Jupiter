@@ -38,6 +38,13 @@ namespace RurouniJones.Jupiter.Core.ViewModels
             set => SetProperty(ref _mouseLocation, value);
         }
 
+        private Unit _selectedUnit;
+        public Unit SelectedUnit
+        {
+            get => _selectedUnit;
+            set => SetProperty(ref _selectedUnit, value);
+        }
+
         public MainViewModel()
         {
             Coalitions = Coalition.DefaultCoalitions();
@@ -45,6 +52,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels
             PopSmokeCommand = new PopSmokeCommand();
             LaunchFlareCommand = new LaunchFlareCommand();
             Units = new ObservableCollection<Unit>();
+
 #pragma warning disable 4014
             StreamUnits();  // TODO Switch to this triggering When we have some sort of "connect" function 
             StreamEvents(); // maybe using https://stackoverflow.com/questions/11060192/command-to-call-method-from-viewmodel
@@ -58,7 +66,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels
             MapLocation = new Location(0,0);
         }
 
-                public async Task StreamUnits()
+        public async Task StreamUnits()
         {
             try
             {
