@@ -104,6 +104,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                                     Type = sourceUnit.Type
                                 };
 
+                                /*
                                 var col = Coalitions.First(c => c.Id == (uint) sourceUnit.Coalition);
                                 var grp = col.Groups.FirstOrDefault(g => g.Id == sourceUnit.GroupId);
                                 if (grp == null) {
@@ -111,6 +112,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                                     col.Groups.Add(grp);
                                 }
                                 grp.Units.Add(newUnit);
+                                */
                                 Units.Add(newUnit);
                                 Debug.WriteLine(newUnit);
                             }

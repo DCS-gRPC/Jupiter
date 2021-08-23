@@ -7,6 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RurouniJones.Jupiter.UI", "
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F86DF249-25AB-4627-AE9D-F5851DACD9C2}"
 	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
 		LICENSE.md = LICENSE.md
 		README.md = README.md
 	EndProjectSection
@@ -18,7 +19,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RurouniJones.Jupiter.Core",
 		{3D700DBE-595B-467A-8F0D-83A9B285C81E} = {3D700DBE-595B-467A-8F0D-83A9B285C81E}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RurouniJones.Jupiter.Encyclopedia", "RurouniJones.Jupiter.Encyclopedia\RurouniJones.Jupiter.Encyclopedia.csproj", "{3D700DBE-595B-467A-8F0D-83A9B285C81E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RurouniJones.Jupiter.Encyclopedia", "RurouniJones.Jupiter.Encyclopedia\RurouniJones.Jupiter.Encyclopedia.csproj", "{3D700DBE-595B-467A-8F0D-83A9B285C81E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
