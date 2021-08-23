@@ -89,7 +89,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                             if (Units.Any(u => u.Id == unitUpdate.Unit.Id))
                             {
                                 var unitDetails = unitUpdate.Unit;
-                                Units.First(u => u.Id == unitDetails.Id).Location = new Location(unitDetails.Position.Lat, unitDetails.Position.Lon);
+                                Units.First(u => u.Id == unitDetails.Id).Location = new Location(unitDetails.Position.Lat, unitDetails.Position.Lon, unitDetails.Position.Alt);
                             }
                             else
                             {

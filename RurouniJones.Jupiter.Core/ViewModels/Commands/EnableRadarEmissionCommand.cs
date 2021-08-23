@@ -21,6 +21,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
             Debug.WriteLine($"EnableRadarEmission.Execute called for unit '{unitName}'");
             try
             {
+                /*
                 using var channel = GrpcChannel.ForAddress($"http://{Global.HostName}:{Global.Port}");
                 var client = new Units.UnitsClient(channel);
                 client.EnableEmission(new EnableEmissionRequest
@@ -28,7 +29,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
                         Name = unitName,
                         Enabled = true
                     }
-                );
+                );*/
             }
             catch (Exception e)
             {

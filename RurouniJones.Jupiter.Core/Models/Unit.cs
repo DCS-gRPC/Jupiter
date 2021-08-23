@@ -134,7 +134,6 @@ namespace RurouniJones.Jupiter.Core.Models
             return sb.ToString();
         }
 
-
         private static string GetAircraftIcon(string type, StringBuilder sb)
         {
             var attributes = AircraftRepository.GetAttributesByDcsCode(type);

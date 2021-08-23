@@ -14,6 +14,8 @@
     </Window.DataContext>
     <Window.Resources>
         <converters:LastGridViewColumnConverter x:Key="lastGridViewColumnConverter"/>
+        <converters:LocationToMgrsConverter x:Key="locationToMgrsConverter"/>
+        <converters:LocationToDmsConverter x:Key="locationToDmsConverter"/>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -50,31 +52,39 @@
             <TabItem Header="C" />
         </TabControl>
         <DockPanel Grid.Row="0" Grid.Column="1">
-            <StackPanel x:Name="UnitInformation" DockPanel.Dock="Right" Width="Auto" Margin="5 5 5 5">
+            <StackPanel x:Name="UnitInformation" DockPanel.Dock="Right" Width="Auto" MinWidth="150" Margin="5 5 10 5">
                 <TextBlock Text="Unit Information" HorizontalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Name" Width="40"/>
+                    <TextBlock Text="Name" Width="100"/>
                     <TextBlock Text="{Binding SelectedUnit.Name}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Pilot" Width="40"/>
+                    <TextBlock Text="Pilot" Width="100"/>
                     <TextBlock Text="{Binding SelectedUnit.Pilot}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Type" Width="40"/>
+                    <TextBlock Text="Type" Width="100"/>
                     <TextBlock Text="{Binding SelectedUnit.Type}"/>
                 </StackPanel>
                 <TextBlock Text="Location" HorizontalAlignment="Center"/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Lat" Width="40"/>
+                    <TextBlock Text="Decimal Lat" Width="100"/>
                     <TextBlock Text="{Binding SelectedUnit.Location.Latitude}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Lon" Width="40"/>
+                    <TextBlock Text="Decimal Lon" Width="100"/>
                     <TextBlock Text="{Binding SelectedUnit.Location.Longitude}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Alt" Width="40"/>
+                    <TextBlock Text="MGRS" Width="100"/>
+                    <TextBlock Text="{Binding SelectedUnit.Location, Converter={StaticResource locationToMgrsConverter}}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="DMS" Width="100"/>
+                    <TextBlock Text="{Binding SelectedUnit.Location, Converter={StaticResource locationToDmsConverter}}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Alt" Width="100"/>
                     <TextBlock Text="{Binding SelectedUnit.Location.Altitude}"/>
                 </StackPanel>
             </StackPanel>

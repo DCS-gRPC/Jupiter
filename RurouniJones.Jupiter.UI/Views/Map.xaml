@@ -19,9 +19,9 @@
                     <ControlTemplate TargetType="mapControl:MapItem">
                         <Canvas ContextMenu="{DynamicResource UnitContextMenu}" DataContext="{Binding}" MouseLeftButtonDown="MapUnit_OnMouseLeftButton">
                             <Image Source="{Binding Image, Mode=OneTime}"/>
-                            <Grid Canvas.Left="25">
+                            <Grid Canvas.Left="30">
                                 <TextBlock Text="" Margin="0">
-                                    <Run Text="{Binding Pilot, Mode=OneTime}"/>
+                                    <Run Text="{Binding Type, Mode=OneTime}"/>
                                     <LineBreak/>
                                     <Run Text="{Binding Name, Mode=OneTime}"/>
                                 </TextBlock>
