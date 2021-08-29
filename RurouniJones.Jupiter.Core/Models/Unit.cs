@@ -22,6 +22,14 @@ namespace RurouniJones.Jupiter.Core.Models
             set => SetProperty(ref _name, value);
         }
 
+
+        private string _player;
+        public string Player
+        {
+            get => _player;
+            set => SetProperty(ref _player, value);
+        }
+
         private uint _id;
         public uint Id
         {

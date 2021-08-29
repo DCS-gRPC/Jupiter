@@ -10,7 +10,27 @@
     <UserControl.Resources>
         <mapControl:WebMercatorProjection x:Key="WebMercatorProjection"/>
         <converters:LocationAndColorConverter x:Key="LocationAndColorConverter" />
+        <converters:HideLowZoomConverter x:Key="HideLowZoomConverter" />
+        <converters:HideHighZoomConverter x:Key="HideHighZoomConverter" />
         <converters:LocationConverter x:Key="LocationConverter"/>
+        <Style x:Key="GroupStyle" TargetType="mapControl:MapItem">
+            <Setter Property="AutoCollapse" Value="True"/>
+            <Setter Property="Location" Value="{Binding Units[0].Location, Mode=OneWay, Converter={StaticResource LocationConverter}}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="mapControl:MapItem">
+                        <Canvas DataContext="{Binding}" MouseLeftButtonDown="MapGroup_OnMouseLeftButton">
+                            <Image Source="{Binding Units[0].Image, Mode=OneTime}"/>
+                            <Grid Canvas.Left="30">
+                                <TextBlock Text="" Margin="0">
+                                    <Run Text="{Binding Name, Mode=OneTime}"/>
+                                </TextBlock>
+                            </Grid>
+                        </Canvas>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="UnitStyle" TargetType="mapControl:MapItem">
             <Setter Property="AutoCollapse" Value="True"/>
             <Setter Property="Location" Value="{Binding Location, Mode=OneWay, Converter={StaticResource LocationConverter}}"/>
@@ -33,12 +53,27 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <mapControl:Map x:Name="MainMap" ZoomLevel="7" MaxZoomLevel="21" MouseWheelZoomDelta="1"
+        <mapControl:Map x:Name="MainMap" ZoomLevel="{Binding ZoomLevel}" MaxZoomLevel="21" MouseWheelZoomDelta="1"
                         MouseMove="MainMap_OnMouseMove"
                         Center="{Binding MapLocation, Converter={StaticResource LocationConverter}}">
+            <mapControl:MapItemsControl ItemsSource="{Binding Coalitions[0].Groups}"
+                                        ItemContainerStyle="{StaticResource GroupStyle}"
+                                        SelectionMode="Extended"
+                                        Visibility="{Binding ZoomLevel, Converter={StaticResource HideHighZoomConverter}}"/>
+
+            <mapControl:MapItemsControl ItemsSource="{Binding Coalitions[1].Groups}"
+                                        ItemContainerStyle="{StaticResource GroupStyle}"
+                                        SelectionMode="Extended"
+                                        Visibility="{Binding ZoomLevel, Converter={StaticResource HideHighZoomConverter}}"/>
+
+            <mapControl:MapItemsControl ItemsSource="{Binding Coalitions[2].Groups}"
+                                        ItemContainerStyle="{StaticResource GroupStyle}"
+                                        SelectionMode="Extended"
+                                        Visibility="{Binding ZoomLevel, Converter={StaticResource HideHighZoomConverter}}"/>
             <mapControl:MapItemsControl ItemsSource="{Binding Units}"
                                         ItemContainerStyle="{StaticResource UnitStyle}"
-                                        SelectionMode="Extended"/>
+                                        SelectionMode="Extended"
+                                        Visibility="{Binding ZoomLevel, Converter={StaticResource HideLowZoomConverter}}"/>
             <mapControl:Map.ContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Flare" >

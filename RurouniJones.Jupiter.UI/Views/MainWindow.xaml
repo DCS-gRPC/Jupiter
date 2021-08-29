@@ -34,7 +34,14 @@
                             <TextBlock Text="{Binding Name}" />
                         </HierarchicalDataTemplate>
                         <HierarchicalDataTemplate DataType="{x:Type models:Group}" ItemsSource="{Binding Units}">
-                            <TextBlock Text="{Binding Name}" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{Binding Units[0].Image}" Grid.Column="0" VerticalAlignment="Center" Stretch="None"/>
+                                <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding Name}" />
+                            </Grid>
                         </HierarchicalDataTemplate>
                         <DataTemplate DataType="{x:Type models:Unit}">
                             <Grid Margin="0 5 0 0" ContextMenu="{DynamicResource UnitContextMenu}">
@@ -54,6 +61,10 @@
         <DockPanel Grid.Row="0" Grid.Column="1">
             <StackPanel x:Name="UnitInformation" DockPanel.Dock="Right" Width="Auto" MinWidth="150" Margin="5 5 10 5">
                 <TextBlock Text="Unit Information" HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Player" Width="100"/>
+                    <TextBlock Text="{Binding SelectedUnit.Player}"/>
+                </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Name" Width="100"/>
                     <TextBlock Text="{Binding SelectedUnit.Name}"/>
@@ -81,7 +92,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="DMS" Width="100"/>
-                    <TextBlock Text="{Binding SelectedUnit.Location, Converter={StaticResource locationToDmsConverter}}"/>
+                    <TextBlock Text="{Binding SelectedUnit.Location, Converter={StaticResource locationToDmsConverter}}" MaxWidth="200" TextWrapping="Wrap"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Alt" Width="100"/>
@@ -106,6 +117,7 @@
                     <GridView>
                         <GridViewColumn Header="Time" Width="60" DisplayMemberBinding="{Binding Timestamp}"/>
                         <GridViewColumn Header="Type" Width="100" DisplayMemberBinding="{Binding EventType}"/>
+                        <GridViewColumn Header="Player" Width="100" DisplayMemberBinding="{Binding PlayerName}"/>
                         <GridViewColumn Header="Unit" Width="100" DisplayMemberBinding="{Binding UnitId}"/>
                         <GridViewColumn Header="Details" DisplayMemberBinding="{Binding Details}">
                             <GridViewColumn.Width>

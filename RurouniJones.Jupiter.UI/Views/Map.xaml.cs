@@ -62,6 +62,14 @@ namespace RurouniJones.Jupiter.UI.Views
             ((MainViewModel) DataContext).MouseLocation = new Core.Models.Location(location.Latitude, location.Longitude);
         }
 
+        private void MapGroup_OnMouseLeftButton(object sender, MouseButtonEventArgs e)
+        {
+            var viewModel = (MainViewModel)DataContext;
+            var canvas = (Canvas) sender;
+            var unit = ((Group) canvas.DataContext).Units[0];
+            viewModel.SelectedUnit = unit;
+        }
+
         private void MapUnit_OnMouseLeftButton(object sender, MouseButtonEventArgs e)
         {
             var viewModel = (MainViewModel)DataContext;
