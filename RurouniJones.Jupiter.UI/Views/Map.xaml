@@ -13,6 +13,7 @@
         <converters:HideLowZoomConverter x:Key="HideLowZoomConverter" />
         <converters:HideHighZoomConverter x:Key="HideHighZoomConverter" />
         <converters:LocationConverter x:Key="LocationConverter"/>
+        <converters:MilitarySymbolConverter x:Key="MilitarySymbolConverter"/>
         <Style x:Key="GroupStyle" TargetType="mapControl:MapItem">
             <Setter Property="AutoCollapse" Value="True"/>
             <Setter Property="Location" Value="{Binding Units[0].Location, Mode=OneWay, Converter={StaticResource LocationConverter}}"/>
@@ -20,7 +21,8 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="mapControl:MapItem">
                         <Canvas DataContext="{Binding}" MouseLeftButtonDown="MapGroup_OnMouseLeftButton">
-                            <Image Source="{Binding Units[0].Image, Mode=OneTime}"/>
+                            <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Canvas}},
+                                Path=DataContext.Units[0], Mode=OneTime, Converter={StaticResource MilitarySymbolConverter}}" Width="30"/>
                             <Grid Canvas.Left="30">
                                 <TextBlock Text="" Margin="0">
                                     <Run Text="{Binding Name, Mode=OneTime}"/>
@@ -38,9 +40,10 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="mapControl:MapItem">
                         <Canvas ContextMenu="{DynamicResource UnitContextMenu}" DataContext="{Binding}" MouseLeftButtonDown="MapUnit_OnMouseLeftButton">
-                            <Image Source="{Binding Image, Mode=OneTime}"/>
+                            <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Canvas}},
+                                Path=DataContext, Mode=OneTime, Converter={StaticResource MilitarySymbolConverter}}" Width="30"/>
                             <Grid Canvas.Left="30">
-                                <TextBlock Text="" Margin="0">
+                                <TextBlock Margin="0">
                                     <Run Text="{Binding Type, Mode=OneTime}"/>
                                     <LineBreak/>
                                     <Run Text="{Binding Name, Mode=OneTime}"/>

@@ -16,6 +16,7 @@
         <converters:LastGridViewColumnConverter x:Key="lastGridViewColumnConverter"/>
         <converters:LocationToMgrsConverter x:Key="locationToMgrsConverter"/>
         <converters:LocationToDmsConverter x:Key="locationToDmsConverter"/>
+        <converters:MilitarySymbolConverter x:Key="MilitarySymbolConverter"/>
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -39,7 +40,8 @@
                                     <ColumnDefinition Width="40"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Source="{Binding Units[0].Image}" Grid.Column="0" VerticalAlignment="Center" Stretch="None"/>
+                                <Image Source="{Binding Units[0], Mode=OneTime, Converter={StaticResource MilitarySymbolConverter}}" Width="30"
+                                       Grid.Column="0" VerticalAlignment="Center"/>
                                 <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding Name}" />
                             </Grid>
                         </HierarchicalDataTemplate>
@@ -49,7 +51,8 @@
                                     <ColumnDefinition Width="40"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Source="{Binding Image}" Grid.Column="0" VerticalAlignment="Center" Stretch="None"/>
+                                <Image Source="{Binding Path=., Mode=OneTime, Converter={StaticResource MilitarySymbolConverter}}" Width="30"
+                                       Grid.Column="0" VerticalAlignment="Center"/>
                                 <TextBlock Text="{Binding Name}" Grid.Column="1" VerticalAlignment="Center"/>
                             </Grid>
                         </DataTemplate>
