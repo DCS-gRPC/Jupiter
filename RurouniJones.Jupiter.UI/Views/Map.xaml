@@ -22,12 +22,7 @@
                     <ControlTemplate TargetType="mapControl:MapItem">
                         <Canvas DataContext="{Binding}" MouseLeftButtonDown="MapGroup_OnMouseLeftButton">
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Canvas}},
-                                Path=DataContext.Units[0], Mode=OneTime, Converter={StaticResource MilitarySymbolConverter}}" Width="30"/>
-                            <Grid Canvas.Left="30">
-                                <TextBlock Text="" Margin="0">
-                                    <Run Text="{Binding Name, Mode=OneTime}"/>
-                                </TextBlock>
-                            </Grid>
+                                Path=DataContext.Units[0], Mode=OneTime, Converter={StaticResource MilitarySymbolConverter}}" Width="40"/>
                         </Canvas>
                     </ControlTemplate>
                 </Setter.Value>
@@ -41,8 +36,8 @@
                     <ControlTemplate TargetType="mapControl:MapItem">
                         <Canvas ContextMenu="{DynamicResource UnitContextMenu}" DataContext="{Binding}" MouseLeftButtonDown="MapUnit_OnMouseLeftButton">
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Canvas}},
-                                Path=DataContext, Mode=OneTime, Converter={StaticResource MilitarySymbolConverter}}" Width="30"/>
-                            <Grid Canvas.Left="30">
+                                Path=DataContext, Mode=OneTime, Converter={StaticResource MilitarySymbolConverter}}" Width="40"/>
+                            <Grid Canvas.Left="40">
                                 <TextBlock Margin="0">
                                     <Run Text="{Binding Type, Mode=OneTime}"/>
                                     <LineBreak/>

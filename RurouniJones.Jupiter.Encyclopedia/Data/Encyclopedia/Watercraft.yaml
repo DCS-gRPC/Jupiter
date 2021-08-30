@@ -39,3 +39,15 @@
   mil_std_2525_d: 10003000001202050200
   dcs_codes:
     - ALBATROS
+-
+  name: La Combattante Class
+  code: La Combattante Class
+  mil_std_2525_d: 10003000001205021309
+  dcs_codes:
+    - La_Combattante_II
+-
+  name: Molniya Class
+  code: Molniya Class
+  mil_std_2525_d: 10003000001202051500
+  dcs_codes:
+    - MOLNIYA

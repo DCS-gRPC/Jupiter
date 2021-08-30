@@ -45,7 +45,7 @@ namespace RurouniJones.Jupiter.UI.Converters
                 InitJsEngine();
             }
 
-            var svgString = _jsEngine.Evaluate($"new ms.Symbol(\"{code}\", {{ size: 30 }}).asSVG();").ToString();
+            var svgString = _jsEngine.Evaluate($"new ms.Symbol(\"{code}\", {{ size: 50 }}).asSVG();").ToString();
             var svgStream = new StreamReader(new MemoryStream(Encoding.UTF8.GetBytes(svgString)));
 
             var settings = new WpfDrawingSettings();
