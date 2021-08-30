@@ -2,16 +2,42 @@
 -
   name: M-113
   code: M-113
+  mil_std_2525_d: 10001000001211020000
   dcs_codes:
     - M-113
-  attributes:
-    - mechanised
-    - infantry carrier
 -
   name: BTR-80
   code: BTR-80
+  mil_std_2525_d: 10001000001211020000
   dcs_codes:
     - BTR-80
-  attributes:
-    - mechanised
-    - infantry carrier
+-
+  name: BMP-2
+  code: BMP-2
+  mil_std_2525_d: 10001000001211050060
+  dcs_codes:
+    - BMP-2
+-
+  name: BMP-3
+  code: BMP-3
+  mil_std_2525_d: 10001000001211050060
+  dcs_codes:
+    - BMP-3
+-
+  name: Ural-375
+  code: Ural-375
+  mil_std_2525_d: 10001000001636000051
+  dcs_codes:
+    - Ural-375
+-
+  name: T-55
+  code: T-55
+  mil_std_2525_d: 10001000001205000000
+  dcs_codes:
+    - T-55
+-
+  name: Shilka
+  code: ZSU-23
+  mil_std_2525_d: 10001000001301015023
+  dcs_codes:
+    - ZSU-23-4 Shilka

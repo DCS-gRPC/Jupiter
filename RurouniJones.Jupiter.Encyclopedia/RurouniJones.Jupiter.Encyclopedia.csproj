@@ -19,6 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="Data\Encyclopedia\Foot.yaml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Data\Encyclopedia\Vehicles.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

@@ -1,0 +1,14 @@
+﻿---
+-
+  name: Insurgent Infantry with AK-47
+  code: Insurgent Infantry with AK-47
+  mil_std_2525_d: 10001000001211000000
+  dcs_codes:
+    - Infantry AK Ins
+-
+  name: Infantry with MANPAD
+  code: Infantry with MANPAD
+  mil_std_2525_d: 10001000001301020043
+  dcs_codes:
+    - SA-18 Igla manpad
+    - SA-18 Igla-S manpad

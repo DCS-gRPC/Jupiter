@@ -1,16 +1,29 @@
 ﻿---
 -
   name: Nimitz Class
+  code: Nimits Class
+  mil_std_2525_d: 10003000001201000000
   dcs_codes:
+    - Stennis
     - CVN_71
     - CVN_72
     - CVN_73
     - CVN_74
-  attributes:
-    - aircraft carrier
 -
   name: Ticonderoga Class
+  code: Ticonderoga Class
+  mil_std_2525_d: 10003000001202021500
   dcs_codes:
     - TICONDEROG
-  attributes:
-    - cruiser
+-
+  name: Oliver Hazard Perry Class
+  code: Oliver Hazard Perry Class
+  mil_std_2525_d: 10003000001202041500
+  dcs_codes:
+    - PERRY
+-
+  name: Tarawa Class
+  code: Tarawa Class
+  mil_std_2525_d: 10003000001203030000
+  dcs_codes:
+    - LHA_Tarawa

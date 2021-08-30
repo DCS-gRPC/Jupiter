@@ -54,6 +54,13 @@ namespace RurouniJones.Jupiter.Core.Models
             set => SetProperty(ref _type, value);
         }
 
+        private ulong _milStd2525dCode;
+        public ulong MilStd2525dCode
+        {
+            get => _milStd2525dCode; // _milStd2525dCode;
+            set => SetProperty(ref _milStd2525dCode, value);
+        }
+
         public EnableRadarEmissionCommand EnableRadarEmissionCommand { get; }
         public DisableRadarEmissionCommand DisableRadarEmissionCommand { get; }
         public PopSmokeCommand PopSmokeCommand { get; }
@@ -65,13 +72,6 @@ namespace RurouniJones.Jupiter.Core.Models
             DisableRadarEmissionCommand = new DisableRadarEmissionCommand();
             PopSmokeCommand = new PopSmokeCommand();
             LaunchFlareCommand = new LaunchFlareCommand();
-        }
-
-        private ulong _milStd2525dCode;
-        public ulong MilStd2525dCode
-        {
-            get => 10001000000000000000; // _milStd2525dCode;
-            set => SetProperty(ref _milStd2525dCode, value);
         }
 
         public override string ToString()

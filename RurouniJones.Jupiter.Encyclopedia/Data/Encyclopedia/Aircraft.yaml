@@ -1,16 +1,21 @@
-﻿---
+﻿# Common mil_std_2525_d codes:
+# Long Range Fighter:   10000100001101040010 (Phoenix & Russian Phoenixskis and equivalents)
+# Medium Range Fighter: 10000100001101040009 (AIM-120s, AIM-7s and equivalents)
+# Short Range Fighter:  10000100001101040008 (AIM-9s and equivalents)
+# Attack Planes:        10000100001101020000
+# AWACS:                10000100001101160000
+# Cargo plane:          10000100001101070000
+---
 -
   name: Foxhound
   code: MiG-31
+  mil_std_2525_d: 10000100001101040010
   dcs_codes:
     - MiG-31
-  attributes:
-    - fixed wing
-    - fighter
-    - long range
 -
   name: Fulcrum
   code: MiG-29
+  mil_std_2525_d: 10000100001101040009
   dcs_codes:
     - MiG-29A
     - MiG-29G
@@ -23,6 +28,7 @@
 -
   name: Flanker
   code: Su-27
+  mil_std_2525_d: 10000100001101040009
   dcs_codes:
     - Su-27
     - Su-30
@@ -35,6 +41,7 @@
 -
   name: Frogfoot
   code: Su-25
+  mil_std_2525_d: 10000100001101020000
   dcs_codes:
     - Su-25
     - Su-25T
@@ -42,20 +49,21 @@
   attributes:
     - fixed wing
     - attack
-    - short range
 -
   name: Hip
   code: Mi-8
+  mil_std_2525_d:
   dcs_codes:
-    - Mi-8MTV2
     - Mi-8MT
+    - Mi-8MTV2
   attributes:
-    - rotary
+    - helicopter
     - attack
     - transport
 -
   name: Tiger-2
   code: F-5
+  mil_std_2525_d: 10000100001101040008
   dcs_codes:
     - F-5E-3
   attributes:
@@ -66,6 +74,7 @@
 -
   name: Tomcat
   code: F-14
+  mil_std_2525_d: 10000100001101040010
   dcs_codes:
     - F-14A
     - F-14A-135-GR
@@ -77,6 +86,7 @@
 -
   name: Falcon
   code: F-16
+  mil_std_2525_d: 10000100001101040009
   dcs_codes:
     - F-16A
     - F-16A-2
@@ -92,6 +102,7 @@
 -
   name: Hornet
   code: F-18
+  mil_std_2525_d: 10000100001101040009
   dcs_codes:
     - FA-18A
     - FA-18C
@@ -105,17 +116,17 @@
 -
   name: Tornado
   code: Tornado
+  mil_std_2525_d: 10000100001101020000
   dcs_codes:
     - Tornado_GR4
     - Tornado_IDS
   attributes:
     - fixed wing
-    - fighter
     - attack
-    - medium range
 - 
   name: Bear
   code: Tu-142
+  mil_std_2525_d: 10000100001101030000
   dcs_codes:
     - Tu-142
     - Tu-95MS
@@ -125,6 +136,7 @@
 - 
   name: Blackjack
   code: Tu-160
+  mil_std_2525_d: 10000100001101030000
   dcs_codes:
     - Tu-160
   attributes:
@@ -133,6 +145,7 @@
 - 
   name: Backfire
   code: Tu-22
+  mil_std_2525_d: 10000100001101030000
   dcs_codes:
     - Tu-22M3
   attributes:
@@ -141,6 +154,7 @@
 -
   name: Fencer
   code: Su-24
+  mil_std_2525_d: 10000100001101020000
   dcs_codes:
     - Su-24M
     - Su-24MR
@@ -150,6 +164,7 @@
 -
   name: Candid
   code: IL-76
+  mil_std_2525_d: 10000100001101070000
   dcs_codes:
     - IL-76
     - IL-76M
@@ -159,17 +174,18 @@
 -
   name: Flogger
   code: MiG-23
+  mil_std_2525_d: 10000100001101040009
   dcs_codes:
     - MiG-23MLD
     - MiG-27K
   attributes:
     - fixed wing
     - fighter
-    - attack
     - medium range
 -
   name: Mainstay
   code: A-50
+  mil_std_2525_d: 10000100001101160000
   dcs_codes:
     - A-50
   attributes:
@@ -178,6 +194,7 @@
 -
   name: Clank
   code: An-30
+  mil_std_2525_d: 10000100001101070000
   dcs_codes:
     - An-30M
   attributes:
@@ -186,6 +203,7 @@
 -
   name: Curl
   code: An-26
+  mil_std_2525_d: 10000100001101070000
   dcs_codes:
     - An-26B
   attributes:
@@ -194,38 +212,38 @@
 -
   name: Huey
   code: UH-1
+  mil_std_2525_d:
   dcs_codes:
     - UH-1H
   attributes:
-    - rotary
+    - helicopter
     - attack
     - transport
 -
   name: Harrier
   code: AV-8
+  mil_std_2525_d: 10000100001101020800
   dcs_codes:
     - AV-8B N/A
-    - AV8BNA
   attributes:
     - fixed wing
     - attack
-    - short range
     - V/STOL
 -
   name: Warthog
   code: A-10
+  mil_std_2525_d: 10000100001101020000
   dcs_codes:
     - A-10A
     - A-10C
     - A-10C II
-    - A-10C_2
   attributes:
     - fixed wing
     - attack
-    - short range
 -
   name: Eagle
   code: F-15
+  mil_std_2525_d: 10000100001101040009
   dcs_codes:
     - F-15C
   attributes:
@@ -235,24 +253,25 @@
 -
   name: Viggen
   code: AJS-37
+  mil_std_2525_d: 10000100001101020000
   dcs_codes:
     - AJS37
   attributes:
     - fixed wing
     - attack
-    - short range
 -
   name: Skyhawk
   code: A-4
+  mil_std_2525_d: 10000100001101020000
   dcs_codes:
     - A-4E
   attributes:
     - fixed wing
     - attack
-    - short range
 -
   name: Lancer
   code: B-1B # The B-1A was never operational, it was a prototype. so we will consider the B-1B the canonical name
+  mil_std_2525_d: 10000100001101030000
   dcs_codes:
     - B-1B
   attributes:
@@ -261,6 +280,7 @@
 -
   name: Stratofortress
   code: B-52
+  mil_std_2525_d: 10000100001101030000
   dcs_codes:
     - B-52H
   attributes:
@@ -269,6 +289,7 @@
 -
   name: Kurfürst
   code: Bf-109
+  mil_std_2525_d:
   dcs_codes:
     - Bf 109 K-4
   attributes:
@@ -278,16 +299,17 @@
 -
   name: Aviojet
   code: C-101
+  mil_std_2525_d: 10000100001101020000
   dcs_codes:
     - C-101CC
     - C-101EB
   attributes:
     - fixed wing
-    - fighter
-    - short range
+    - attack
 -
   name: Hercules
   code: C-130
+  mil_std_2525_d: 10000100001101070000
   dcs_codes:
     - C-130
     - Hercules
@@ -297,6 +319,7 @@
 -
   name: Globemaster
   code: C-17
+  mil_std_2525_d: 10000100001101070000
   dcs_codes:
     - C-17A
   attributes:
@@ -305,6 +328,7 @@
 -
   name: Christen Eagle
   code: Christen Eagle II
+  mil_std_2525_d:
   dcs_codes:
     - Christen Eagle II
   attributes:
@@ -312,15 +336,16 @@
 -
   name: Hawkeye
   code: E-2
+  mil_std_2525_d: 10000100001101160000
   dcs_codes:
     - E-2D
-    - E-2C
   attributes:
     - fixed wing
     - awacs
 -
   name: Sentry
   code: E-3
+  mil_std_2525_d: 10000100001101160000
   dcs_codes:
     - E-3A
   attributes:
@@ -329,6 +354,7 @@
 -
   name: Nighthawk
   code: F-117
+  mil_std_2525_d: 10000100001101030000
   dcs_codes:
     - F-117A
   attributes:
@@ -337,6 +363,7 @@
 -
   name: Phantom
   code: F-4
+  mil_std_2525_d: 10000100001101040009
   dcs_codes:
     - F-4E
   attributes:
@@ -346,6 +373,7 @@
 -
   name: Sabre
   code: F-86
+  mil_std_2525_d: 10000100001101040008
   dcs_codes:
     - F-86F
   attributes:
@@ -355,6 +383,7 @@
 -
   name: Shrike
   code: Fw-190
+  mil_std_2525_d: 10000100001101040008
   dcs_codes:
     - Fw 190 A-8
     - Fw 190 D-9
@@ -365,6 +394,7 @@
 -
   name: Hawk
   code: Hawk
+  mil_std_2525_d: 10000100001101040008
   dcs_codes:
     - Hawk
   attributes:
@@ -374,15 +404,17 @@
 -
   name: Polikarpov
   code: I-16
+  mil_std_2525_d: 10000100001101040008
   dcs_codes:
     - I-16
   attributes:
     - fixed wing
-    - fighter
+    - attack
     - short range
 -
   name: Thunder
   code: JF-17
+  mil_std_2525_d: 10000100001101040009
   dcs_codes:
     - JF-17
   attributes:
@@ -392,17 +424,25 @@
 -
   name: Stratotanker
   code: KC-135
+  mil_std_2525_d: 10000100001101090004
   dcs_codes:
     - KC-135
+  attributes:
+    - fixed wing
+    - tanker
+-
+  name: Stratotanker
+  code: KC-135
+  mil_std_2525_d: 10000100001101090005
+  dcs_codes:
     - KC-135MPRS
-    - KC135
-    - KC135MPRS
   attributes:
     - fixed wing
     - tanker
 -
   name: KC-130
   code: KC-130
+  mil_std_2525_d: 10000100001101090005
   dcs_codes:
     - KC-130
   attributes:
@@ -411,6 +451,7 @@
 -
   name: Albatross
   code: L-39
+  mil_std_2525_d:
   dcs_codes:
     - L-39C
     - L-39ZA
@@ -421,6 +462,7 @@
 -
   name: Mirage
   code: M-2000
+  mil_std_2525_d: 10000100001101040009
   dcs_codes:
     - M-2000C
     - Mirage 2000-5
@@ -431,33 +473,34 @@
 -
   name: MB-339
   code: MB-339
+  mil_std_2525_d:
   dcs_codes:
     - MB-330PAN
   attributes:
     - fixed wing
-    - fighter
-    - short range
+    - attack
 -
   name: Reaper
   code: MQ-9
+  mil_std_2525_d: 10000100001103000100
   dcs_codes:
     - MQ-9
   attributes:
     - fixed wing
-    - fighter
-    - short range
+    - attack
 -
   name: Predator
   code: MQ-1
+  mil_std_2525_d: 10000100001103001800
   dcs_codes:
     - MQ-1A
   attributes:
     - fixed wing
-    - drone
-    - short range
+    - attack
 -
   name: Fagot
   code: MiG-15
+  mil_std_2525_d: 10000100001101040008
   dcs_codes:
     - Mig-15bis
   attributes:
@@ -467,6 +510,7 @@
 -
   name: Farmer
   code: MiG-19
+  mil_std_2525_d: 10000100001101040008
   dcs_codes:
     - MiG-19P
   attributes:
@@ -476,6 +520,7 @@
 -
   name: Fishbed
   code: MiG-21
+  mil_std_2525_d: 10000100001101040008
   dcs_codes:
     - MiG-21Bis
   attributes:
@@ -485,17 +530,20 @@
 -
   name: Thunderbolt
   code: P-47
+  mil_std_2525_d: 10000100001101040008
   dcs_codes:
     - P-47D-30
     - P-47D-30 (Early)
     - P-47D-40
   attributes:
     - fixed wing
+    - attack
     - fighter
     - short range
 -
   name: Mustang
   code: P-51
+  mil_std_2525_d: 10000100001101040008
   dcs_codes:
     - P-51D-25-NA
     - P-51D-30-NA
@@ -507,6 +555,15 @@
 -
   name: Viking
   code: S-3
+  mil_std_2525_d:
+  dcs_codes:
+    - S-3B
+  attributes:
+    - fixed wing
+-
+  name: Viking
+  code: S-3
+  mil_std_2525_d: 10000100001101090005
   dcs_codes:
     - S-3B
     - S-3B Tanker
@@ -516,6 +573,7 @@
 -
   name: Spitfire
   code: Spitfire
+  mil_std_2525_d: 10000100001101040008
   dcs_codes:
     - Spitfire LF Mk. IX
     - Spitfire LF Mk. IX CW
@@ -526,6 +584,7 @@
 -
   name: Yak 52
   code: Yak-52
+  mil_std_2525_d: 10000100001101040008
   dcs_codes:
     - Yak-52
   attributes:
@@ -535,99 +594,112 @@
 -
   name: SuperCobra
   code: AH-1
+  mil_std_2525_d:
   dcs_codes:
     - AH-1W
   attributes:
-    - rotary
+    - helicopter
     - attack
 -
   name: Apache
   code: AH-64
+  mil_std_2525_d:
   dcs_codes:
     - AH-64A
     - AH-64D
   attributes:
-    - rotary
+    - helicopter
     - attack
 -
   name: Chinook
   code: CH-47
+  mil_std_2525_d:
   dcs_codes:
     - AH-47D
   attributes:
-    - rotary
+    - helicopter
     - transport
 -
   name: Super Stallion
   code: CH-53
+  mil_std_2525_d:
   dcs_codes:
     - CH-53E
   attributes:
-    - rotary
+    - helicopter
     - transport
 -
   name: Black Shark
   code: Ka-50
+  mil_std_2525_d:
   dcs_codes:
     - Ka-50
   attributes:
-    - rotary
+    - helicopter
     - attack
 -
   name: Kiowa
   code: OH-58
+  mil_std_2525_d:
   dcs_codes:
     - OH-58D
   attributes:
-    - rotary
+    - helicopter
     - attack
 -
   name: Gazelle
   code: SA342
+  mil_std_2525_d:
   dcs_codes:
     - SA342L
     - SA342M
     - SA342Minigun
     - SA342Mistral
   attributes:
-    - rotary
+    - helicopter
     - attack
 -
   name: Seahawk
   code: SH-60
+  mil_std_2525_d:
   dcs_codes:
     - SH-60B
   attributes:
-    - rotary
+    - helicopter
     - transport
 -
   name: Black Hawk
   code: UH-60
+  mil_std_2525_d:
   dcs_codes:
     - UH-60A
   attributes:
-    - rotary
+    - helicopter
     - transport
 -
   name: Helix
   code: Ka-27
+  mil_std_2525_d:
   dcs_codes:
     - Ka-27
   attributes:
-    - rotary
+    - helicopter
     - transport
 -
   name: Hind
   code: Mi-24
+  mil_std_2525_d:
   dcs_codes:
     - Mi-24V
+    - Mi-24P
   attributes:
-    - rotary
+    - helicopter
     - attack
     - transport
 -
   name: Halo
   code: Mi-26
+  mil_std_2525_d:
   dcs_codes:
     - Mi-26
   attributes:
@@ -636,14 +708,16 @@
 -
   name: Havok
   code: Mi-28
+  mil_std_2525_d:
   dcs_codes:
     - Mi-28N
   attributes:
-    - rotary
+    - helicopter
     - attack
 -
   name: A-20
   code: A-20
+  mil_std_2525_d: 10000100001101020000
   dcs_codes:
     - A-20G
   attributes:
@@ -653,44 +727,46 @@
 -
   name: Mainring
   code: KJ-2000
+  mil_std_2525_d: 10000100001101160000
   dcs_codes:
     - KJ-2000
   attributes:
     - fixed wing
-    - transport
     - awacs
 -
   name: Foxbat
   code: Mig-25
+  mil_std_2525_d: 10000100001101040010
   dcs_codes:
     - MiG-25PD
     - MiG-25RBT
   attributes:
     - fixed wing
-    - attack
-    - medium range
+    - fighter
+    - long range
 -
   name: Fitter
   code: Su-17
+  mil_std_2525_d: 10000100001101020000
   dcs_codes:
     - Su-17M4
   attributes:
     - fixed wing
     - attack
-    - medium range
 -
   name: Fullback
   code: Su-34
+  mil_std_2525_d: 10000100001101030000
   dcs_codes:
     - Su-34
   attributes:
     - fixed wing
     - attack
-    - medium range
     - bomber
 -
   name: Pterodactyl
   code: WingLoong-I
+  mil_std_2525_d: 10000100001101020000
   dcs_codes:
     - WingLoong-I
   attributes:
@@ -700,6 +776,7 @@
 -
   name: Codling
   code: Yak-40
+  mil_std_2525_d: 10000100001101070000
   dcs_codes:
     - Yak-40
   attributes:
