@@ -21,8 +21,8 @@
     </Window.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="1*" MinWidth="300" />
+            <ColumnDefinition Width="6*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="4*"/>
@@ -54,7 +54,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Source="{Binding Path=., Mode=OneTime, Converter={StaticResource MilitarySymbolConverter}}" Width="30"
                                        Grid.Column="0" VerticalAlignment="Center"/>
-                                <TextBlock Text="{Binding Name}" Grid.Column="1" VerticalAlignment="Center"/>
+                                <TextBlock Text="{Binding Name}" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap"/>
                             </Grid>
                         </DataTemplate>
                     </TreeView.Resources>
@@ -63,7 +63,7 @@
             <TabItem Header="C" />
         </TabControl>
         <DockPanel Grid.Row="0" Grid.Column="1">
-            <StackPanel x:Name="UnitInformation" DockPanel.Dock="Right" Width="Auto" MinWidth="200" Margin="5 5 10 5">
+            <StackPanel x:Name="UnitInformation" DockPanel.Dock="Right" Width="Auto" MinWidth="250" Margin="5 5 10 5">
                 <TextBlock Text="Location" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Decimal lat" Width="120" FontWeight="Bold"/>

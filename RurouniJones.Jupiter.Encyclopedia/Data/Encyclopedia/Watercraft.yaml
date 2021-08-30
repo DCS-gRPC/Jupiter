@@ -27,3 +27,9 @@
   mil_std_2525_d: 10003000001203030000
   dcs_codes:
     - LHA_Tarawa
+-
+  name: Altay Class
+  code: Altay Class
+  mil_std_2525_d: 10003000001301100000
+  dcs_codes:
+    - ELNYA
