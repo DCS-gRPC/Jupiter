@@ -23,6 +23,10 @@ namespace RurouniJones.Jupiter.UI.Converters
         
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if (value == null)
+            {
+                return null;
+            }
             var unit = (Unit) value;
             var code = unit.MilStd2525dCode;
 

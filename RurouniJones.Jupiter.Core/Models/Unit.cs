@@ -1,4 +1,5 @@
-﻿using RurouniJones.Jupiter.Core.ViewModels.Commands;
+﻿using System;
+using RurouniJones.Jupiter.Core.ViewModels.Commands;
 
 namespace RurouniJones.Jupiter.Core.Models
 {
@@ -8,7 +9,14 @@ namespace RurouniJones.Jupiter.Core.Models
         public Location Location
         {
             get => _location;
-            set => SetProperty(ref _location, value);
+            set
+            {
+                var lat = Math.Round(value.Latitude, 4);
+                var lon = Math.Round(value.Longitude, 4);
+                var alt = Math.Round(value.Longitude);
+                var loc = new Location(lat, lon, alt);
+                SetProperty(ref _location, loc);
+            }
         }
 
         private string _name;

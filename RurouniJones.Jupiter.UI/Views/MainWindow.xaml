@@ -15,7 +15,8 @@
     <Window.Resources>
         <converters:LastGridViewColumnConverter x:Key="lastGridViewColumnConverter"/>
         <converters:LocationToMgrsConverter x:Key="locationToMgrsConverter"/>
-        <converters:LocationToDmsConverter x:Key="locationToDmsConverter"/>
+        <converters:LocationToDmsLatConverter x:Key="locationToDmsLatConverter"/>
+        <converters:LocationToDmsLonConverter x:Key="locationToDmsLonConverter"/>
         <converters:MilitarySymbolConverter x:Key="MilitarySymbolConverter"/>
     </Window.Resources>
     <Grid>
@@ -62,45 +63,88 @@
             <TabItem Header="C" />
         </TabControl>
         <DockPanel Grid.Row="0" Grid.Column="1">
-            <StackPanel x:Name="UnitInformation" DockPanel.Dock="Right" Width="Auto" MinWidth="150" Margin="5 5 10 5">
-                <TextBlock Text="Unit Information" HorizontalAlignment="Center"/>
+            <StackPanel x:Name="UnitInformation" DockPanel.Dock="Right" Width="Auto" MinWidth="200" Margin="5 5 10 5">
+                <TextBlock Text="Location" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Player" Width="100"/>
-                    <TextBlock Text="{Binding SelectedUnit.Player}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Name" Width="100"/>
-                    <TextBlock Text="{Binding SelectedUnit.Name}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Pilot" Width="100"/>
-                    <TextBlock Text="{Binding SelectedUnit.Pilot}"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Type" Width="100"/>
-                    <TextBlock Text="{Binding SelectedUnit.Type}"/>
-                </StackPanel>
-                <TextBlock Text="Location" HorizontalAlignment="Center"/>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Decimal Lat" Width="100"/>
+                    <TextBlock Text="Decimal lat" Width="120" FontWeight="Bold"/>
                     <TextBlock Text="{Binding SelectedUnit.Location.Latitude}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Decimal Lon" Width="100"/>
+                    <TextBlock Text="Decimal Lon" Width="120" FontWeight="Bold"/>
                     <TextBlock Text="{Binding SelectedUnit.Location.Longitude}"/>
                 </StackPanel>
+                <Separator/>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="MGRS" Width="100"/>
+                    <TextBlock Text="DMS Lat" Width="120" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedUnit.Location, Converter={StaticResource locationToDmsLatConverter}}" MaxWidth="200" TextWrapping="Wrap"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="DMS Lon" Width="120" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedUnit.Location, Converter={StaticResource locationToDmsLonConverter}}" MaxWidth="200" TextWrapping="Wrap"/>
+                </StackPanel>
+                <Separator/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="MGRS" Width="120" FontWeight="Bold"/>
                     <TextBlock Text="{Binding SelectedUnit.Location, Converter={StaticResource locationToMgrsConverter}}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="DMS" Width="100"/>
-                    <TextBlock Text="{Binding SelectedUnit.Location, Converter={StaticResource locationToDmsConverter}}" MaxWidth="200" TextWrapping="Wrap"/>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="Alt" Width="100"/>
+                    <TextBlock Text="Altitude / Elevation" Width="120" FontWeight="Bold"/>
                     <TextBlock Text="{Binding SelectedUnit.Location.Altitude}"/>
                 </StackPanel>
+                <Separator/>
+                <TextBlock Text="Summary" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Player" Width="120" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedUnit.Player}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Name" Width="120" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedUnit.Name}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Pilot" Width="120" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedUnit.Pilot}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Type" Width="120" FontWeight="Bold"/>
+                    <TextBlock Text="{Binding SelectedUnit.Type}"/>
+                </StackPanel>
+                <Separator/>
+                <TextBlock Text="MIL-STD-2525D" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
+                <Image Source="{Binding SelectedUnit, Converter={StaticResource MilitarySymbolConverter}}" Width="90"/>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBlock Text="Standard Identity" Width="120" FontWeight="Bold"/>
+                    <ComboBox><ComboBoxItem IsSelected="True">Dummy</ComboBoxItem></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBlock Text="Symbol Set" Width="120" FontWeight="Bold"/>
+                    <ComboBox><ComboBoxItem IsSelected="True">Dummy</ComboBoxItem></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBlock Text="Status" Width="120" FontWeight="Bold"/>
+                    <ComboBox><ComboBoxItem IsSelected="True">Dummy</ComboBoxItem></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBlock Text="Entity" Width="120" FontWeight="Bold"/>
+                    <ComboBox><ComboBoxItem IsSelected="True">Dummy</ComboBoxItem></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBlock Text="Entity Type" Width="120" FontWeight="Bold"/>
+                    <ComboBox><ComboBoxItem IsSelected="True">Dummy</ComboBoxItem></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBlock Text="Entity Subtype" Width="120" FontWeight="Bold"/>
+                    <ComboBox><ComboBoxItem IsSelected="True">Dummy</ComboBoxItem></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBlock Text="Modifier 1" Width="120" FontWeight="Bold"/>
+                    <ComboBox><ComboBoxItem IsSelected="True">Dummy</ComboBoxItem></ComboBox>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0 0 0 5">
+                    <TextBlock Text="Modifier 2" Width="120" FontWeight="Bold"/>
+                    <ComboBox><ComboBoxItem IsSelected="True">Dummy</ComboBoxItem></ComboBox>
+                </StackPanel>
+
             </StackPanel>
             <local:Map x:Name="Map"/>
         </DockPanel>

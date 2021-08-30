@@ -7,7 +7,7 @@ using RurouniJones.Jupiter.Core.Models;
 
 namespace RurouniJones.Jupiter.UI.Converters
 {
-    class LocationToDmsConverter : IValueConverter
+    class LocationToDmsLatConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
@@ -16,17 +16,10 @@ namespace RurouniJones.Jupiter.UI.Converters
             var sb = new StringBuilder();
             sb.Append(coord.Latitude.Position.ToString());
             sb.Append(coord.Latitude.Degrees);
-            sb.Append("-");
-            sb.Append(coord.Latitude.Minutes);
-            sb.Append("-");
-            sb.Append(coord.Latitude.Seconds);
             sb.Append(" ");
-            sb.Append(coord.Longitude.Position.ToString());
-            sb.Append(coord.Longitude.Degrees);
-            sb.Append("-");
-            sb.Append(coord.Longitude.Minutes);
-            sb.Append("-");
-            sb.Append(coord.Longitude.Seconds);
+            sb.Append(coord.Latitude.Minutes);
+            sb.Append(" ");
+            sb.Append(Math.Round(coord.Latitude.Seconds, 4));
             return sb.ToString();
         }
 
