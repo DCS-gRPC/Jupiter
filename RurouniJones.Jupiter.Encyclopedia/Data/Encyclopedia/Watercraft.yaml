@@ -33,3 +33,9 @@
   mil_std_2525_d: 10003000001301100000
   dcs_codes:
     - ELNYA
+-
+  name: Grisha Class
+  code: Grisha Class
+  mil_std_2525_d: 10003000001202050200
+  dcs_codes:
+    - ALBATROS

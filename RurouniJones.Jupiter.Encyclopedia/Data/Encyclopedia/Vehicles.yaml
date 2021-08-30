@@ -41,3 +41,35 @@
   mil_std_2525_d: 10001000001301015023
   dcs_codes:
     - ZSU-23-4 Shilka
+-
+  name: Flak 88
+  code: Flak 88
+  mil_std_2525_d: 10001000001301010053
+  dcs_codes:
+    - flak18
+-
+  name: AZP S-60
+  code: AZP S-60
+  mil_std_2525_d: 10001000001301010053
+  dcs_codes:
+    - S-60_Type59_Artillery
+-
+  name: Gecko
+  code: SA-8
+  mil_std_2525_d: 10001000001301020053
+  dcs_codes:
+    - Osa 9A33 ln
+
+-
+  name: SA-3 Launcher
+  code: SA-3 Launcher
+  mil_std_2525_d: 10001000001301020021
+  dcs_codes:
+    - 5p73 s-125 ln
+
+-
+  name: Low Blow Fire Control Radar
+  code: SNR-125
+  mil_std_2525_d: 10001000001301025052
+  dcs_codes:
+    - snr s-125 tr

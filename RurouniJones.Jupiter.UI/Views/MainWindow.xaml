@@ -8,7 +8,7 @@
         xmlns:viewModels="clr-namespace:RurouniJones.Jupiter.Core.ViewModels;assembly=RurouniJones.Jupiter.Core"
         xmlns:converters="clr-namespace:RurouniJones.Jupiter.UI.Converters"
         mc:Ignorable="d"
-        Title="Jupiter for DCS" Height="700" Width="1000" WindowStartupLocation="CenterScreen" >
+        Title="Jupiter for DCS" Height="1000" Width="1800" WindowStartupLocation="CenterScreen" >
     <Window.DataContext>
         <viewModels:MainViewModel/>
     </Window.DataContext>
@@ -41,7 +41,7 @@
                                     <ColumnDefinition Width="40"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Source="{Binding Units[0], Mode=OneTime, Converter={StaticResource MilitarySymbolConverter}}" Width="30"
+                                <Image Source="{Binding Units[0], Converter={StaticResource MilitarySymbolConverter}}" Width="30"
                                        Grid.Column="0" VerticalAlignment="Center"/>
                                 <TextBlock Grid.Column="1" VerticalAlignment="Center" Text="{Binding Name}" />
                             </Grid>
@@ -52,7 +52,7 @@
                                     <ColumnDefinition Width="40"/>
                                     <ColumnDefinition Width="*"/>
                                 </Grid.ColumnDefinitions>
-                                <Image Source="{Binding Path=., Mode=OneTime, Converter={StaticResource MilitarySymbolConverter}}" Width="30"
+                                <Image Source="{Binding Path=., Converter={StaticResource MilitarySymbolConverter}}" Width="30"
                                        Grid.Column="0" VerticalAlignment="Center"/>
                                 <TextBlock Text="{Binding Name}" Grid.Column="1" VerticalAlignment="Center" TextWrapping="Wrap"/>
                             </Grid>

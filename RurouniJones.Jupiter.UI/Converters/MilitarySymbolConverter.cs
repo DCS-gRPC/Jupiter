@@ -23,19 +23,18 @@ namespace RurouniJones.Jupiter.UI.Converters
         
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            if (value == null)
+            ulong code = 10001000000000000000;
+            if (value != null)
             {
-                return null;
+                var unit = (Unit) value;
+                code = unit.MilStd2525dCode;
+                code = unit.Coalition switch
+                {
+                    0 => code += 40000000000000000,
+                    1 => code += 60000000000000000,
+                    2 => code += 30000000000000000
+                };
             }
-            var unit = (Unit) value;
-            var code = unit.MilStd2525dCode;
-
-            code = unit.Coalition switch
-            {
-                0 => code += 40000000000000000,
-                1 => code += 60000000000000000,
-                2 => code += 30000000000000000
-            };
 
             var pngImagePath = Path.Combine(BasePath, $"Assets\\MapIcons\\{code}.png");
 

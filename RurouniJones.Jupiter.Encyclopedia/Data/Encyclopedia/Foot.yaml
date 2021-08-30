@@ -12,3 +12,9 @@
   dcs_codes:
     - SA-18 Igla manpad
     - SA-18 Igla-S manpad
+-
+  name: Infantry with RPG
+  code: Infantry with RPG
+  mil_std_2525_d: 10001000001204000000
+  dcs_codes:
+    - Soldier RPG
