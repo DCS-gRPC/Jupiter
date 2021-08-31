@@ -8,7 +8,7 @@
 -
   name: Infantry with MANPAD
   code: Infantry with MANPAD
-  mil_std_2525_d: 10001000001301020043
+  mil_std_2525_d: 10001000001301020023
   dcs_codes:
     - SA-18 Igla manpad
     - SA-18 Igla-S manpad

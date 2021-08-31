@@ -103,12 +103,13 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                                     Pilot = sourceUnit.Callsign,
                                     Type = sourceUnit.Type,
                                     Player = sourceUnit.PlayerName,
-                                    MilStd2525dCode = Encyclopedia.Repository.GetMilStd2525DCodeByDcsCode(sourceUnit.Type)
+                                    GroupName = sourceUnit.GroupName,
+                                    MilStd2525dCode = Encyclopedia.Repository.GetMilStd2525DCodeByDcsCode(sourceUnit.Type),
                                 };
                                 Units.Add(newUnit);
 
-                                var col = Coalitions.First(c => c.Id == (uint) sourceUnit.Coalition);
-                                var grp = col.Groups.FirstOrDefault(g => g.Name == sourceUnit.GroupName);
+                                var col = Coalitions.First(c => c.Id == (uint) newUnit.Coalition);
+                                var grp = col.Groups.FirstOrDefault(g => g.Name == newUnit.GroupName);
                                 if (grp != null)
                                 {
                                     grp.Units.Add(newUnit);
@@ -116,12 +117,14 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                                 else
                                 {
                                     grp = new Group
-                                        { Name = sourceUnit.GroupName, Units = new ObservableCollection<Unit> { newUnit }
-                                        };
+                                    {
+                                        Name = newUnit.GroupName,
+                                        Units = new ObservableCollection<Unit> { newUnit }
+                                    };
                                     col.Groups.Add(grp);
                                 }
 
-                                Debug.WriteLine(newUnit);
+                                Debug.WriteLine($"Added {newUnit}");
                             }
                             break;
                         case UnitUpdate.UpdateOneofCase.Gone:
@@ -132,18 +135,35 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                                 for (var i = coalition.Groups.Count - 1; i --> 0;)
                                 {
                                     var group = coalition.Groups[i];
-                                    var unit = group.Units.FirstOrDefault(u => u.Id == unitDelete.Id);
-                                    if (unit == null) continue;
-                                    if (group.Units.Count == 1)
+                                    var unit = group.Units.FirstOrDefault(u => u.Name == unitDelete.Name);
+                                    if (unit == null)
                                     {
+                                        Debug.WriteLine($"Unit \"{unitDelete.Name}\" not in group \"{group.Name}\"");
+                                        continue;
+                                    }
+                                    Debug.WriteLine($"Found Unit \"{unit.Name}\" in group \"{group.Name}\"");
+                                    if (group.Units.Count <= 1)
+                                    {
+                                        Debug.WriteLine($"Deleted Group \"{group.Name}\"");
                                         coalition.Groups.Remove(group);
                                     }
+                                    Debug.WriteLine($"Deleted Unit \"{unit.Name}\" from group \"{group.Name}\"");
                                     group.Units.Remove(unit);
                                     deleted = true;
                                 }
                                 if (deleted) break;
+                                Debug.WriteLine($"Unit \"{unitDelete.Name}\" to be deleted but not found in Coalition \"{coalition.Name}\"");
                             }
-                            Units.Remove(Units.First(u => u.Id == unitDelete.Id));
+                            var unitToDelete = Units.FirstOrDefault(u => u.Name == unitDelete.Name);
+                            if (unitToDelete == null)
+                            {
+                                Debug.WriteLine($"Unit \"{unitDelete.Name}\" is to be deleted but could not be found");
+                            }
+                            else
+                            {
+                                Debug.WriteLine($"Deleted Unit \"{unitDelete.Name}\"");
+                                Units.Remove(unitToDelete);
+                            }
                             break;
                         default:
                             throw new ArgumentOutOfRangeException();

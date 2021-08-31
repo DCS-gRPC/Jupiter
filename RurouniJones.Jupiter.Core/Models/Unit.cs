@@ -41,6 +41,14 @@ namespace RurouniJones.Jupiter.Core.Models
             set => SetProperty(ref _id, value);
         }
 
+        private string _groupName;
+        public string GroupName
+        {
+            get => _groupName;
+            set => SetProperty(ref _groupName, value);
+        }
+
+
         private int _coalition;
         public int Coalition
         {
@@ -84,7 +92,7 @@ namespace RurouniJones.Jupiter.Core.Models
 
         public override string ToString()
         {
-            return $"{nameof(Location)}: {Location}, {nameof(Name)}: {Name}, {nameof(Id)}: {Id}, {nameof(Coalition)}: {Coalition}, {nameof(Pilot)}: {Pilot}, {nameof(Type)}: {Type}, {nameof(MilStd2525dCode)}: {MilStd2525dCode}";
+            return $"{nameof(Location)}: {Location}, {nameof(Name)}: {Name}, {nameof(Id)}: {Id},  {nameof(GroupName)}: {GroupName}, {nameof(Coalition)}: {Coalition}, {nameof(Pilot)}: {Pilot}, {nameof(Type)}: {Type}, {nameof(MilStd2525dCode)}: {MilStd2525dCode}";
         }
     }
 }
