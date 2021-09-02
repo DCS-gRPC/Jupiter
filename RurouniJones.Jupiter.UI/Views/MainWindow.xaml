@@ -63,7 +63,7 @@
             <TabItem Header="C" />
         </TabControl>
         <DockPanel Grid.Row="0" Grid.Column="1">
-            <StackPanel x:Name="UnitInformation" DockPanel.Dock="Right" Width="Auto" MinWidth="250" Margin="5 5 10 5">
+            <StackPanel x:Name="UnitInformation" DockPanel.Dock="Right" Width="Auto" MinWidth="300" Margin="5 5 10 5">
                 <TextBlock Text="Location" HorizontalAlignment="Center" FontWeight="Bold" FontSize="16"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Decimal lat" Width="120" FontWeight="Bold"/>
