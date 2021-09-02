@@ -1,44 +1,54 @@
 ﻿---
 -
-  name: Nimitz Class
-  code: Nimits Class
-  mil_std_2525_d: 10003000001201000000
+  name: Rezky Class
+  code: Rezky Class
+  mil_std_2525_d: 10003000001202040300
   dcs_codes:
-    - Stennis
-    - CVN_71
-    - CVN_72
-    - CVN_73
-    - CVN_74
+    - REZKY
+-
+  name: Neustrashimyy Class
+  code: Neustrashimyy Class
+  mil_std_2525_d: 10003000001202040400
+  dcs_codes:
+    - NEUSTRASH
+-
+  name: Samuel Chase Landing Ship
+  code: Samuel Chase Landing Ship
+  mil_std_2525_d: 10003000001203070000
+  dcs_codes:
+    - USS_Samuel_Chase
 -
   name: Ticonderoga Class
   code: Ticonderoga Class
   mil_std_2525_d: 10003000001202021500
   dcs_codes:
     - TICONDEROG
--
-  name: Oliver Hazard Perry Class
-  code: Oliver Hazard Perry Class
-  mil_std_2525_d: 10003000001202041500
+    
+- # https://en.wikipedia.org/wiki/Kilo-class_submarine
+  name: Kilo Class
+  code: Kilo Class
+  mil_std_2525_d: 10003500001101000802
   dcs_codes:
-    - PERRY
+    - KILO
 -
-  name: Tarawa Class
-  code: Tarawa Class
-  mil_std_2525_d: 10003000001203030000
+  name: Molniya Class
+  code: Molniya Class
+  mil_std_2525_d: 10003000001202051500
   dcs_codes:
-    - LHA_Tarawa
+    - MOLNIYA
+    
+- # https://en.wikipedia.org/wiki/Seawise_Giant
+  name: Seawise Giant
+  code: Seawise Giant
+  mil_std_2525_d: 10003000001401090000
+  dcs_codes:
+    - Seawise_Giant
 -
-  name: Altay Class
-  code: Altay Class
-  mil_std_2525_d: 10003000001301100000
+  name: Landing Ship, Tank Mk2
+  code: Landing Ship, Tank Mk2
+  mil_std_2525_d: 10003000001203070007
   dcs_codes:
-    - ELNYA
--
-  name: Grisha Class
-  code: Grisha Class
-  mil_std_2525_d: 10003000001202050200
-  dcs_codes:
-    - ALBATROS
+    - LST_Mk2
 -
   name: La Combattante Class
   code: La Combattante Class
@@ -46,8 +56,122 @@
   dcs_codes:
     - La_Combattante_II
 -
-  name: Molniya Class
-  code: Molniya Class
-  mil_std_2525_d: 10003000001202051500
+  name: Tarawa Class
+  code: Tarawa Class
+  mil_std_2525_d: 10003000001203030000
   dcs_codes:
-    - MOLNIYA
+    - LHA_Tarawa
+    
+-  # Be nice to figure out what real-life class this is based off.
+  name: Ivanov Class
+  code: Ivanov Class
+  mil_std_2525_d: 10003000001401020000
+  dcs_codes:
+    - Dry-cargo ship-2
+-
+  name: Higgins Boat
+  code: Higgins Boat
+  mil_std_2525_d: 10003000001203080000
+  dcs_codes:
+    - Higgins_boat
+    
+- # Be nice to figure out what real-life class this is based off.
+  name: Unknown
+  code: Unknown
+  mil_std_2525_d: 10003000001401010000
+  dcs_codes:
+    - Dry-cargo ship-1 
+    
+- # https://en.wikipedia.org/wiki/Type_054A_frigate
+  name: Type 054A
+  code: Type 054A
+  mil_std_2525_d: 10003000001202040400
+  dcs_codes:
+    - Type_054A
+    
+- # https://en.wikipedia.org/wiki/Type_052C_destroyer
+  name: Type_052C
+  code: Type_052C
+  mil_std_2525_d: 10003000001202031500
+  dcs_codes:
+    - Type_052C
+
+- # https://en.wikipedia.org/wiki/Type_052B_destroyer
+  name: Type_052B
+  code: Type_052B
+  mil_std_2525_d: 10003000001202031500
+  dcs_codes:
+    - Type_052B
+    
+- # https://en.wikipedia.org/wiki/Slava-class_cruiser
+  name: Slava Class
+  code: Slava Class
+  mil_std_2525_d: 10003000001202021500
+  dcs_codes:
+    - MOSCOW
+
+- # I'm not sure this asset is in the game any more, I can't find it with any nation (used to be in RUS I think) - Cosmic
+  name: Tango Class
+  code: Tango Class
+  mil_std_2525_d:
+  dcs_codes:
+    - SOM
+-
+  name: Armed Speedboat
+  code: Armed Speedboat
+  mil_std_2525_d: 10003000001208000009
+  dcs_codes:
+    - speedboat
+-
+  name: Grisha Class
+  code: Grisha Class
+  mil_std_2525_d: 10003000001202050200
+  dcs_codes:
+    - ALBATROS
+-
+  name: Oliver Hazard Perry Class
+  code: Oliver Hazard Perry Class
+  mil_std_2525_d: 10003000001202041500
+  dcs_codes:
+    - PERRY
+-
+  name: Nimitz Class
+  code: Nimits Class
+  mil_std_2525_d: 10003000001201000001
+  dcs_codes:
+    - VINSON
+    - Stennis
+    - CVN_71
+    - CVN_72
+    - CVN_73
+    - CVN_75
+-
+  name: Kirov Class
+  code: Kirov Class
+  mil_std_2525_d: 10003000001202021501
+  dcs_codes:
+    - PIOTR
+-
+  name: Zvezdny Class #This thing has so few pixels I don't know if it's meant to be a yacht, ferry, or something else
+  code: Zvezdny Class
+  mil_std_2525_d: 10003000001400000000
+  dcs_codes:
+    - ZWEZDNY
+-
+  name: Kuznetsov Class
+  code: Kuznetsov Class
+  mil_std_2525_d: 10003000001201000000
+  dcs_codes:
+    - KUZNECOW
+-
+  name: Altay Class
+  code: Altay Class
+  mil_std_2525_d: 10003000001301100000
+  dcs_codes:
+    - ELNYA
+-
+  name: Unknown
+  code: Unknown
+  mil_std_2525_d:
+  dcs_codes:
+    - SING
