@@ -99,7 +99,7 @@
                                 </MultiBinding>
                             </MenuItem.CommandParameter>
                         </MenuItem>
-                        <MenuItem Header="Orange" Command="{Binding LaunchFlareCommand}">
+                        <MenuItem Header="Yellow" Command="{Binding LaunchFlareCommand}">
                             <MenuItem.CommandParameter>
                                 <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
                                     <Binding Path="MouseLocation"/>
@@ -150,7 +150,14 @@
                             </MenuItem.CommandParameter>
                         </MenuItem>
                     </MenuItem>
-                    <MenuItem Header="Illumination" />
+                    <MenuItem Header="Illumination Bomb" Command="{Binding IlluminationBombCommand}">
+                        <MenuItem.CommandParameter>
+                            <MultiBinding Converter="{StaticResource LocationAndColorConverter}">
+                                <Binding Path="MouseLocation"/>
+                                <Binding Path="Header" RelativeSource="{RelativeSource Self}"/>
+                            </MultiBinding>
+                        </MenuItem.CommandParameter>
+                    </MenuItem>
                     <Separator />
                     <MenuItem Header="Explosion">
                         <MenuItem Header="500lbs"/>

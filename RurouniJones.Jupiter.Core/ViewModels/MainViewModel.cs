@@ -22,6 +22,8 @@ namespace RurouniJones.Jupiter.Core.ViewModels
 
         public PopSmokeCommand PopSmokeCommand { get; }
         public LaunchFlareCommand LaunchFlareCommand { get; }
+        public IlluminationBombCommand IlluminationBombCommand { get; }
+
 
         private Location _mapLocation;
         public Location MapLocation
@@ -57,6 +59,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels
             GameEventCollection = new ObservableCollection<EventSummary>();
             PopSmokeCommand = new PopSmokeCommand();
             LaunchFlareCommand = new LaunchFlareCommand();
+            IlluminationBombCommand = new IlluminationBombCommand();
             Units = new ObservableCollection<Unit>();
 
 #pragma warning disable 4014
