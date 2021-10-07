@@ -32,7 +32,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
                         {
                             Lat = location.Latitude,
                             Lon = location.Longitude,
-                            Alt = location.Altitude
+                            Alt = 0 // This value is ignored. Smoke is placed at ground level as calculated server-side
                         },
                         Color = (SmokeRequest.Types.SmokeColor) Enum.Parse(
                             typeof(SmokeRequest.Types.SmokeColor), color)

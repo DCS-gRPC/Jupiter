@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using Grpc.Net.Client;
 using RurouniJones.Jupiter.Core.Models;
@@ -36,7 +32,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
                         {
                             Lat = location.Latitude,
                             Lon = location.Longitude,
-                            Alt = 2000
+                            Alt = 1066
                         },
                     }
                 );
