@@ -70,6 +70,27 @@ namespace RurouniJones.Jupiter.Core.Models
             set => SetProperty(ref _type, value);
         }
 
+        private Symbology.Context _context;
+        public Symbology.Context Context
+        {
+            get => _context;
+            set => SetProperty(ref _context, value);
+        }
+
+        private Symbology.StandardIdentity _standardIdentity;
+        public Symbology.StandardIdentity StandardIdentity
+        {
+            get => _standardIdentity;
+            set => SetProperty(ref _standardIdentity, value);
+        }
+
+        private Symbology.SymbolSet _symbolSet;
+        public Symbology.SymbolSet SymbolSet
+        {
+            get => _symbolSet;
+            set => SetProperty(ref _symbolSet, value);
+        }
+
         private ulong _milStd2525dCode;
         public ulong MilStd2525dCode
         {
