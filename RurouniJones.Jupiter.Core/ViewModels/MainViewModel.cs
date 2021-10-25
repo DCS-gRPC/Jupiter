@@ -236,8 +236,8 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                         case Event.EventOneofCase.Birth:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.Birth.Initiator.Unit?.PlayerName, gameEvent.Birth.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.SystemFailure:
-                            GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.SystemFailure.Initiator.Unit?.PlayerName, gameEvent.SystemFailure.Initiator.Unit?.Name, gameEvent.ToString()));
+                        case Event.EventOneofCase.HumanFailure:
+                            GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.HumanFailure.Initiator.Unit?.PlayerName, gameEvent.HumanFailure.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
                         case Event.EventOneofCase.EngineStartup:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.EngineStartup.Initiator.Unit?.PlayerName, gameEvent.EngineStartup.Initiator.Unit?.Name, gameEvent.ToString()));
