@@ -26,7 +26,7 @@
 
   <ItemGroup>
     <None Remove="Protos\*.proto" />
-    <Protobuf Include="Protos\*.proto" ProtoRoot="Protos" />
+    <Protobuf Include="Protos\dcs\**\*.proto" ProtoRoot="Protos" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+option csharp_namespace = "RurouniJones.Jupiter.Dcs.Hook";
+
+package dcs.hook;
+
+// APis that are part of the hook environment
+service HookService {
+  // https://wiki.hoggitworld.com/view/DCS_func_getMissionName
+  rpc GetMissionName(GetMissionNameRequest) returns (GetMissionNameResponse) {}
+
+  // Stream all chat messages.
+  rpc StreamChatMessages(StreamChatMessagesRequest)
+      returns (stream StreamChatMessagesResponse) {}
+
+  // Evaluate some Lua inside of the hook environment and return the result as a
+  // JSON string. Disabled by default.
+  rpc Eval(EvalRequest) returns (EvalResponse) {}
+}
+
+message GetMissionNameRequest {}
+
+message GetMissionNameResponse {
+  string name = 1;
+}
+
+message StreamChatMessagesRequest {}
+
+message StreamChatMessagesResponse {
+  // The ID of the player sending the chat messaage.
+  uint32 player_id = 2;
+
+  // The chat message.
+  string message = 3;
+
+  // Whether the message was send to all or only to allies.
+  bool all = 4;
+}
+
+message EvalRequest {
+  string lua = 1;
+}
+
+message EvalResponse {
+  string json = 1;
+}

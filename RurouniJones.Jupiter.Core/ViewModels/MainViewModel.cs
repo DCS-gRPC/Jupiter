@@ -8,6 +8,7 @@ using Grpc.Net.Client;
 using RurouniJones.Jupiter.Core.Models;
 using RurouniJones.Jupiter.Core.ViewModels.Commands;
 using RurouniJones.Jupiter.Dcs;
+using RurouniJones.Jupiter.Dcs.Mission;
 using Coalition = RurouniJones.Jupiter.Core.Models.Coalition;
 using Group = RurouniJones.Jupiter.Core.Models.Group;
 using Unit = RurouniJones.Jupiter.Core.Models.Unit;
@@ -74,7 +75,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels
             try
             {
                 using var channel = GrpcChannel.ForAddress($"http://{Global.HostName}:{Global.Port}");
-                var client = new Mission.MissionClient(channel);
+                var client = new MissionService.MissionServiceClient(channel);
                 var units = client.StreamUnits(new StreamUnitsRequest()
                 {
                     PollRate = 1,
@@ -86,9 +87,9 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                 {
                     switch(unitUpdate.UpdateCase)
                     {
-                        case UnitUpdate.UpdateOneofCase.None:
+                        case StreamUnitsResponse.UpdateOneofCase.None:
                             break;
-                        case UnitUpdate.UpdateOneofCase.Unit:
+                        case StreamUnitsResponse.UpdateOneofCase.Unit:
                             if (Units.Any(u => u.Id == unitUpdate.Unit.Id))
                             {
                                 var unitDetails = unitUpdate.Unit;
@@ -130,7 +131,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                                 Debug.WriteLine($"Added {newUnit}");
                             }
                             break;
-                        case UnitUpdate.UpdateOneofCase.Gone:
+                        case StreamUnitsResponse.UpdateOneofCase.Gone:
                             var unitDelete = unitUpdate.Gone;
                             var deleted = false;
                             foreach (var coalition in Coalitions)
@@ -184,7 +185,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels
             try
             {
                 using var channel = GrpcChannel.ForAddress($"http://{Global.HostName}:{Global.Port}");
-                var client = new Mission.MissionClient(channel);
+                var client = new MissionService.MissionServiceClient(channel);
                 var events = client.StreamEvents(new StreamEventsRequest());
 
                 //TODO add cancellation token that is triggered on disconnect
@@ -192,78 +193,78 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                 {
                     switch (gameEvent.EventCase)
                     {
-                        case Event.EventOneofCase.None:
+                        case StreamEventsResponse.EventOneofCase.None:
                             break;
-                        case Event.EventOneofCase.Shot:
+                        case StreamEventsResponse.EventOneofCase.Shot:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.Shot.Initiator.Unit.PlayerName, gameEvent.Shot.Initiator.Unit.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.Hit:
+                        case StreamEventsResponse.EventOneofCase.Hit:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.Hit.Initiator.Unit?.PlayerName, gameEvent.Hit.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.Takeoff:
+                        case StreamEventsResponse.EventOneofCase.Takeoff:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.Takeoff.Initiator.Unit?.PlayerName, gameEvent.Takeoff.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.Land:
+                        case StreamEventsResponse.EventOneofCase.Land:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.Land.Initiator.Unit?.PlayerName, gameEvent.Land.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.Crash:
+                        case StreamEventsResponse.EventOneofCase.Crash:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.Crash.Initiator.Unit?.PlayerName, gameEvent.Crash.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.Ejection:
+                        case StreamEventsResponse.EventOneofCase.Ejection:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.Ejection.Initiator.Unit?.PlayerName, gameEvent.Ejection.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.Refueling:
+                        case StreamEventsResponse.EventOneofCase.Refueling:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.Refueling.Initiator.Unit?.PlayerName, gameEvent.Refueling.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.Dead:
+                        case StreamEventsResponse.EventOneofCase.Dead:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.Dead.Initiator.Unit?.PlayerName, gameEvent.Dead.Initiator.Unit?.Name ?? gameEvent.ToString(), gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.PilotDead:
+                        case StreamEventsResponse.EventOneofCase.PilotDead:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.PilotDead.Initiator.Unit?.PlayerName,  gameEvent.PilotDead.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.BaseCapture:
+                        case StreamEventsResponse.EventOneofCase.BaseCapture:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.BaseCapture.Initiator.Unit?.PlayerName, gameEvent.BaseCapture.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.MissionStart:
+                        case StreamEventsResponse.EventOneofCase.MissionStart:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), null, "MissionSession", gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.MissionEnd:
+                        case StreamEventsResponse.EventOneofCase.MissionEnd:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), null, "MissionSession", gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.RefuelingStop:
+                        case StreamEventsResponse.EventOneofCase.RefuelingStop:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.RefuelingStop.Initiator.Unit?.PlayerName, gameEvent.RefuelingStop.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.Birth:
+                        case StreamEventsResponse.EventOneofCase.Birth:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.Birth.Initiator.Unit?.PlayerName, gameEvent.Birth.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.HumanFailure:
+                        case StreamEventsResponse.EventOneofCase.HumanFailure:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.HumanFailure.Initiator.Unit?.PlayerName, gameEvent.HumanFailure.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.EngineStartup:
+                        case StreamEventsResponse.EventOneofCase.EngineStartup:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.EngineStartup.Initiator.Unit?.PlayerName, gameEvent.EngineStartup.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.EngineShutdown:
+                        case StreamEventsResponse.EventOneofCase.EngineShutdown:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.EngineShutdown.Initiator.Unit?.PlayerName, gameEvent.EngineShutdown.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.PlayerEnterUnit:
+                        case StreamEventsResponse.EventOneofCase.PlayerEnterUnit:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.PlayerEnterUnit.Initiator.Unit?.PlayerName, gameEvent.PlayerEnterUnit.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.PlayerLeaveUnit:
+                        case StreamEventsResponse.EventOneofCase.PlayerLeaveUnit:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.PlayerLeaveUnit.Initiator.Unit?.PlayerName, gameEvent.PlayerLeaveUnit.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.ShootingStart:
+                        case StreamEventsResponse.EventOneofCase.ShootingStart:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.ShootingStart.Initiator.Unit?.PlayerName, gameEvent.ShootingStart.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.ShootingEnd:
+                        case StreamEventsResponse.EventOneofCase.ShootingEnd:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.ShootingEnd.Initiator.Unit?.PlayerName, gameEvent.ShootingEnd.Initiator.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.MarkAdd:
+                        case StreamEventsResponse.EventOneofCase.MarkAdd:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.MarkAdd.Initiator?.Unit?.PlayerName, gameEvent.MarkAdd.Initiator?.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.MarkChange:
+                        case StreamEventsResponse.EventOneofCase.MarkChange:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.MarkChange.Initiator?.Unit?.PlayerName, gameEvent.MarkChange.Initiator?.Unit?.Name, gameEvent.ToString()));
                             break;
-                        case Event.EventOneofCase.MarkRemove:
+                        case StreamEventsResponse.EventOneofCase.MarkRemove:
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.MarkRemove.Initiator?.Unit?.PlayerName, gameEvent.MarkRemove.Initiator?.Unit?.Name, gameEvent.ToString()));
                             break;
                         default:

@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "RurouniJones.Jupiter.Dcs.World";
+
+import "dcs/common/common.proto";
+
+package dcs.world;
+
+// https://wiki.hoggitworld.com/view/DCS_singleton_world
+service WorldService {
+  // https://wiki.hoggitworld.com/view/DCS_func_getAirbases
+  rpc GetAirbases(GetAirbasesRequest) returns (GetAirbasesResponse) {}
+
+  // https://wiki.hoggitworld.com/view/DCS_func_getMarkPanels
+  rpc GetMarkPanels(GetMarkPanelsRequest) returns (GetMarkPanelsResponse) {}
+}
+
+message GetAirbasesRequest {
+  dcs.common.Coalition coalition = 1; // Use COALITION_UNSPECIFIED to get airbases for all coalitions
+}
+
+message GetAirbasesResponse {
+  repeated dcs.common.Airbase airbases = 1;
+}
+
+message GetMarkPanelsRequest {}
+
+message GetMarkPanelsResponse {
+  repeated dcs.common.MarkPanel mark_panels = 1;
+}

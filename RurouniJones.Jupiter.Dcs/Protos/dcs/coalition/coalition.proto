@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+option csharp_namespace = "RurouniJones.Jupiter.Dcs.Coalition";
+
+import "dcs/common/common.proto";
+
+package dcs.coalition;
+
+// https://wiki.hoggitworld.com/view/DCS_singleton_coalition
+service CoalitionService {
+  // https://wiki.hoggitworld.com/view/DCS_func_getPlayers
+  rpc GetPlayers(GetPlayersRequest) returns (GetPlayersResponse) {}
+
+  // https://wiki.hoggitworld.com/view/DCS_func_getGroups
+  rpc GetGroups(GetGroupsRequest) returns (GetGroupsResponse) {}
+
+  /*
+   * Get the Main Reference Point ("Bullseye") for the coalition
+   *
+   * This position is set at mission start and does not change for the duration
+   * of the mission.
+   *
+   * See https://wiki.hoggitworld.com/view/DCS_func_getMainRefPoint for more
+   * details
+   */
+  rpc GetMainReferencePoint(GetMainReferencePointRequest)
+      returns (GetMainReferencePointResponse) {}
+}
+
+message GetMainReferencePointRequest {
+  dcs.common.Coalition coalition = 1; // You must specify a coalition for this API call
+}
+
+message GetMainReferencePointResponse {
+  dcs.common.Position position = 1;
+}
+
+message GetPlayersRequest {
+  dcs.common.Coalition coalition = 1; // Use COALITION_UNSPECIFIED to get players for all coalitions
+}
+
+message GetPlayersResponse {
+  repeated dcs.common.Unit units = 1;
+}
+
+message GetGroupsRequest {
+  dcs.common.Coalition coalition = 1; // Use COALITION_UNSPECIFIED to get groups for all coalitions
+  optional dcs.common.GroupCategory category = 2;
+}
+
+message GetGroupsResponse {
+  repeated dcs.common.Group groups = 1;
+}

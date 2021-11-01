@@ -3,7 +3,8 @@ using System.Diagnostics;
 using System.Windows.Input;
 using Grpc.Net.Client;
 using RurouniJones.Jupiter.Core.Models;
-using RurouniJones.Jupiter.Dcs;
+using RurouniJones.Jupiter.Dcs.Common;
+using RurouniJones.Jupiter.Dcs.Trigger;
 
 namespace RurouniJones.Jupiter.Core.ViewModels.Commands
 {
@@ -25,7 +26,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
             try
             {
                 using var channel = GrpcChannel.ForAddress($"http://{Global.HostName}:{Global.Port}");
-                var client = new Triggers.TriggersClient(channel);
+                var client = new TriggerService.TriggerServiceClient(channel);
                 client.SignalFlare(new SignalFlareRequest
                     {
                         Position = new Position
