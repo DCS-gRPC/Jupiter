@@ -1,10 +1,7 @@
 syntax = "proto3";
-
+package dcs.world.v0;
+import "dcs/common/v0/common.proto";
 option csharp_namespace = "RurouniJones.Jupiter.Dcs.World";
-
-import "dcs/common/common.proto";
-
-package dcs.world;
 
 // https://wiki.hoggitworld.com/view/DCS_singleton_world
 service WorldService {
@@ -16,15 +13,16 @@ service WorldService {
 }
 
 message GetAirbasesRequest {
-  dcs.common.Coalition coalition = 1; // Use COALITION_UNSPECIFIED to get airbases for all coalitions
+  dcs.common.v0.Coalition coalition = 1;
 }
 
 message GetAirbasesResponse {
-  repeated dcs.common.Airbase airbases = 1;
+  repeated dcs.common.v0.Airbase airbases = 1;
 }
 
-message GetMarkPanelsRequest {}
+message GetMarkPanelsRequest {
+}
 
 message GetMarkPanelsResponse {
-  repeated dcs.common.MarkPanel mark_panels = 1;
+  repeated dcs.common.v0.MarkPanel mark_panels = 1;
 }

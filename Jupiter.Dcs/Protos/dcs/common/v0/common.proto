@@ -1,0 +1,363 @@
+syntax = "proto3";
+package dcs.common.v0;
+option csharp_namespace = "RurouniJones.Jupiter.Dcs.Common";
+
+/**
+ * The category the object belongs to
+ *
+ * All DCS objects are one of the following categories. Unlike many other
+ * enums created by DCS, this one is not 0 indexed. Therefore we do not
+ * need to do any modification of the value by incrementing it by one to
+ * make it work with gRPC and DCS.
+ *
+ * See https://wiki.hoggitworld.com/view/DCS_Class_Object for more information
+ */
+enum ObjectCategory {
+  OBJECT_CATEGORY_UNSPECIFIED = 0;
+  OBJECT_CATEGORY_UNIT = 1;
+  OBJECT_CATEGORY_WEAPON = 2;
+  OBJECT_CATEGORY_STATIC = 3;
+  OBJECT_CATEGORY_SCENERY = 4;
+  OBJECT_CATEGORY_BASE = 5;
+  OBJECT_CATEGORY_CARGO = 6;
+}
+
+/**
+ * The category the object belongs to
+ *
+ * Some of these are less than obvious. For example an oilrig counts as a
+ * HELIPAD airfield.
+ */
+enum AirbaseCategory {
+  AIRBASE_CATEGORY_UNSPECIFIED = 0;
+  AIRBASE_CATEGORY_AIRDROME = 1;
+  AIRBASE_CATEGORY_HELIPAD = 2;
+  AIRBASE_CATEGORY_SHIP = 3;
+}
+
+/**
+ * Coalitions in DCS
+ *
+ * The coalitions supported by DCS. The NEUTRAL coalition is a relatively new
+ * one and may not be as supported as the belligerant ones.
+ */
+enum Coalition {
+  // protolint:disable:next ENUM_FIELD_NAMES_ZERO_VALUE_END_WITH
+  COALITION_ALL = 0;
+  COALITION_NEUTRAL = 1;
+  COALITION_RED = 2;
+  COALITION_BLUE = 3;
+}
+
+/**
+ * Countries in DCS
+ *
+ * Every country belongs to a coalition and this association is set per mission.
+ * The values of these enums are correct such that they will work with DCS
+ * however the text names have been Made to follow gRPC conventions to to aid
+ * in language bindings and acronyms have been replaced with their full english
+ * names to aid in recognition. In some cases this can be a big change
+ * (e.g. USSR -> Soviet Union).
+ *
+ * We have also added a dummy value for the missing enum value 14 to prevent
+ * possible issues in the various language bindings
+ *
+ * See https://wiki.hoggitworld.com/view/DCS_enum_country for more information
+ */
+enum Country {
+  COUNTRY_UNSPECIFIED = 0;
+  COUNTRY_RUSSIA = 1;
+  COUNTRY_UKRAINE = 2;
+  COUNTRY_UNITED_STATES_OF_AMERICA = 3;
+  COUNTRY_TURKEY = 4;
+  COUNTRY_UNITED_KINGDOM = 5;
+  COUNTRY_FRANCE = 6;
+  COUNTRY_GERMANY = 7;
+  COUNTRY_AGGRESSORS = 8;
+  COUNTRY_CANADA = 9;
+  COUNTRY_SPAIN = 10;
+  COUNTRY_THE_NETHERLANDS = 11;
+  COUNTRY_BELGIUM = 12;
+  COUNTRY_NORWAY = 13;
+  COUNTRY_DENMARK = 14;
+  COUNTRY_UNUSED = 15;
+  COUNTRY_ISRAEL = 16;
+  COUNTRY_GEORGIA = 17;
+  COUNTRY_INSURGENTS = 18;
+  COUNTRY_ABKHAZIA = 19;
+  COUNTRY_SOUTH_OSETIA = 20;
+  COUNTRY_ITALY = 21;
+  COUNTRY_AUSTRALIA = 22;
+  COUNTRY_SWITZERLAND = 23;
+  COUNTRY_AUSTRIA = 24;
+  COUNTRY_BELARUS = 25;
+  COUNTRY_BULGARIA = 26;
+  COUNTRY_CZECH_REPUBLIC = 27;
+  COUNTRY_CHINA = 28;
+  COUNTRY_CROATIA = 29;
+  COUNTRY_EGYPT = 30;
+  COUNTRY_FINLAND = 31;
+  COUNTRY_GREECE = 32;
+  COUNTRY_HUNGARY = 33;
+  COUNTRY_INDIA = 34;
+  COUNTRY_IRAN = 35;
+  COUNTRY_IRAQ = 36;
+  COUNTRY_JAPAN = 37;
+  COUNTRY_KAZAKHSTAN = 38;
+  COUNTRY_NORTH_KOREA = 39;
+  COUNTRY_PAKISTAN = 40;
+  COUNTRY_POLAND = 41;
+  COUNTRY_ROMANIA = 42;
+  COUNTRY_SAUDI_ARABIA = 43;
+  COUNTRY_SERBIA = 44;
+  COUNTRY_SLOVAKIA = 45;
+  COUNTRY_SOUTH_KOREA = 46;
+  COUNTRY_SWEDEN = 47;
+  COUNTRY_SYRIA = 48;
+  COUNTRY_YEMEN = 49;
+  COUNTRY_VIETNAM = 50;
+  COUNTRY_VENEZUELA = 51;
+  COUNTRY_TUNISIA = 52;
+  COUNTRY_THAILAND = 53;
+  COUNTRY_SUDAN = 54;
+  COUNTRY_PHILIPPINES = 55;
+  COUNTRY_MOROCCO = 56;
+  COUNTRY_MEXICO = 57;
+  COUNTRY_MALAYSIA = 58;
+  COUNTRY_LIBYA = 59;
+  COUNTRY_JORDAN = 60;
+  COUNTRY_INDONESIA = 61;
+  COUNTRY_HONDURAS = 62;
+  COUNTRY_ETHIOPIA = 63;
+  COUNTRY_CHILE = 64;
+  COUNTRY_BRAZIL = 65;
+  COUNTRY_BAHRAIN = 66;
+  COUNTRY_THIRDREICH = 67;
+  COUNTRY_YUGOSLAVIA = 68;
+  COUNTRY_SOVIET_UNION = 69;
+  COUNTRY_ITALIAN_SOCIAL_REPUBLIC = 70;
+  COUNTRY_ALGERIA = 71;
+  COUNTRY_KUWAIT = 72;
+  COUNTRY_QATAR = 73;
+  COUNTRY_OMAN = 74;
+  COUNTRY_UNITED_ARAB_EMIRATES = 75;
+  COUNTRY_SOUTH_AFRICA = 76;
+  COUNTRY_CUBA = 77;
+  COUNTRY_PORTUGAL = 78;
+  COUNTRY_GERMAN_DEMOCRATIC_REPUBLIC = 79;
+  COUNTRY_LEBANON = 80;
+  COUNTRY_COMBINED_JOINT_TASK_FORCE_BLUE = 81;
+  COUNTRY_COMBINED_JOINT_TASK_FORCE_RED = 82;
+  COUNTRY_UNITED_NATIONS_PEACEKEEPERS = 83;
+  COUNTRY_ARGENTINA = 84;
+  COUNTRY_CYPRUS = 85;
+  COUNTRY_SLOVENIA = 86;
+}
+
+/**
+ * Position of an object in DCS
+ *
+ * Latitude and Longitude are in Decimal Degrees format (e.g. 41.33 / 37.21).
+ * Negative values are used for West of the meridian and south of the equator
+ *
+ * Altitude is given in meters above Mean Sea Level (MSL) and can be a decimal
+ * value.
+ */
+message Position {
+  // Latitude in Decimal Degrees format
+  double lat = 1;
+  // Longitude in Decimal Degrees format
+  double lon = 2;
+  // Altitude in Meters above Mean Sea Level (MSL)
+  double alt = 3;
+}
+
+/**
+ * This type is returned if an object category cannot be determined
+ *
+ * The base object includes the `getName()` function so even for an unknown type
+ * we _should_ be able to get the name
+ */
+message Unknown {
+  string name = 1;
+}
+
+/**
+ * An instance of a DCS Unit
+ *
+ * A unit is an "active" unit in a DCS mission. This means it has an attached AI
+ * that moves and shoots. Units include aircraft, ground units, ships, weapons
+ * etc.
+ */
+message Unit {
+  // The DCS generated ID
+  uint32 id = 1;
+  // The name of the unit as assigned in the mission editor
+  string name = 2;
+  // The DCS assigned callsign if one exists. e.g. "Enfield 11"
+  string callsign = 3;
+  // The coalition the unit belongs to
+  Coalition coalition = 4;
+  // The DCS type-name of the unit. e.g "MiG-29A", "ZSU_57_2" or "Hawk ln"
+  string type = 5;
+  // The position of the unit
+  Position position = 6;
+  // The name of the player if one is in control of the unit
+  optional string player_name = 7;
+  // The name of the group that the unit belongs to
+  string group_name = 8;
+  // The number of this unit in the group. Does not change as units are
+  // destroyed
+  uint32 number_in_group = 9;
+  // The horizontal speed of the unit. If it is doing mach one straight up then
+  // the speed will be 0
+  double speed = 10;
+  // The heading of the unit
+  double heading = 11;
+}
+
+/**
+ * An instance of a DCS group
+ */
+message Group {
+  uint32 id = 1; // The DCS generated ID
+  string name = 2; // The name of the group as assigned in the mission editor
+  Coalition coalition = 3; // The coalition of the group
+  GroupCategory category = 4; // The group category.
+}
+
+/**
+ * Group category enumerator.
+ */
+enum GroupCategory {
+  GROUP_CATEGORY_AIRPLANE = 0;
+  GROUP_CATEGORY_HELICOPTER = 1;
+  GROUP_CATEGORY_GROUND = 2;
+  GROUP_CATEGORY_SHIP = 3;
+  GROUP_CATEGORY_TRAIN = 4;
+}
+
+/**
+ * An instance of a DCS weapon
+ *
+ * These weapons include everything from autocannon HE shells up to massive
+ * ship-killer missiles
+ */
+message Weapon {
+  // The DCS generated ID
+  uint32 id = 1;
+  // The DCS type-name of the weapon. e.g "Matra_S530D", "HAWK_RAKETA" or
+  // "weapons.shells.53-UOR-281U"
+  string type = 2;
+  // The position of the Weapon
+  Position position = 3;
+}
+
+/**
+ * An instance of a DCS static object
+ *
+ * These objects are often buildings but can also be vehicles that have no AI or
+ * other game behaviour aside from being destroyable
+ */
+message Static {
+}
+
+/**
+ * An instance of a DCS scenery object
+ */
+message Scenery {
+}
+
+/**
+ * An instance of a DCS Airfield
+ *
+ */
+message Airbase {
+  // The DCS generated ID. Only used when the airfield is also a unit
+  // (e.g. an Aicraft Carrier)
+  optional uint32 id = 1;
+  // TODO: Fill this in
+  string name = 2;
+  // TODO: Fill this in
+  string callsign = 3;
+  // The coalition the unit belongs to. This can change mid-mission if an
+  // airfield is captured
+  Coalition coalition = 4;
+  // The position of the center point of the airfield.
+  Position position = 6;
+  // What category the airfield belongs to.
+  AirbaseCategory category = 7;
+  // TODO: Fill this in
+  string display_name = 8;
+}
+
+/**
+ * An instance of a DCS Cargo object
+ */
+message Cargo {
+}
+
+/*
+ * The initiator of an event
+ *
+ * The initiator of an event. For things like shooting events it is usually a
+ * vehicle but it can be almost anything depending on the event
+ */
+message Initiator {
+  oneof initiator {
+    Unknown unknown = 1;
+    Unit unit = 2;
+    Weapon weapon = 3;
+    Static static = 4;
+    Scenery scenery = 5;
+    Airbase airbase = 6;
+    Cargo cargo = 7;
+  }
+}
+
+/*
+ * The target of an event
+ *
+ * The target of an event. For things like shooting events it is usually a
+ * vehicle but it can be almost anything depending on the event
+ */
+message Target {
+  oneof target {
+    Unknown unknown = 1;
+    Unit unit = 2;
+    Weapon weapon = 3;
+    Static static = 4;
+    Scenery scenery = 5;
+    Airbase airbase = 6;
+    Cargo cargo = 7;
+  }
+}
+
+/*
+ * A MarkPanel
+ *
+ * A MarkPanel visible on the F10 map. These can be used for reference by
+ * players but can also be used by things like Jester for setting waypoints
+ */
+message MarkPanel {
+  uint32 id = 1;
+  // I have no idea what this time value means
+  double time = 2;
+  Unit initiator = 3;
+  optional Coalition coalition = 4;
+  optional uint32 group_id = 5;
+  optional string text = 6;
+  Position position = 7;
+}
+
+/**
+ * A vector in a left-handed coordinate system with +z being north, -z south, +x east, -x west,
+ * +y up and -y down (as opposed to DCS' unusual right-handed coordinate system where x is north/
+ * south and z is west/east; the underlying conversion is basically swapping `x` and `z` as in `x=z`
+ * and `z=x`).
+ */
+ message Vector {
+  double x = 1;
+  double y = 2;
+  double z = 3;
+}

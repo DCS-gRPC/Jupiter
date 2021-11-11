@@ -1,8 +1,7 @@
 syntax = "proto3";
 
+package dcs.timer.v0;
 option csharp_namespace = "RurouniJones.Jupiter.Dcs.Timer";
-
-package dcs.timer;
 
 // https://wiki.hoggitworld.com/view/DCS_singleton_timer
 service TimerService {
@@ -17,13 +16,15 @@ service TimerService {
   rpc GetTimeZero(GetTimeZeroRequest) returns (GetTimeZeroResponse) {}
 }
 
-message GetTimeRequest {}
+message GetTimeRequest {
+}
 
 message GetTimeResponse {
   double time = 1;
 }
 
-message GetAbsoluteTimeRequest {}
+message GetAbsoluteTimeRequest {
+}
 
 message GetAbsoluteTimeResponse {
   // The current time in seconds since 00:00 of the start date of the mission.
@@ -33,7 +34,8 @@ message GetAbsoluteTimeResponse {
   int32 year = 4;
 }
 
-message GetTimeZeroRequest {}
+message GetTimeZeroRequest {
+}
 
 message GetTimeZeroResponse {
   // The time in seconds since 00:00.

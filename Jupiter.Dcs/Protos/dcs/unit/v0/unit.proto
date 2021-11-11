@@ -1,0 +1,117 @@
+syntax = "proto3";
+package dcs.unit.v0;
+import "dcs/common/v0/common.proto";
+option csharp_namespace = "RurouniJones.Jupiter.Dcs.Unit";
+
+// https://wiki.hoggitworld.com/view/DCS_Class_Unit
+service UnitService {
+  // https://wiki.hoggitworld.com/view/DCS_func_getRadar
+  rpc GetRadar(GetRadarRequest) returns (GetRadarResponse) {}
+
+  // https://wiki.hoggitworld.com/view/DCS_func_getPoint
+  rpc GetPosition(GetPositionRequest) returns (GetPositionResponse) {}
+
+  // https://wiki.hoggitworld.com/view/DCS_func_getPlayerName
+  rpc GetPlayerName(GetPlayerNameRequest) returns (GetPlayerNameResponse) {}
+
+  rpc GetDescriptor(GetDescriptorRequest) returns (GetDescriptorResponse) {}
+
+  // https://wiki.hoggitworld.com/view/DCS_func_enableEmission
+  rpc SetEmission(SetEmissionRequest) returns (SetEmissionResponse) {}
+
+  // https://wiki.hoggitworld.com/view/DCS_func_getByName
+  rpc Get(GetRequest) returns (GetResponse) {}
+
+  /**
+   * Get information about the unit in 3D space, including its position, orientation and velocity.
+   */
+  rpc GetTransform(GetTransformRequest) returns (GetTransformResponse) {}
+}
+
+message GetRadarRequest {
+  string name = 1;
+}
+
+message GetRadarResponse {
+  bool active = 1;
+  dcs.common.v0.Target target = 2;
+}
+
+message GetPositionRequest {
+  string name = 1;
+}
+
+message GetPositionResponse {
+  dcs.common.v0.Position position = 1;
+}
+
+message GetTransformRequest {
+  string name = 1;
+}
+
+/**
+ * The orientation of an object in 3D space.
+ */
+message Orientation {
+  // The normalized direction the object is pointing to.
+  dcs.common.v0.Vector forward = 1;
+  // The normalized direction the three line (right wing) is pointing to.
+  dcs.common.v0.Vector right = 2;
+  // The normalized up vector (orthogonal to forward and right).
+  dcs.common.v0.Vector up = 3;
+  // Yaw in degrees - clockwise relative to the true north.
+  double yaw = 4;
+  // Pitch in degrees - positive when taking-off.
+  double pitch = 5;
+  // Roll in degrees - positive when rolling the aircraft to the right.
+  double roll = 6;
+}
+
+message GetTransformResponse {
+  dcs.common.v0.Position position = 1;
+  // Distance between DCS' map origin to object in meters on west-east axis.
+  double u = 2;
+  // Distance between DCS' map origin to object in meters on north-south axis.
+  double v = 3;
+  // The heading of the object on a flat world. To get the heading corrected by the projection error
+  // when going from a flat to a spherical world, use `orientation.yaw` instead.
+  double heading = 4;
+  Orientation orientation = 5;
+  // The direction the object is traveling to, and speed (magnitude of the vector) the object is
+  // traveling with.
+  dcs.common.v0.Vector velocity = 6;
+  double time = 7; // Time in seconds since the scenario started.
+}
+
+message GetPlayerNameRequest {
+  string name = 1;
+}
+
+message GetPlayerNameResponse {
+  optional string player_name = 1;
+}
+
+message GetDescriptorRequest {
+  string name = 1;
+}
+
+// TODO fill these in as and when we need em
+message GetDescriptorResponse {
+  repeated string attributes = 1;
+}
+
+message SetEmissionRequest {
+  string name = 1;
+  bool emitting = 2;
+}
+
+message SetEmissionResponse {
+}
+
+message GetRequest {
+  string name = 1;
+}
+
+message GetResponse {
+  dcs.common.v0.Unit unit = 1;
+}

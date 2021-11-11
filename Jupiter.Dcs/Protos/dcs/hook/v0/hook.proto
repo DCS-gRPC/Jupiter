@@ -1,8 +1,6 @@
 syntax = "proto3";
-
+package dcs.hook.v0;
 option csharp_namespace = "RurouniJones.Jupiter.Dcs.Hook";
-
-package dcs.hook;
 
 // APis that are part of the hook environment
 service HookService {
@@ -18,21 +16,21 @@ service HookService {
   rpc Eval(EvalRequest) returns (EvalResponse) {}
 }
 
-message GetMissionNameRequest {}
+message GetMissionNameRequest {
+}
 
 message GetMissionNameResponse {
   string name = 1;
 }
 
-message StreamChatMessagesRequest {}
+message StreamChatMessagesRequest {
+}
 
 message StreamChatMessagesResponse {
   // The ID of the player sending the chat messaage.
   uint32 player_id = 2;
-
   // The chat message.
   string message = 3;
-
   // Whether the message was send to all or only to allies.
   bool all = 4;
 }

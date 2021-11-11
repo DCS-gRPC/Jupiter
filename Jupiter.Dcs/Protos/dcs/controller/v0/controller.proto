@@ -1,8 +1,6 @@
 syntax = "proto3";
-
+package dcs.controller.v0;
 option csharp_namespace = "RurouniJones.Jupiter.Dcs.Controller";
-
-package dcs.controller;
 
 service ControllerService {
   // https://wiki.hoggitworld.com/view/DCS_option_alarmState
@@ -24,4 +22,5 @@ message SetAlarmStateRequest {
   AlarmState alarm_state = 3;
 }
 
-message SetAlarmStateResponse {}
+message SetAlarmStateResponse {
+}
