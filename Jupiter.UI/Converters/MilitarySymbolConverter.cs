@@ -30,9 +30,9 @@ namespace RurouniJones.Jupiter.UI.Converters
                 code = unit.MilStd2525dCode;
                 code = unit.Coalition switch
                 {
-                    0 => code += 40000000000000000,
-                    1 => code += 60000000000000000,
-                    2 => code += 30000000000000000
+                    1 => code += 40000000000000000,
+                    2 => code += 60000000000000000,
+                    3 => code += 30000000000000000
                 };
             }
 

@@ -29,9 +29,9 @@ namespace RurouniJones.Jupiter.Core.Models
         {
             return new ObservableCollection<Coalition>()
             {
-                new Coalition {Id = 0, Name = "Neutral", Groups = new ObservableCollection<Group>()},
-                new Coalition {Id = 1, Name = "Redfor", Groups = new ObservableCollection<Group>()},
-                new Coalition {Id = 2, Name = "Bluefor", Groups = new ObservableCollection<Group>()},
+                new Coalition {Id = 1, Name = "Neutral", Groups = new ObservableCollection<Group>()},
+                new Coalition {Id = 2, Name = "Redfor", Groups = new ObservableCollection<Group>()},
+                new Coalition {Id = 3, Name = "Bluefor", Groups = new ObservableCollection<Group>()},
             };
         }
     }
