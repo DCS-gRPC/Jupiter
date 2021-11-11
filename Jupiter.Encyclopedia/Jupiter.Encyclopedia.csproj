@@ -5,6 +5,8 @@
     <Version>0.0.1</Version>
     <Authors>Jeffrey Jones</Authors>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <RootNamespace>RurouniJones.Jupiter.Encyclopedia</RootNamespace>
+	<AssemblyName>RurouniJones.Jupiter.Encyclopedia</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

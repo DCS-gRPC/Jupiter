@@ -8,6 +8,8 @@
     <Authors>Jeffrey Jones</Authors>
     <Description>UI for the Jupiter application; a Game Master tool for DCS World</Description>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <RootNamespace>RurouniJones.Jupiter.UI</RootNamespace>
+    <AssemblyName>RurouniJones.Jupiter.UI</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -25,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RurouniJones.Jupiter.Core\RurouniJones.Jupiter.Core.csproj" />
+    <ProjectReference Include="..\Jupiter.Core\Jupiter.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

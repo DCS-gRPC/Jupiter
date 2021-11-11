@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30907.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RurouniJones.Jupiter.UI", "RurouniJones.Jupiter.UI\RurouniJones.Jupiter.UI.csproj", "{AC078637-EAA8-4200-BDB8-C6B56252DF8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jupiter.UI", "Jupiter.UI\Jupiter.UI.csproj", "{AC078637-EAA8-4200-BDB8-C6B56252DF8D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F86DF249-25AB-4627-AE9D-F5851DACD9C2}"
 	ProjectSection(SolutionItems) = preProject
@@ -12,14 +12,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RurouniJones.Jupiter.Dcs", "RurouniJones.Jupiter.Dcs\RurouniJones.Jupiter.Dcs.csproj", "{1A561D48-1E2F-4470-80E5-45BE93381F05}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jupiter.Dcs", "Jupiter.Dcs\Jupiter.Dcs.csproj", "{1A561D48-1E2F-4470-80E5-45BE93381F05}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RurouniJones.Jupiter.Core", "RurouniJones.Jupiter.Core\RurouniJones.Jupiter.Core.csproj", "{5CF77010-0755-4D3D-839F-2F1F3C776FEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jupiter.Core", "Jupiter.Core\Jupiter.Core.csproj", "{5CF77010-0755-4D3D-839F-2F1F3C776FEF}"
 	ProjectSection(ProjectDependencies) = postProject
 		{3D700DBE-595B-467A-8F0D-83A9B285C81E} = {3D700DBE-595B-467A-8F0D-83A9B285C81E}
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RurouniJones.Jupiter.Encyclopedia", "RurouniJones.Jupiter.Encyclopedia\RurouniJones.Jupiter.Encyclopedia.csproj", "{3D700DBE-595B-467A-8F0D-83A9B285C81E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Jupiter.Encyclopedia", "Jupiter.Encyclopedia\Jupiter.Encyclopedia.csproj", "{3D700DBE-595B-467A-8F0D-83A9B285C81E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -6,6 +6,8 @@
     <Authors>Jeffrey Jones</Authors>
     <Description>Core logic for the Jupiter application; a Game Master tool for DCS World</Description>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <RootNamespace>RurouniJones.Jupiter.Core</RootNamespace>
+	<AssemblyName>RurouniJones.Jupiter.Core</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\RurouniJones.Jupiter.Dcs\RurouniJones.Jupiter.Dcs.csproj" />
-    <ProjectReference Include="..\RurouniJones.Jupiter.Encyclopedia\RurouniJones.Jupiter.Encyclopedia.csproj" />
+    <ProjectReference Include="..\Jupiter.Dcs\Jupiter.Dcs.csproj" />
+    <ProjectReference Include="..\Jupiter.Encyclopedia\Jupiter.Encyclopedia.csproj" />
   </ItemGroup>
 
 </Project>
