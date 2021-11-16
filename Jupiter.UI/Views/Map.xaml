@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:converters="clr-namespace:RurouniJones.Jupiter.UI.Converters"
-        xmlns:mapControl="clr-namespace:MapControl;assembly=MapControl.WPF"
-        x:Class="RurouniJones.Jupiter.UI.Views.Map"
+        xmlns:mapControl="clr-namespace:MapControl;assembly=MapControl.WPF" xmlns:viewmodels="clr-namespace:RurouniJones.Jupiter.Core.ViewModels;assembly=RurouniJones.Jupiter.Core" d:DataContext="{d:DesignInstance Type=viewmodels:ViewModelBase}"
+    x:Class="RurouniJones.Jupiter.UI.Views.Map"
         mc:Ignorable="d">
     <UserControl.Resources>
         <mapControl:WebMercatorProjection x:Key="WebMercatorProjection"/>
@@ -164,6 +164,8 @@
                         <MenuItem Header="1000lbs"/>
                         <MenuItem Header="2000lbs"/>
                     </MenuItem>
+                    <Separator />
+                    <MenuItem Header="Add NASAM site" Command="{Binding AddGroupCommand}" CommandParameter="{Binding MouseLocation}" />
                 </ContextMenu>
             </mapControl:Map.ContextMenu>
             <mapControl:Map.MapProjection>
