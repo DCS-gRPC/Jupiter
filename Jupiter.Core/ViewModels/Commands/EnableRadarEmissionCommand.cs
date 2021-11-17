@@ -21,15 +21,14 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
             Debug.WriteLine($"EnableRadarEmission.Execute called for unit '{unitName}'");
             try
             {
-                /*
                 using var channel = GrpcChannel.ForAddress($"http://{Global.HostName}:{Global.Port}");
-                var client = new Units.UnitsClient(channel);
-                client.EnableEmission(new EnableEmissionRequest
-                    {
-                        Name = unitName,
-                        Enabled = true
-                    }
-                );*/
+                var client = new Dcs.Unit.UnitService.UnitServiceClient(channel);
+                client.SetEmissionAsync(new Dcs.Unit.SetEmissionRequest()
+                {
+                    Name = unitName,
+                    Emitting = true
+                }
+                );
             }
             catch (Exception e)
             {

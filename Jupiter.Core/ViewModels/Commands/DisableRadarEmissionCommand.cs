@@ -2,7 +2,6 @@
 using System.Diagnostics;
 using System.Windows.Input;
 using Grpc.Net.Client;
-using RurouniJones.Jupiter.Dcs;
 
 namespace RurouniJones.Jupiter.Core.ViewModels.Commands
 {
@@ -21,14 +20,14 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
             Debug.WriteLine($"DisableRadarEmission.Execute called for unit '{unitName}'");
             try
             {
-                /*using var channel = GrpcChannel.ForAddress($"http://{Global.HostName}:{Global.Port}");
-                var client = new Units.UnitsClient(channel);
-                client.EnableEmission(new EnableEmissionRequest
+                using var channel = GrpcChannel.ForAddress($"http://{Global.HostName}:{Global.Port}");
+                var client = new Dcs.Unit.UnitService.UnitServiceClient(channel);
+                client.SetEmissionAsync(new Dcs.Unit.SetEmissionRequest()
                     {
                         Name = unitName,
-                        Enabled = false
+                        Emitting = false
                     }
-                );*/
+                );
             }
             catch (Exception e)
             {
