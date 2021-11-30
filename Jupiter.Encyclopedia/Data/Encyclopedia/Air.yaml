@@ -1,0 +1,531 @@
+﻿--- 
+- 
+  code: MiG-31
+  dcs_codes: 
+    - MiG-31
+  mil_std_2525_d: 10000100001101040510
+  name: Foxhound
+- 
+  code: MiG-29
+  dcs_codes: 
+    - MiG-29A
+    - MiG-29G
+    - MiG-29K
+    - MiG-29S
+  mil_std_2525_d: 10000100001101040008
+  name: Fulcrum
+- 
+  code: Su-27
+  dcs_codes: 
+    - Su-27
+    - Su-30
+    - Su-33
+    - J-11A
+  mil_std_2525_d: 10000100001101040009
+  name: Flanker
+- 
+  code: Su-25
+  dcs_codes: 
+    - Su-25
+    - Su-25T
+    - Su-25TM
+  mil_std_2525_d: 10000100001101020000
+  name: Frogfoot
+- 
+  code: Mi-8
+  dcs_codes: 
+    - Mi-8MT
+    - Mi-8MTV2
+  mil_std_2525_d: 10000100001102000702
+  name: Hip
+- 
+  code: F-5
+  dcs_codes: 
+    - F-5E-3
+  mil_std_2525_d: 10000100001101040008
+  name: Tiger-2
+- 
+  code: F-14
+  dcs_codes: 
+    - F-14A
+    - F-14A-135-GR
+    - F-14B
+  mil_std_2525_d: 10000100001101040010
+  name: Tomcat
+- 
+  code: F-16
+  dcs_codes: 
+    - F-16A
+    - F-16A-2
+    - F-16C
+    - F-16C-2
+    - F-16CM bl.50
+    - F-16C_50
+  mil_std_2525_d: 10000100001101040009
+  name: Falcon
+- 
+  code: F-18
+  dcs_codes: 
+    - FA-18A
+    - FA-18C
+    - F/A-18C Lot 20
+    - FA-18C_hornet
+  mil_std_2525_d: 10000100001101040009
+  name: Hornet
+- 
+  code: Tornado
+  dcs_codes: 
+    - Tornado_GR4
+    - Tornado_IDS
+  mil_std_2525_d: 10000100001101020009
+  name: Tornado
+- 
+  code: Tu-95
+  dcs_codes: 
+    - Tu-95MS
+  mil_std_2525_d: 10000100001101030000
+  name: Bear
+- 
+  code: Tu-142
+  dcs_codes: 
+    - Tu-142
+  mil_std_2525_d: 10000100001101103210
+  name: Bear-F
+- 
+  code: Tu-160
+  dcs_codes: 
+    - Tu-160
+  mil_std_2525_d: 10000100001101030010
+  name: Blackjack
+- 
+  code: Tu-22
+  dcs_codes: 
+    - Tu-22M3
+  mil_std_2525_d: 10000100001101033200
+  name: Backfire
+- 
+  code: Su-24M
+  dcs_codes: 
+    - Su-24M
+  mil_std_2525_d: 10000100001101030000
+  name: Fencer
+- 
+  code: Su-24MR
+  dcs_codes: 
+    - Su-24MR
+  mil_std_2525_d: 10000100001101112409
+  name: Fencer-E
+- 
+  code: IL-76
+  dcs_codes: 
+    - IL-76
+    - IL-76M
+  mil_std_2525_d: 10000100001101070000
+  name: Candid
+- 
+  code: MiG-23
+  dcs_codes: 
+    - MiG-23MLD
+  mil_std_2525_d: 10000100001101040009
+  name: Flogger
+- 
+  code: MiG-27K
+  dcs_codes: 
+    - MiG-27K
+  mil_std_2525_d: 10000100001101020009
+  name: Flogger-D
+- 
+  code: A-50
+  dcs_codes: 
+    - A-50
+  mil_std_2525_d: 10000100001101160000
+  name: Mainstay
+- 
+  code: An-30
+  dcs_codes: 
+    - An-30M
+  mil_std_2525_d: 10000100001101110302
+  name: Clank
+- 
+  code: An-26
+  dcs_codes: 
+    - An-26B
+  mil_std_2525_d: 10000100001101070000
+  name: Curl
+- 
+  code: UH-1
+  dcs_codes: 
+    - UH-1H
+  mil_std_2525_d: 10000100001102000708
+  name: Huey
+- 
+  code: AV-8
+  dcs_codes: 
+    - AV-8B N/A
+  mil_std_2525_d: 10000100001101020800
+  name: Harrier
+- 
+  code: A-10
+  dcs_codes: 
+    - A-10A
+    - A-10C
+    - A-10C II
+  mil_std_2525_d: 10000100001101020000
+  name: Warthog
+- 
+  code: F-15
+  dcs_codes: 
+    - F-15C
+  mil_std_2525_d: 10000100001101040009
+  name: Eagle
+- 
+  code: AJS-37
+  dcs_codes: 
+    - AJS37
+  mil_std_2525_d: 10000100001101023200
+  name: Viggen
+- 
+  code: A-4
+  dcs_codes: 
+    - A-4E
+  mil_std_2525_d: 10000100001101020000
+  name: Skyhawk
+- 
+  code: B-1B
+  dcs_codes: 
+    - B-1B
+  mil_std_2525_d: 10000100001101030000
+  name: Lancer
+- 
+  code: B-52
+  dcs_codes: 
+    - B-52H
+  mil_std_2525_d: 10000100001101030010
+  name: Stratofortress
+- 
+  code: Bf-109
+  dcs_codes: 
+    - Bf 109 K-4
+  mil_std_2525_d: 10000100001101040007
+  name: Kurfürst
+- 
+  code: C-101
+  dcs_codes: 
+    - C-101CC
+    - C-101EB
+  mil_std_2525_d: 10000100001101120108
+  name: Aviojet
+- 
+  code: C-130
+  dcs_codes: 
+    - C-130
+    - Hercules
+  mil_std_2525_d: 10000100001101070000
+  name: Hercules
+- 
+  code: C-17
+  dcs_codes: 
+    - C-17A
+  mil_std_2525_d: 10000100001101070010
+  name: Globemaster
+- 
+  code: Christen Eagle II
+  dcs_codes: 
+    - Christen Eagle II
+  mil_std_2525_d: 10000100001201000000
+  name: Christen Eagle
+- 
+  code: E-2
+  dcs_codes: 
+    - E-2D
+  mil_std_2525_d: 10000100001101160000
+  name: Hawkeye
+- 
+  code: E-3
+  dcs_codes: 
+    - E-3A
+  mil_std_2525_d: 10000100001101160010
+  name: Sentry
+- 
+  code: F-117
+  dcs_codes: 
+    - F-117A
+  mil_std_2525_d: 10000100001101030000
+  name: Nighthawk
+- 
+  code: F-4
+  dcs_codes: 
+    - F-4E
+  mil_std_2525_d: 10000100001101040009
+  name: Phantom
+- 
+  code: F-86
+  dcs_codes: 
+    - F-86F
+  mil_std_2525_d: 10000100001101040008
+  name: Sabre
+- 
+  code: Fw-190
+  dcs_codes: 
+    - Fw 190 A-8
+    - Fw 190 D-9
+  mil_std_2525_d: 10000100001101040007
+  name: Shrike
+- 
+  code: Hawk
+  dcs_codes: 
+    - Hawk
+  mil_std_2525_d: 10000100001101120108
+  name: Hawk
+- 
+  code: I-16
+  dcs_codes: 
+    - I-16
+  mil_std_2525_d: 10000100001101040007
+  name: Polikarpov
+- 
+  code: JF-17
+  dcs_codes: 
+    - JF-17
+  mil_std_2525_d: 10000100001101040009
+  name: Thunder
+- 
+  code: KC-135
+  dcs_codes: 
+    - KC-135
+  mil_std_2525_d: 10000100001101090004
+  name: Stratotanker
+- 
+  code: KC-135
+  dcs_codes: 
+    - KC-135MPRS
+  mil_std_2525_d: 10000100001101090005
+  name: Stratotanker
+- 
+  code: KC-130
+  dcs_codes: 
+    - KC-130
+  mil_std_2525_d: 10000100001101090005
+  name: KC-130
+- 
+  code: L-39
+  dcs_codes: 
+    - L-39C
+    - L-39ZA
+  mil_std_2525_d: 10000100001101120108
+  name: Albatross
+- 
+  code: M-2000
+  dcs_codes: 
+    - M-2000C
+    - Mirage 2000-5
+  mil_std_2525_d: 10000100001101040009
+  name: Mirage
+- 
+  code: MB-339
+  dcs_codes: 
+    - MB-330PAN
+  mil_std_2525_d: 10000100001101120108
+  name: MB-339
+- 
+  code: MQ-9
+  dcs_codes: 
+    - MQ-9
+  mil_std_2525_d: 10000100001103000100
+  name: Reaper
+- 
+  code: MQ-1
+  dcs_codes: 
+    - MQ-1A
+  mil_std_2525_d: 10000100001103001800
+  name: Predator
+- 
+  code: MiG-15
+  dcs_codes: 
+    - Mig-15bis
+  mil_std_2525_d: 10000100001101040008
+  name: Fagot
+- 
+  code: MiG-19
+  dcs_codes: 
+    - MiG-19P
+  mil_std_2525_d: 10000100001101040008
+  name: Farmer
+- 
+  code: MiG-21
+  dcs_codes: 
+    - MiG-21Bis
+  mil_std_2525_d: 10000100001101040008
+  name: Fishbed
+- 
+  code: P-47
+  dcs_codes: 
+    - P-47D-30
+    - P-47D-30 (Early)
+    - P-47D-40
+  mil_std_2525_d: 10000100001101040007
+  name: Thunderbolt
+- 
+  code: P-51
+  dcs_codes: 
+    - P-51D-25-NA
+    - P-51D-30-NA
+    - TF-51D
+  mil_std_2525_d: 10000100001101040007
+  name: Mustang
+- 
+  code: S-3
+  dcs_codes: 
+    - S-3B
+  mil_std_2525_d: 10000100001101170109
+  name: Viking
+- 
+  code: S-3
+  dcs_codes: 
+    - S-3B Tanker
+  mil_std_2525_d: 10000100001101090005
+  name: Viking
+- 
+  code: Spitfire
+  dcs_codes: 
+    - Spitfire LF Mk. IX
+    - Spitfire LF Mk. IX CW
+  mil_std_2525_d: 10000100001101040007
+  name: Spitfire
+- 
+  code: Yak-52
+  dcs_codes: 
+    - Yak-52
+  mil_std_2525_d: 10000100001201001908
+  name: Yak 52
+- 
+  code: AH-1
+  dcs_codes: 
+    - AH-1W
+  mil_std_2525_d: 10000100001102000108
+  name: SuperCobra
+- 
+  code: AH-64
+  dcs_codes: 
+    - AH-64A
+    - AH-64D
+  mil_std_2525_d: 10000100001102000108
+  name: Apache
+- 
+  code: CH-47
+  dcs_codes: 
+    - CH-47D
+  mil_std_2525_d: 10000100001102000702
+  name: Chinook
+- 
+  code: CH-53
+  dcs_codes: 
+    - CH-53E
+  mil_std_2525_d: 10000100001102000701
+  name: Super Stallion
+- 
+  code: Ka-50
+  dcs_codes: 
+    - Ka-50
+  mil_std_2525_d: 10000100001102000108
+  name: Black Shark
+- 
+  code: OH-58
+  dcs_codes: 
+    - OH-58D
+  mil_std_2525_d: 10000100001102001808
+  name: Kiowa
+- 
+  code: SA342
+  dcs_codes: 
+    - SA342L
+    - SA342M
+    - SA342Minigun
+    - SA342Mistral
+  mil_std_2525_d: 10000100001102000108
+  name: Gazelle
+- 
+  code: SH-60
+  dcs_codes: 
+    - SH-60B
+  mil_std_2525_d: 10000100001102003900
+  name: Seahawk
+- 
+  code: UH-60
+  dcs_codes: 
+    - UH-60A
+  mil_std_2525_d: 10000100001102000703
+  name: Black Hawk
+- 
+  code: Ka-27
+  dcs_codes: 
+    - Ka-27
+  mil_std_2525_d: 10000100001102002203
+  name: Helix
+- 
+  code: Mi-24
+  dcs_codes: 
+    - Mi-24V
+    - Mi-24P
+  mil_std_2525_d: 10000100001102000103
+  name: Hind
+- 
+  code: Mi-26
+  dcs_codes: 
+    - Mi-26
+  mil_std_2525_d: 10000100001102000301
+  name: Halo
+- 
+  code: Mi-28
+  dcs_codes: 
+    - Mi-28N
+  mil_std_2525_d: 10000100001102000108
+  name: Havok
+- 
+  code: A-20
+  dcs_codes: 
+    - A-20G
+  mil_std_2525_d: 10000100001101020000
+  name: A-20
+- 
+  code: KJ-2000
+  dcs_codes: 
+    - KJ-2000
+  mil_std_2525_d: 10000100001101160000
+  name: Mainring
+- 
+  code: Mig-25
+  dcs_codes: 
+    - MiG-25PD
+  mil_std_2525_d: 10000100001101040510
+  name: Foxbat
+- 
+  code: Mig-25RBT
+  dcs_codes: 
+    - MiG-25RBT
+  mil_std_2525_d: 10000100001101110210
+  name: Foxbat-B
+- 
+  code: Su-17
+  dcs_codes: 
+    - Su-17M4
+  mil_std_2525_d: 10000100001101020000
+  name: Fitter
+- 
+  code: Su-34
+  dcs_codes: 
+    - Su-34
+  mil_std_2525_d: 10000100001101050010
+  name: Fullback
+- 
+  code: WingLoong-I
+  dcs_codes: 
+    - WingLoong-I
+  mil_std_2525_d: 10000100001103001800
+  name: Pterodactyl
+- 
+  code: Yak-40
+  dcs_codes: 
+    - Yak-40
+  mil_std_2525_d: 10000100001201000902
+  name: Codling

@@ -1,14 +1,17 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Timers;
 using Grpc.Core;
 using Grpc.Net.Client;
 using RurouniJones.Jupiter.Core.Models;
 using RurouniJones.Jupiter.Core.ViewModels.Commands;
-using RurouniJones.Jupiter.Dcs;
 using RurouniJones.Jupiter.Dcs.Mission;
+using VoronoiLib;
+using VoronoiLib.Structures;
 using Coalition = RurouniJones.Jupiter.Core.Models.Coalition;
 using Group = RurouniJones.Jupiter.Core.Models.Group;
 using Unit = RurouniJones.Jupiter.Core.Models.Unit;
@@ -20,6 +23,25 @@ namespace RurouniJones.Jupiter.Core.ViewModels
         public ObservableCollection<EventSummary> GameEventCollection { get; }
         public ObservableCollection<Unit> Units { get; }
         public ObservableCollection<Coalition> Coalitions { get; }
+
+        //public ObservableCollection<Location> VoronoiLocations { get; internal set; }
+        private ObservableCollection<Location> _voronoiLocations;
+        public ObservableCollection<Location> VoronoiLocations
+        {
+            get => _voronoiLocations;
+            set => SetProperty(ref _voronoiLocations, value);
+        }
+        public class Polyline
+        {
+            public ObservableCollection<Location> Locations { get; set; }
+        }
+
+        private ObservableCollection<Polyline> _polyLines;
+        public ObservableCollection<Polyline> PolyLines
+        {
+            get => _polyLines;
+            set => SetProperty(ref _polyLines, value);
+        }
 
         public PopSmokeCommand PopSmokeCommand { get; }
         public LaunchFlareCommand LaunchFlareCommand { get; }
@@ -63,12 +85,65 @@ namespace RurouniJones.Jupiter.Core.ViewModels
             IlluminationBombCommand = new IlluminationBombCommand();
             AddGroupCommand = new AddGroupCommand();
             Units = new ObservableCollection<Unit>();
+            VoronoiLocations = new ObservableCollection<Location>();
+            PolyLines = new ObservableCollection<Polyline>();
 
 #pragma warning disable 4014
             StreamUnits();  // TODO Switch to this triggering When we have some sort of "connect" function 
             StreamEvents(); // maybe using https://stackoverflow.com/questions/11060192/command-to-call-method-from-viewmodel
 #pragma warning restore 4014
-            MapLocation = new Location(0,0);
+            MapLocation = new Location(42,42);
+
+            GenerateVoronoi();
+
+        }
+
+        public class UnitVoronoi : FortuneSite
+        {
+            public Unit Unit { get; init; }
+            public UnitVoronoi(Unit unit) : base(unit.Location.Latitude, unit.Location.Longitude) {
+                Unit = unit;
+            }
+        }
+
+        public async Task GenerateVoronoi()
+        {
+            while(true) { 
+                await Task.Delay(1000);
+                List <FortuneSite> sites = new();
+
+                foreach(Unit unit in Units)
+                {
+                    if(unit.SymbolSet != Symbology.SymbolSet.Air)
+                        sites.Add(new UnitVoronoi(unit));
+                }
+
+                var results = FortunesAlgorithm.Run(sites, 40, 34, 48, 48);
+
+                var edges = new List<VEdge>(results);
+                for (int i = edges.Count -1 ; i >= 0; i--)
+                {
+                    var edge = edges[i];
+                    var left = (UnitVoronoi) edge.Left;
+                    var right = (UnitVoronoi) edge.Right;
+
+                    if (left.Unit.Coalition == right.Unit.Coalition) {
+                        edges.RemoveAt(i);
+                    }
+                }
+                PolyLines.Clear();
+                foreach(VEdge edge in edges)
+                {
+                    var locations = new ObservableCollection<Location>();
+                    locations.Add(new Location(edge.Start.X, edge.Start.Y));
+                    locations.Add(new Location(edge.End.X, edge.End.Y));
+                    PolyLines.Add(new Polyline() { Locations = locations });
+                }
+
+                // We actually probably want the Delaunay triangulation
+                // https://codeforces.com/blog/entry/85638
+                // https://github.com/Zalgo2462/VoronoiLib/blob/master/VoronoiDemo/VoronoiDemo.cs#L205
+            }
         }
 
         public async Task StreamUnits()
@@ -105,11 +180,12 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                                     Id = sourceUnit.Id,
                                     Location = new Location(sourceUnit.Position.Lat, sourceUnit.Position.Lon, sourceUnit.Position.Alt),
                                     Name = sourceUnit.Name,
-                                    Pilot = sourceUnit.Callsign,
+                                    Pilot = sourceUnit.PlayerName,
                                     Type = sourceUnit.Type,
                                     Player = sourceUnit.PlayerName,
                                     GroupName = sourceUnit.GroupName,
-                                    MilStd2525dCode = Encyclopedia.Repository.GetMilStd2525DCodeByDcsCode(sourceUnit.Type),
+                                    Callsign = sourceUnit.Callsign,
+                                    MilStd2525dCode = Encyclopedia.Repository.GetMilStd2525DCodeByDcsCode(sourceUnit.Type)
                                 };
                                 Units.Add(newUnit);
 

@@ -14,32 +14,35 @@ namespace RurouniJones.Jupiter.Encyclopedia
             .IgnoreUnmatchedProperties()
             .Build();
 
-        private static readonly HashSet<Unit> Aircraft = Deserializer.Deserialize<HashSet<Unit>>(
-            File.ReadAllText("Data/Encyclopedia/Aircraft.yaml"));
-        private static readonly HashSet<Unit> Foot = Deserializer.Deserialize<HashSet<Unit>>(
-            File.ReadAllText("Data/Encyclopedia/Foot.yaml"));
-        private static readonly HashSet<Unit> Vehicles = Deserializer.Deserialize<HashSet<Unit>>(
-            File.ReadAllText("Data/Encyclopedia/Vehicles.yaml"));
-        private static readonly HashSet<Unit> Watercraft = Deserializer.Deserialize<HashSet<Unit>>(
-            File.ReadAllText("Data/Encyclopedia/Watercraft.yaml"));
+        private static readonly HashSet<Unit> Air = Deserializer.Deserialize<HashSet<Unit>>(
+            File.ReadAllText("Data/Encyclopedia/Air.yaml"));
+        private static readonly HashSet<Unit> Land = Deserializer.Deserialize<HashSet<Unit>>(
+            File.ReadAllText("Data/Encyclopedia/Land.yaml"));
+        private static readonly HashSet<Unit> Sea = Deserializer.Deserialize<HashSet<Unit>>(
+            File.ReadAllText("Data/Encyclopedia/Sea.yaml"));
 
         private static readonly HashSet<Unit> Units = BuildUnitHashset();
 
         private static HashSet<Unit> BuildUnitHashset()
         {
-            var set = new HashSet<Unit>(Aircraft);
-            set.UnionWith(Foot);
-            set.UnionWith(Vehicles);
-            set.UnionWith(Watercraft);
+            var set = new HashSet<Unit>(Air);
+            set.UnionWith(Land);
+            set.UnionWith(Sea);
             return set;
         }
 
         public static ulong GetMilStd2525DCodeByDcsCode(string code)
         {
-            var milCode = Units.FirstOrDefault(x => x.DcsCodes.Contains(code) || x.Code.Equals(code))?.MilStd2525D;
-            milCode ??= 10001000000000000000;
+            var milCode = Units.FirstOrDefault(x => x.DcsCodes.Contains(code))?.MilStd2525D;
+            ulong longCode;
+            if(milCode != null) {
+                longCode = ulong.Parse(milCode);
+            }
+            else {
+                longCode = 10001000000000000000;
+            }
             Console.WriteLine($"Code {code} - Mil {milCode}");
-            return (ulong) milCode;
+            return longCode;
         }
     }
 }

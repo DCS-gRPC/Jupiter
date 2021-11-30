@@ -18,6 +18,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="VoronoiLib" Version="0.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Jupiter.Dcs\Jupiter.Dcs.csproj" />
     <ProjectReference Include="..\Jupiter.Encyclopedia\Jupiter.Encyclopedia.csproj" />
   </ItemGroup>
