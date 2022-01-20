@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
@@ -64,11 +65,13 @@ namespace RurouniJones.Jupiter.Core.ViewModels
             AddGroupCommand = new AddGroupCommand();
             Units = new ObservableCollection<Unit>();
 
-#pragma warning disable 4014
-            StreamUnits();  // TODO Switch to this triggering When we have some sort of "connect" function 
-            StreamEvents(); // maybe using https://stackoverflow.com/questions/11060192/command-to-call-method-from-viewmodel
-#pragma warning restore 4014
-            MapLocation = new Location(0,0);
+            MapLocation = new Location(0, 0);
+
+            var tasks = new List<Task>
+            {
+                StreamUnits(), // TODO Switch to this triggering When we have some sort of "connect" function 
+                StreamEvents() // maybe using https://stackoverflow.com/questions/11060192/command-to-call-method-from-viewmodel
+            };
         }
 
         public async Task StreamUnits()
