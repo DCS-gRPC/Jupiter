@@ -13,7 +13,30 @@
         <converters:HideLowZoomConverter x:Key="HideLowZoomConverter" />
         <converters:HideHighZoomConverter x:Key="HideHighZoomConverter" />
         <converters:LocationConverter x:Key="LocationConverter"/>
+        <converters:LocationsConverter x:Key="LocationsConverter"/>
         <converters:MilitarySymbolConverter x:Key="MilitarySymbolConverter"/>
+        <converters:CoalitionPolygonConverter x:Key="CoalitionPolygonConverter"/>
+
+        <Style x:Key="RedForPolygonStyle" TargetType="mapControl:MapItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="mapControl:MapItem">
+                        <mapControl:MapMultiPolygon Polygons="{Binding Converter={StaticResource CoalitionPolygonConverter}}" Stroke="Red" StrokeThickness="1" Fill="#55aa0000"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="BlueForPolygonStyle" TargetType="mapControl:MapItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="mapControl:MapItem">
+                        <mapControl:MapMultiPolygon Polygons="{Binding Converter={StaticResource CoalitionPolygonConverter}}" Stroke="Blue" StrokeThickness="1" Fill="#550000aa"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
         <Style x:Key="GroupStyle" TargetType="mapControl:MapItem">
             <Setter Property="AutoCollapse" Value="True"/>
             <Setter Property="Location" Value="{Binding Units[0].Location, Mode=OneWay, Converter={StaticResource LocationConverter}}"/>
@@ -21,8 +44,10 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="mapControl:MapItem">
                         <Canvas DataContext="{Binding}" MouseLeftButtonDown="MapGroup_OnMouseLeftButton">
-                            <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Canvas}},
+                            <Grid Canvas.Left="-20" Canvas.Top="-20">
+                                <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Canvas}},
                                 Path=DataContext.Units[0], Mode=OneTime, Converter={StaticResource MilitarySymbolConverter}}" Width="40"/>
+                            </Grid>
                         </Canvas>
                     </ControlTemplate>
                 </Setter.Value>
@@ -35,9 +60,11 @@
                 <Setter.Value>
                     <ControlTemplate TargetType="mapControl:MapItem">
                         <Canvas ContextMenu="{DynamicResource UnitContextMenu}" DataContext="{Binding}" MouseLeftButtonDown="MapUnit_OnMouseLeftButton">
+                            <Grid Canvas.Left="-20" Canvas.Top="-20">
                             <Image Source="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Canvas}},
                                 Path=DataContext, Mode=OneTime, Converter={StaticResource MilitarySymbolConverter}}" Width="40"/>
-                            <Grid Canvas.Left="40">
+                            </Grid>
+                            <Grid Canvas.Left="20" Canvas.Top="-20">
                                 <TextBlock Margin="0">
                                     <Run Text="{Binding Type, Mode=OneTime}"/>
                                     <LineBreak/>
@@ -54,6 +81,13 @@
         <mapControl:Map x:Name="MainMap" ZoomLevel="{Binding ZoomLevel}" MaxZoomLevel="21" MouseWheelZoomDelta="1"
                         MouseMove="MainMap_OnMouseMove"
                         Center="{Binding MapLocation, Converter={StaticResource LocationConverter}}">
+            <mapControl:MapItemsControl ItemsSource="{Binding RedForPolygons}"
+                                        ItemContainerStyle="{StaticResource RedForPolygonStyle}"
+                                        Visibility="Visible"/>
+            <mapControl:MapItemsControl ItemsSource="{Binding BlueForPolygons}"
+                                        ItemContainerStyle="{StaticResource BlueForPolygonStyle}"
+                                        Visibility="Visible"/>
+
             <mapControl:MapItemsControl ItemsSource="{Binding Coalitions[0].Groups}"
                                         ItemContainerStyle="{StaticResource GroupStyle}"
                                         SelectionMode="Extended"

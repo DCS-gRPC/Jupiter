@@ -1,0 +1,168 @@
+--- 
+- 
+  code: Rezky Class
+  dcs_codes: 
+    - REZKY
+  mil_std_2525_d: 10003000001202040300
+  name: Rezky Class
+- 
+  code: Neustrashimyy Class
+  dcs_codes: 
+    - NEUSTRASH
+  mil_std_2525_d: 10003000001202040400
+  name: Neustrashimyy Class
+- 
+  code: Samuel Chase Class
+  dcs_codes: 
+    - USS_Samuel_Chase
+  mil_std_2525_d: 10003000001203070000
+  name: Samuel Chase Class
+- 
+  code: Ticonderoga Class
+  dcs_codes: 
+    - TICONDEROG
+  mil_std_2525_d: 10003000001202021500
+  name: Ticonderoga Class
+- 
+  code: ~
+  dcs_codes: 
+    - KILO
+  mil_std_2525_d: 10003500001101000802
+  name: Kilo Class
+- 
+  code: Molniya Class
+  dcs_codes: 
+    - MOLNIYA
+  mil_std_2525_d: 10003000001202051500
+  name: Molniya Class
+- 
+  code: Seawise Giant
+  dcs_codes: 
+    - Seawise_Giant
+  mil_std_2525_d: 10003000001401090000
+  name: Seawise Giant
+- 
+  code: LST Mk2
+  dcs_codes: 
+    - LST_Mk2
+  mil_std_2525_d: 10003000001203070007
+  name: Landing Ship, Tank Mk2
+- 
+  code: La Combattante Class
+  dcs_codes: 
+    - La_Combattante_II
+  mil_std_2525_d: 10003000001205021309
+  name: La Combattante Class
+- 
+  code: Tarawa Class
+  dcs_codes: 
+    - LHA_Tarawa
+  mil_std_2525_d: 10003000001203030000
+  name: Tarawa Class
+- 
+  code: Ivanov Class
+  dcs_codes: 
+    - Dry-cargo ship-2
+  mil_std_2525_d: 10003000001401020000
+  name: Ivanov Class
+- 
+  code: Higgins Boat
+  dcs_codes: 
+    - Higgins_boat
+  mil_std_2525_d: 10003000001203080000
+  name: Higgins Boat
+- 
+  code: Dry Cargo Ship 1
+  dcs_codes: 
+    - Dry-cargo ship-1
+  mil_std_2525_d: 10003000001401010000
+  name: Dry Cargo Ship 1
+- 
+  code: Type 054A
+  dcs_codes: 
+    - Type_054A
+  mil_std_2525_d: 10003000001202040400
+  name: Type 054A
+- 
+  code: Type 052C
+  dcs_codes: 
+    - Type_052C
+  mil_std_2525_d: 10003000001202031500
+  name: Type 052C
+- 
+  code: Type 052B
+  dcs_codes: 
+    - Type_052B
+  mil_std_2525_d: 10003000001202031500
+  name: Type 052B
+- 
+  code: Slava Class
+  dcs_codes: 
+    - MOSCOW
+  mil_std_2525_d: 10003000001202021500
+  name: Slava Class
+- 
+  code: Tango Class
+  dcs_codes: 
+    - SOM
+  mil_std_2525_d: ~
+  name: Tango Class
+- 
+  code: Armed Speedboat
+  dcs_codes: 
+    - speedboat
+  mil_std_2525_d: 10003000001208000009
+  name: Armed Speedboat
+- 
+  code: Grisha Class
+  dcs_codes: 
+    - ALBATROS
+  mil_std_2525_d: 10003000001202050200
+  name: Grisha Class
+- 
+  code: Oliver Hazard Perry Class
+  dcs_codes: 
+    - PERRY
+  mil_std_2525_d: 10003000001202041500
+  name: Oliver Hazard Perry Class
+- 
+  code: Nimitz Class
+  dcs_codes: 
+    - VINSON
+    - Stennis
+    - CVN_71
+    - CVN_72
+    - CVN_73
+    - CVN_75
+  mil_std_2525_d: 10003000001201000001
+  name: Nimitz Class
+- 
+  code: Kirov Class
+  dcs_codes: 
+    - PIOTR
+  mil_std_2525_d: 10003000001202021501
+  name: Kirov Class
+- 
+  code: Zvezdny Yacht
+  dcs_codes: 
+    - ZWEZDNY
+  mil_std_2525_d: 10003000001400000000
+  name: Zvezdny Yacht
+- 
+  code: Kuznetsov Class
+  dcs_codes: 
+    - KUZNECOW
+  mil_std_2525_d: 10003000001201000000
+  name: Kuznetsov Class
+- 
+  code: Altay Class
+  dcs_codes: 
+    - ELNYA
+  mil_std_2525_d: 10003000001301100000
+  name: Altay Class
+- 
+  code: Sing Class
+  dcs_codes: 
+    - SING
+  mil_std_2525_d: ~
+  name: Sing Class

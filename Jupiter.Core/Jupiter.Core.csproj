@@ -17,13 +17,26 @@
     </None>
   </ItemGroup>
 
+	<ItemGroup>
+		<PackageReference Include="Geo" Version="1.0.0" />
+	</ItemGroup>
+	
   <ItemGroup>
-    <PackageReference Include="Geo" Version="1.0.1" />
-    <PackageReference Include="RurouniJones.Dcs.Grpc" Version="0.7.0" />
+	  <PackageReference Include="Geo" Version="1.0.1" />
+	  <PackageReference Include="VoronoiLib" Version="0.1.0" />
+      <PackageReference Include="RurouniJones.Dcs.Grpc" Version="0.7.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Jupiter.Encyclopedia\Jupiter.Encyclopedia.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Jupiter.Encyclopedia\Jupiter.Encyclopedia.csproj" />
+    <Reference Include="RurouniJones.Dcs.FrontLine">
+      <HintPath>..\..\FrontLine\FrontLine\bin\Debug\net6.0\RurouniJones.Dcs.FrontLine.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpVoronoiLib">
+      <HintPath>..\..\SharpVoronoiLib\SharpVoronoiLib\bin\Debug\netstandard2.0\SharpVoronoiLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>

@@ -21,16 +21,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Data\Encyclopedia\Foot.yaml">
+    <Folder Include="Data\Encyclopedia\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Data\Encyclopedia\Air.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Data\Encyclopedia\Vehicles.yaml">
+    <None Update="Data\Encyclopedia\Land.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Update="Data\Encyclopedia\Watercraft.yaml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Update="Data\Encyclopedia\Aircraft.yaml">
+    <None Update="Data\Encyclopedia\Sea.yaml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

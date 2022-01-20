@@ -49,7 +49,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
 
             template.Units.Add(new AddGroupRequest.Types.GroundUnitTemplate()
             {
-                Name = $"SAM Site {randomNumber} Command Post",
+                Name = $"SAM Site {randomNumber} Radar",
                 Type = "NASAMS_Radar_MPQ64F1",
                 Position = new InputPosition()
                 {

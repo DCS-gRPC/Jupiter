@@ -11,9 +11,9 @@ namespace RurouniJones.Jupiter.Core.Models
             get => _location;
             set
             {
-                var lat = Math.Round(value.Latitude, 4);
-                var lon = Math.Round(value.Longitude, 4);
-                var alt = Math.Round(value.Longitude);
+                var lat = value.Latitude;
+                var lon = value.Longitude;
+                var alt = value.Altitude;
                 var loc = new Location(lat, lon, alt);
                 SetProperty(ref _location, loc);
             }
@@ -61,6 +61,13 @@ namespace RurouniJones.Jupiter.Core.Models
         {
             get => _pilot;
             set => SetProperty(ref _pilot, value);
+        }
+
+        private string _callsign;
+        public string Callsign
+        {
+            get => _callsign;
+            set => SetProperty(ref _callsign, value);
         }
 
         private string _type;

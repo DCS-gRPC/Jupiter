@@ -4,11 +4,14 @@ using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Geo.Geodesy;
 using Grpc.Core;
 using Grpc.Net.Client;
 using RurouniJones.Dcs.Grpc.V0.Mission;
+using RurouniJones.Dcs.FrontLine;
 using RurouniJones.Jupiter.Core.Models;
 using RurouniJones.Jupiter.Core.ViewModels.Commands;
+using SharpVoronoiLib;
 using Coalition = RurouniJones.Jupiter.Core.Models.Coalition;
 using Group = RurouniJones.Jupiter.Core.Models.Group;
 using Unit = RurouniJones.Jupiter.Core.Models.Unit;
@@ -20,6 +23,20 @@ namespace RurouniJones.Jupiter.Core.ViewModels
         public ObservableCollection<EventSummary> GameEventCollection { get; }
         public ObservableCollection<Unit> Units { get; }
         public ObservableCollection<Coalition> Coalitions { get; }
+
+        private List<CoalitionPolygon> _redForPolygons;
+        public List<CoalitionPolygon> RedForPolygons
+        {
+            get => _redForPolygons;
+            set => SetProperty(ref _redForPolygons, value);
+        }
+
+        private List<CoalitionPolygon> _blueForPolygons;
+        public List<CoalitionPolygon> BlueForPolygons
+        {
+            get => _blueForPolygons;
+            set => SetProperty(ref _blueForPolygons, value);
+        }
 
         public PopSmokeCommand PopSmokeCommand { get; }
         public LaunchFlareCommand LaunchFlareCommand { get; }
@@ -64,13 +81,39 @@ namespace RurouniJones.Jupiter.Core.ViewModels
             AddGroupCommand = new AddGroupCommand();
             Units = new ObservableCollection<Unit>();
 
-            MapLocation = new Location(0, 0);
+            MapLocation = new Location(42, 42);
 
-            var tasks = new List<Task>
-            {
-                StreamUnits(), // TODO Switch to this triggering When we have some sort of "connect" function 
-                StreamEvents() // maybe using https://stackoverflow.com/questions/11060192/command-to-call-method-from-viewmodel
-            };
+            var tasks = new List<Task>();
+            tasks.Add(StreamUnits()); // TODO Switch to this triggering When we have some sort of "connect" function 
+            tasks.Add(StreamEvents()); // maybe using https://stackoverflow.com/questions/11060192/command-to-call-method-from-viewmodel
+            tasks.Add(GenerateVoronoi());
+        }
+
+        public async Task GenerateVoronoi()
+        {
+            while(true) {
+                try { 
+                    await Task.Delay(5000);
+                    List <VoronoiSite> sites = new();
+
+                    if(Units.Count == 0) 
+                        continue;
+                    Debug.WriteLine($"{DateTime.Now}: Generating FrontLine");
+                    foreach (Unit unit in Units)
+                    {
+                        sites.Add(new UnitSite(unit.Location.Longitude, unit.Location.Latitude, (CoalitionId)unit.Coalition));
+                    }
+
+                    var generator = new Generator(sites, 36, 40, 46, 46);
+                    var polygons = generator.GenerateFrontLines();
+                    RedForPolygons = polygons.Where(x => x.Coalition == CoalitionId.RedFor).ToList();
+                    BlueForPolygons = polygons.Where(x => x.Coalition == CoalitionId.BlueFor).ToList();
+
+                    Debug.WriteLine($"{DateTime.Now}: Generated FrontLine");
+                } catch (Exception ex) {
+                    Debug.WriteLine(ex.ToString());
+                }
+            }
         }
 
         public async Task StreamUnits()
@@ -107,10 +150,11 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                                     Id = sourceUnit.Id,
                                     Location = new Location(sourceUnit.Position.Lat, sourceUnit.Position.Lon, sourceUnit.Position.Alt),
                                     Name = sourceUnit.Name,
-                                    Pilot = sourceUnit.Callsign,
+                                    Pilot = sourceUnit.PlayerName,
                                     Type = sourceUnit.Type,
                                     Player = sourceUnit.PlayerName,
                                     GroupName = sourceUnit.Group.Name,
+                                    Callsign = sourceUnit.Callsign,
                                     MilStd2525dCode = Encyclopedia.Repository.GetMilStd2525DCodeByDcsCode(sourceUnit.Type),
                                 };
                                 Units.Add(newUnit);

@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <PackageReference Include="CoordinateSharp" Version="2.11.1.1" />
+    <PackageReference Include="Geo" Version="1.0.0" />
     <PackageReference Include="Jint" Version="3.0.0-beta-2033" />
     <PackageReference Include="SharpVectors" Version="1.7.6" />
     <PackageReference Include="XAML.MapControl" Version="6.0.1" />
@@ -38,6 +39,15 @@
 
   <ItemGroup>
     <Folder Include="Assets\MapIcons\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="RurouniJones.Dcs.FrontLine">
+      <HintPath>..\..\FrontLine\FrontLine\bin\Debug\net6.0\RurouniJones.Dcs.FrontLine.dll</HintPath>
+    </Reference>
+    <Reference Include="VoronoiLib">
+      <HintPath>..\..\Experiments\VoronoiLib\VoronoiLib\bin\Debug\netstandard1.1\VoronoiLib.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
