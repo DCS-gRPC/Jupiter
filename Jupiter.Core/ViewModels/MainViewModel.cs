@@ -271,7 +271,8 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                             GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), gameEvent.MarkRemove.Initiator?.Unit?.PlayerName, gameEvent.MarkRemove.Initiator?.Unit?.Name, gameEvent.ToString()));
                             break;
                         default:
-                            throw new ArgumentOutOfRangeException();
+                            GameEventCollection.Add(new EventSummary(gameEvent.Time, gameEvent.EventCase.ToString(), "Unknown", "Unknown", "Unknown Event"));
+                            break;
                     }
                     Console.WriteLine(gameEvent.ToString());
                 }
