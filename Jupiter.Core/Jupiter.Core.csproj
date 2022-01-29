@@ -18,7 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Jupiter.Dcs\Jupiter.Dcs.csproj" />
+    <PackageReference Include="Geo" Version="1.0.0" />
+    <PackageReference Include="RurouniJones.Dcs.Grpc" Version="0.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Jupiter.Encyclopedia\Jupiter.Encyclopedia.csproj" />
   </ItemGroup>
 

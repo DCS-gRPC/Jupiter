@@ -3,8 +3,8 @@ using System.Diagnostics;
 using System.Windows.Input;
 using Grpc.Net.Client;
 using RurouniJones.Jupiter.Core.Models;
-using RurouniJones.Jupiter.Dcs.Common;
-using RurouniJones.Jupiter.Dcs.Trigger;
+using RurouniJones.Dcs.Grpc.V0.Common;
+using RurouniJones.Dcs.Grpc.V0.Trigger;
 
 namespace RurouniJones.Jupiter.Core.ViewModels.Commands
 {

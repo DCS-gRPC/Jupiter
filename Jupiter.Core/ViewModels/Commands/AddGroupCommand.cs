@@ -2,6 +2,8 @@
 using System.Diagnostics;
 using System.Windows.Input;
 using Grpc.Net.Client;
+using RurouniJones.Dcs.Grpc.V0.Coalition;
+using RurouniJones.Dcs.Grpc.V0.Common;
 using RurouniJones.Jupiter.Core.Models;
 
 namespace RurouniJones.Jupiter.Core.ViewModels.Commands
@@ -23,10 +25,10 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
             var rnd = new Random();
             var randomNumber = rnd.Next();
 
-            var template = new Dcs.Coalition.AddGroupRequest.Types.GroundGroupTemplate()
+            var template = new AddGroupRequest.Types.GroundGroupTemplate()
             {
                 Name = $"SAM Site {randomNumber}",
-                Position = new Dcs.Common.Position()
+                Position = new Position()
                 {
                     Lat = location.Latitude,
                     Lon = location.Longitude
@@ -34,73 +36,73 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
                 Task = "Ground Nothing"
             };
 
-            template.Units.Add(new Dcs.Coalition.AddGroupRequest.Types.GroundUnitTemplate() {
+            template.Units.Add(new AddGroupRequest.Types.GroundUnitTemplate() {
                 Name = $"SAM Site {randomNumber} Command Post",
                 Type = "NASAMS_Command_Post",
-                Position = new Dcs.Common.Position()
+                Position = new Position()
                 {
                     Lat = location.Latitude,
                     Lon = location.Longitude
                 },
-                Skill = Dcs.Coalition.AddGroupRequest.Types.Skill.Excellent
+                Skill = AddGroupRequest.Types.Skill.Excellent
             });
 
-            template.Units.Add(new Dcs.Coalition.AddGroupRequest.Types.GroundUnitTemplate()
+            template.Units.Add(new AddGroupRequest.Types.GroundUnitTemplate()
             {
                 Name = $"SAM Site {randomNumber} Command Post",
                 Type = "NASAMS_Radar_MPQ64F1",
-                Position = new Dcs.Common.Position()
+                Position = new Position()
                 {
                     Lat = location.Latitude - 0.001,
                     Lon = location.Longitude
                 },
-                Skill = Dcs.Coalition.AddGroupRequest.Types.Skill.Excellent
+                Skill = AddGroupRequest.Types.Skill.Excellent
             });
 
-            template.Units.Add(new Dcs.Coalition.AddGroupRequest.Types.GroundUnitTemplate()
+            template.Units.Add(new AddGroupRequest.Types.GroundUnitTemplate()
             {
                 Name = $"SAM Site {randomNumber} Launcher 1",
                 Type = "NASAMS_LN_C",
-                Position = new Dcs.Common.Position()
+                Position = new Position()
                 {
                     Lat = location.Latitude + 0.001,
                     Lon = location.Longitude
                 },
-                Skill = Dcs.Coalition.AddGroupRequest.Types.Skill.Excellent
+                Skill = AddGroupRequest.Types.Skill.Excellent
             });
 
-            template.Units.Add(new Dcs.Coalition.AddGroupRequest.Types.GroundUnitTemplate()
+            template.Units.Add(new AddGroupRequest.Types.GroundUnitTemplate()
             {
                 Name = $"SAM Site {randomNumber} Launcher 2",
                 Type = "NASAMS_LN_C",
-                Position = new Dcs.Common.Position()
+                Position = new Position()
                 {
                     Lat = location.Latitude + 0.001,
                     Lon = location.Longitude - 0.001
                 },
-                Skill = Dcs.Coalition.AddGroupRequest.Types.Skill.Excellent
+                Skill = AddGroupRequest.Types.Skill.Excellent
             });
 
-            template.Units.Add(new Dcs.Coalition.AddGroupRequest.Types.GroundUnitTemplate()
+            template.Units.Add(new AddGroupRequest.Types.GroundUnitTemplate()
             {
                 Name = $"SAM Site {randomNumber} Launcher 3",
                 Type = "NASAMS_LN_C",
-                Position = new Dcs.Common.Position()
+                Position = new Position()
                 {
                     Lat = location.Latitude + 0.001,
                     Lon = location.Longitude + 0.001
                 },
-                Skill = Dcs.Coalition.AddGroupRequest.Types.Skill.Excellent
+                Skill = AddGroupRequest.Types.Skill.Excellent
             });
 
             try
             {
                 using var channel = GrpcChannel.ForAddress($"http://{Global.HostName}:{Global.Port}");
-                var client = new Dcs.Coalition.CoalitionService.CoalitionServiceClient(channel);
-                var result = client.AddGroup(new Dcs.Coalition.AddGroupRequest()
+                var client = new CoalitionService.CoalitionServiceClient(channel);
+                var result = client.AddGroup(new AddGroupRequest()
                 {
-                    Country = Dcs.Common.Country.UnitedStatesOfAmerica,
-                    GroupCategory = Dcs.Common.GroupCategory.Ground,
+                    Country = Country.UnitedStatesOfAmerica,
+                    GroupCategory = GroupCategory.Ground,
                     GroundTemplate = template
                 }
                 );

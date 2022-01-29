@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Windows.Input;
 using Grpc.Net.Client;
+using RurouniJones.Dcs.Grpc.V0.Unit;
 
 namespace RurouniJones.Jupiter.Core.ViewModels.Commands
 {
@@ -21,8 +22,8 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
             try
             {
                 using var channel = GrpcChannel.ForAddress($"http://{Global.HostName}:{Global.Port}");
-                var client = new Dcs.Unit.UnitService.UnitServiceClient(channel);
-                client.SetEmissionAsync(new Dcs.Unit.SetEmissionRequest()
+                var client = new UnitService.UnitServiceClient(channel);
+                client.SetEmissionAsync(new SetEmissionRequest()
                     {
                         Name = unitName,
                         Emitting = false
