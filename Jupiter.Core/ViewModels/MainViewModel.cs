@@ -110,7 +110,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels
                                     Pilot = sourceUnit.Callsign,
                                     Type = sourceUnit.Type,
                                     Player = sourceUnit.PlayerName,
-                                    GroupName = sourceUnit.GroupName,
+                                    GroupName = sourceUnit.Group.Name,
                                     MilStd2525dCode = Encyclopedia.Repository.GetMilStd2525DCodeByDcsCode(sourceUnit.Type),
                                 };
                                 Units.Add(newUnit);

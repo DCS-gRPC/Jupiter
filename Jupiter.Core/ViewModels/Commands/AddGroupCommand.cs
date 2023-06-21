@@ -28,7 +28,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
             var template = new AddGroupRequest.Types.GroundGroupTemplate()
             {
                 Name = $"SAM Site {randomNumber}",
-                Position = new Position()
+                Position = new InputPosition()
                 {
                     Lat = location.Latitude,
                     Lon = location.Longitude
@@ -39,7 +39,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
             template.Units.Add(new AddGroupRequest.Types.GroundUnitTemplate() {
                 Name = $"SAM Site {randomNumber} Command Post",
                 Type = "NASAMS_Command_Post",
-                Position = new Position()
+                Position = new InputPosition()
                 {
                     Lat = location.Latitude,
                     Lon = location.Longitude
@@ -51,7 +51,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
             {
                 Name = $"SAM Site {randomNumber} Command Post",
                 Type = "NASAMS_Radar_MPQ64F1",
-                Position = new Position()
+                Position = new InputPosition()
                 {
                     Lat = location.Latitude - 0.001,
                     Lon = location.Longitude
@@ -63,7 +63,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
             {
                 Name = $"SAM Site {randomNumber} Launcher 1",
                 Type = "NASAMS_LN_C",
-                Position = new Position()
+                Position = new InputPosition()
                 {
                     Lat = location.Latitude + 0.001,
                     Lon = location.Longitude
@@ -75,7 +75,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
             {
                 Name = $"SAM Site {randomNumber} Launcher 2",
                 Type = "NASAMS_LN_C",
-                Position = new Position()
+                Position = new InputPosition()
                 {
                     Lat = location.Latitude + 0.001,
                     Lon = location.Longitude - 0.001
@@ -87,7 +87,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
             {
                 Name = $"SAM Site {randomNumber} Launcher 3",
                 Type = "NASAMS_LN_C",
-                Position = new Position()
+                Position = new InputPosition()
                 {
                     Lat = location.Latitude + 0.001,
                     Lon = location.Longitude + 0.001

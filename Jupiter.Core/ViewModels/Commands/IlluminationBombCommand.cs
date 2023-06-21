@@ -29,7 +29,7 @@ namespace RurouniJones.Jupiter.Core.ViewModels.Commands
                 var client = new TriggerService.TriggerServiceClient(channel);
                 client.IlluminationBomb(new IlluminationBombRequest
                     {
-                        Position = new Position
+                        Position = new InputPosition
                         {
                             Lat = location.Latitude,
                             Lon = location.Longitude,

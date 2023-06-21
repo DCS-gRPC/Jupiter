@@ -18,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Geo" Version="1.0.0" />
-    <PackageReference Include="RurouniJones.Dcs.Grpc" Version="0.3.0" />
+    <PackageReference Include="Geo" Version="1.0.1" />
+    <PackageReference Include="RurouniJones.Dcs.Grpc" Version="0.7.0" />
   </ItemGroup>
 
   <ItemGroup>
